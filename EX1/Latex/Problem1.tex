@@ -20,6 +20,7 @@
 \usetikzlibrary{automata,positioning}
 
 \usepackage{forest}
+\renewcommand{\rmdefault}{ptm}
 
 \begin{document}
 \section*{RANGE UPDATES}
@@ -30,7 +31,7 @@ that $C[k] := C[k] + c$ for every $i \leq k \leq j$.
 \item query(i), where $0 \leq i \leq n \leq 1$: it returns the values of$ C[i]$.
 \item sum(i, j), where $0 \leq i \leq j \leq n \leq 1$: it returns $\sum_{k=i}^{j} C[k]$
 \end{itemize}
-Design a data structure that uses O(n) space and implements each operation above in O(log n) time. Note that query(i) = sum(i, i) but it helps to reason. [Hint to further save space: use an implicit tree such as the Fenwick tree (see wikipedia).]\\
+Design a data structure that uses O(n) space and implements each operation above in O(log n) time. Note that query(i) = sum(i, i) but it helps to reason. [Hint to further save space: use an implicit tree such as the Fenwick tree (see Wikipedia).]\\
 \\
 \textbf{SOLUTION}
 \\
@@ -99,7 +100,7 @@ To implement this concept in to an algorithm we use the following formula $i - (
 \begin{algorithmic}
 \Function{getSum}{$index$} 
 \State $ans\gets 0$
-\While{$index \ != 0$} 
+\While{$index \ > 0$} 
 	\State $ans \gets ans +BIT[index]$
 	\State $index \gets index - (index \ AND (-index))$	
 \EndWhile
@@ -109,7 +110,7 @@ To implement this concept in to an algorithm we use the following formula $i - (
 Now we should try to do the same for the updating function. Now given an index we should search the least node that took the LEFT path. Here, instead of stripping off the least-significant 1 bit (i.e. subtracting), we now add it on at each stage to get the next entry to adjust. Therefore we simply have:
 \begin{algorithmic}
 \Function{update}{$index$,$val$} 
-\While{$index \ \leq length\_of\_array$} 
+\While{$index \ < length\_of\_array$} 
 	\State $BIT[index] \gets BIT[index] +val$
 	\State $index \gets index + (index \ AND (-index))$	
 \EndWhile
@@ -119,11 +120,51 @@ Now we should try to do the same for the updating function. Now given an index w
 \qquad \\
 \\
 \\
-Now to get the final functions we do the following:
+Notice that getSum and update work in O(log n), where n is the length of the input. However, the update function modify one element at the time, then we still need to find a way to do a range update in O(log n). The idea is to keep two BIT (i.e. BIT1 and BIT2) and then modify the functions to sum and update a range. \\
+\\
+Let's start with the update function update(i, j, c). When we update BIT1 we will use the previous update as follow:
+\begin{align*}
+update(i, c)  \qquad & \# \textit{in BT1}\\ 	
+update(j + 1, -c)  \qquad & \# \textit{in BT1}
+\end{align*}
+The idea is that the $update(i, c)$ will affect all $i' \leq i$, i.e all the left subtree where we store the partial sum of the sub-interval. To limit the effect to a given range $[i,...,j]$, we subtract $-c$ from all $i' > j$ by performing the operation $update(j+1, -c)$. Now, if we use the getSum function as it is, we will have a wrong result. Indeed we should find a way to tell how much the results have to be adjust, here comes the second BIT (i.e BT2). 
+Consider a range $update(i,j,c)$ and let all the elements at the beginning were 0. Now, let consider a getSum(p) for a generic $p$, then we have:
+\begin{align*}
+1 & \leq p < i \longrightarrow 0 \\
+i & \leq p \leq j \longrightarrow c*(p-(i-1))\\
+j & < p \leq N \longrightarrow c*(j-(i-1))
+\end{align*}
+Thus, for a given index $p$, expanding those formula we obtain the term needed to adjust the prefixed sum. Indeed we find a term $X$ in this way:
+\begin{align*}
+1 & \leq p < i \longrightarrow 0 \longrightarrow X=0\\
+i & \leq p \leq j \longrightarrow c*p - c*(i-1)\longrightarrow X= c*(i-1) \\
+j & < p \leq N \longrightarrow c*j - c*(i-1) \longrightarrow X= -c*j + c*(i-1)
+\end{align*}
+This extra factor keep track of the adjustment needed to obtain the correct sum. To maintain this extra factor $X$, we use another BIT(i.e BT2) then we have:
+\begin{align*}
+update(i, c * (i-1))     \qquad     &\#\textit{in BT2} 	\\
+update(j + 1, -c * j) 	\qquad	&\#\textit{in BT2}
+\end{align*}
+Notice $c*(i-1)$ it's not there because it has been included in the previous update. Indeed to obtain a correct range sum we have to do the following:
+\begin{align*}
+getSum(p)= getSum(BIT1,p) *p - getSum(BIT2,p)
+\end{align*}
+Finally we have the function requested in the exercise:
 \begin{itemize}
-\item update(i, j, c) is equivalent to update(i, c) and update(j + 1, -c). Indeed update(p, v) will affect all the index $p' \geq p$. To limit the effect to a given range [i,j], we subtract -v from all the index $p' > j$ by performing the operation update(j+1, -v).
-\item query(i)= getSum(i)-getSum(i-1)
-\item sum(i, j)=getSum(j)-getSum(i-1)
+\item $update(i, j, c)$ is equivalent to the following function:
+\begin{itemize}
+\item $update(BIT1,i, c)$
+\item $update(BIT1,j + 1, -c)$
+\item $update(BIT2,i, c * (i-1))$
+\item $update(BIT2,j + 1, -c * j)$
 \end{itemize} 
-Both getSum and update work in O(log n), where n is the length of the input. This because: the tree is always balanced and the two function they simply take a path in the tree. Furthermore, this algorithm take just O(n) space since it's just storing a flat array.
+\item $query(i)= getSum(i)-getSum(i-1)$
+\item $sum(i, j)=getSum(j)-getSum(i-1)$
+\end{itemize} 
+Both sum, query and update work in O(4 log(n)). This because: the tree is always balanced and the two function they simply take a path in the tree. Furthermore, this algorithm take just O(2 n) space since it's just storing a flat array.\footnote{Some references: 
+\href{https://www.cs.auckland.ac.nz/~peter-f/FTPfiles/TechRep88.pdf}{LINK1}, 
+\href{https://www.hackerearth.com/practice/notes/binary-indexed-tree-made-easy-2/}{LINK2},
+\href{https://kartikkukreja.wordpress.com/2013/12/02/range-updates-with-bit-fenwick-tree/}{LINK3},
+\href{http://stackoverflow.com/questions/27875691/need-a-clear-explanation-of-range-updates-and-range-queries-binary-indexed-tree/27877427\#27877427}{LINK4} and 
+\href{http://cs.stackexchange.com/questions/33014/range-update-range-query-with-binary-indexed-trees}{LINK5}}
 \end{document}
