@@ -24,7 +24,7 @@ def querys(b):
 
 # Return sum A[a...b]
 def queryr(a, b):
-  return queryS(b) - queryS(a-1)
+  return querys(b) - querys(a-1)
 
 B1 = []
 B2 = []
