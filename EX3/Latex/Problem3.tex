@@ -1,0 +1,73 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{algpseudocode} 
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\newtheorem{theorem}{Theorem}
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{qtree}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+
+\usepackage{forest}
+\renewcommand{\rmdefault}{ptm}
+
+\begin{document}
+\section*{Karp-Rabin fingerprinting on strings}
+Given a string $S = S[0 \dots n − 1]$, and two positions $0 \leq i < j \leq n − 1$, the longest common extension $lce_S(i, j)$ is the length of the maximal run of matching characters from those positions, namely: if $S[i] != S[j]$ then $lce_S(i, j) = 0$; otherwise, $lce_S(i, j) =  max \{ \textit{l}\geq 1 : S[i \dots i + \textit{l} − 1] = S[j \dots j + \textit{l} − 1] \}$. For example, if $S = abracadabra$, then $lce_S(1, 2) = 0$, $lce_S(0, 3) = 1$, and $lce_S(0, 7) = 4$. Given $S$ in advance for preprocessing, build a data structure for $S$ based on the Karp-Rabin fingerprinting, in O(n log n) time, so that it supports subsequent online queries of the following two types:
+\begin{itemize}
+\item $lce_S(i, j)$: it computes the longest common extension at positions $i$ and $j$ in O(log n) time.
+\item $equalS(i, j,\textit{l})$: it checks if $S[i \dots i + \textit{l} − 1] = S[j \dots j + \textit{l} − 1]$ in constant time.
+\end{itemize}
+Analyze the cost and the error probability. The space occupied by the data structure can be O(n log n) but it is possible to use O(n) space. [Note: in this exercise, a onetime preprocessing is performed, and then many online queries are to be answered on the fly.\footnote{\href{http://orbit.dtu.dk/files/118483386/phd366_Vind_SJ.pdf}{GROSSI} \href{https://arxiv.org/pdf/1211.0270.pdf}{LINK1}}]\\
+\\
+\textbf{SOLUTION}
+\\
+The proposed data structure that maintain a series of trees. At each level we encode power of two elements (THIS IS IMPOSSIBLE TO EXPLAIN... LOOK THE CODE). The space occupied by this data structure is $O(nlog(n))$ where n is the length of the input array.   
+\begin{algorithmic}
+\Function{CreateTree}{$S$,$n$,$p$}
+\State $A \gets NEW \ Array[log_2(n)+1]$
+\State $TEMP \gets NEW \ Array[n]$
+\For{$i \ IN \ (0,n)$}  
+\State $TEMP[i] \gets S[i] \ mod \ p$
+\EndFor 
+\State $A[0] \gets TEMP$
+\For{$i \ IN \ (1,log_2(n))$} 
+\State $TEMP \gets NEW \ Array[n-i]$ 
+\For{$j \ IN \ (0,n-i)$}  
+\State $TEMP[j] \gets A[i-1][j] + A[i-1][j+2^{i-1}] \ mod \ p$
+\EndFor 
+\State $A[i] \gets TEMP$
+\EndFor 
+\State \Return $A$
+\EndFunction
+\end{algorithmic}
+Now to have $lce_S(i, j)$ we build the implement the following procedure, where $h=\lfloor log_2(n-j)\rfloor$
+\begin{algorithmic}
+\Function{LCE}{$i$,$j$,$h$}
+\If {$A[h][i]== A[h][j]$}
+    \State \Return $2^h$
+\Else
+    \If {$h \neq 0$}
+        \State \Return $0$
+    \Else
+    	\State \Return LCE$(i, j,h-1) +$LCE$(i+2^{h-1},j+2^{h-1},h-1)$ 
+    \EndIf
+\EndIf
+\EndFunction
+\end{algorithmic}
+Notice that, this procedure work in $O(log(n))$ since the array is length is at most log(n) and we are doing two recursive call with an array one unit smaller each time. Finally to obtain $equalS(i, j,\textit{l})$ in cost $O(1)$ we simply check whether $A[\lceil log_2(l) \rceil )][i]== A[\lceil log_2(l) \rceil ][j]$ is true. \\
+Notice that all this algorithm work for arrays in which their length $n$ is a power of two. If we have an array that is not of the latter length, we are doing the following: create the same data structure as before but the part of the array that is not in the tree, that it's at most long $2^{i+1}-2^{i}-1$ where $i= \lfloor log_2(n)\rfloor$, is store in simple array. In this case whether we need to check if $A[\lfloor log_2(n-j)\rfloor][i]== A[\lfloor log_2(n-j)\rfloor][j]$, i.e. the longest possible string, we need also to check, manually, whether there is a matching in the array. Last but not least, the calculation of the error probability is exactly the same to the one analysed during the course.  
+\end{document}
