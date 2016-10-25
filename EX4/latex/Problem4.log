@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.27)  25 OCT 2016 10:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.27)  25 OCT 2016 23:45
 entering extended mode
 **./Problem4.tex
 (Problem4.tex
@@ -1270,38 +1270,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--34
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 29--34
+
+ []
+
 [1
 
-{C:/Users/Andrea/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 34.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 34.
+{C:/Users/Andrea/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}pdfTeX warni
+ng (ext4): destination with the same identifier (name{equation.0.1}) has been a
+lready used, duplicate ignored
 
-(Problem4.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 34.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 34.
+\@EveryShipout@Output ...@Org@Shipout \box \@cclv 
+                                                  
+l.59 \end{document}
+                   ]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 59.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 59.
+ (Problem4.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 59.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 59.
 Package rerunfilecheck Info: File `Problem4.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 34.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 59.
  ) 
 Here is how much of TeX's memory you used:
- 33545 strings out of 493634
- 732793 string characters out of 3134831
- 806362 words of memory out of 3000000
- 36503 multiletter control sequences out of 15000+200000
- 14829 words of font info for 24 fonts, out of 3000000 for 9000
+ 33553 strings out of 493634
+ 732882 string characters out of 3134831
+ 812362 words of memory out of 3000000
+ 36508 multiletter control sequences out of 15000+200000
+ 31609 words of font info for 30 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 62i,5n,69p,10392b,338s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 62i,9n,69p,10392b,336s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/fontname/8
 r.enc}<C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmmi10.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
-pe1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/Andrea/AppData/Local/Pr
-ograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Andrea/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Andr
-ea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
-Output written on Problem4.pdf (1 page, 62453 bytes).
+fonts/cm/cmex10.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmmi10.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Andrea/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Andrea/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Us
+ers/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
+7.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/ams
+fonts/cm/cmsy10.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Andrea/AppData/Local/Programs/M
+iKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
+Output written on Problem4.pdf (1 page, 106196 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
- 3 named destinations out of 1000 (max. 500000)
+ 57 PDF objects out of 1000 (max. 8388607)
+ 4 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

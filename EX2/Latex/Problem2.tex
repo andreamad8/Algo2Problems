@@ -30,6 +30,76 @@ A random search tree for a set $S$ can be defined as follows: if $S$ is empty, t
 \\
 \textbf{SOLUTION}
 \\
+To give an estimation on the depth of a given node, i, we would need to
+consider how many of the other nodes are its ancestors. For this, an
+indicator variable can be defined as follows:
+
+\[X_{ij} = 
+\begin{cases}
+1 & \textsc{if } j \textsc{ is an ancestor of } i,\cr
+0 & otherwise
+\end{cases}
+\]
+\qquad \\
+With this indicator variable, analysis can be performed taking the
+indices as those of the sorted set when in order:
+\(z_1, z_2, ..., z_n\). For two arbitrary indices \(z_i\), \(z_j\) only
+three possible scenarios apply:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(z_i\) was selected as a key on the tree before \(z_j\), so \(z_j\)
+  is a successor of \(z_i\) and thus \(X_{ij} = 0\).
+\item
+  Neither \(z_i\) nor \(z_j\) were selected as a key on the tree before,
+  so a key in the range \((i, ..., j)\) or \((j, ..., i)\) effectively
+  splits the range and thus \(X_{ij} = 0\).
+\item
+  \(z_j\) was selected as a key on the tree before \(z_i\), so \(z_i\)
+  will eventually be found and selected as a key preceded by \(z_j\) and
+  thus \(X_{ij} = 1\).
+\end{enumerate}
+
+With this analysis in mind, the expectation of the indicator variable can
+be computed as follows:
+
+\[E[\sum\limits_{\substack{j = 1\\\j \ne i}}^{n} X_{ij}] = \sum\limits_{\substack{j = 1\\\j \ne i}}^{n} P(X_{ij} = 1) = ...\]
+
+Given the previous analysis, the probability of \(X_{ij}\) in the
+interval containing \(z_i\) and \(z_j\) on both extremes is that of the
+only case in which \(z_j\) may be an ancestor of \(z_i\) over the total
+amount of cases. In this case that means the number of elements in the
+range:
+
+\[... = \sum\limits_{\substack{j = 1\\\j \ne i}}^{n} \frac{1}{|j - i| + 1} = ...\]
+
+To explicitly take into account the two orderings between \(z_i\) and
+\(z_j\), we split the computation in two terms. The result resembles two
+instances of the harmonic series, which are then approximated to
+\(ln(n)\):
+
+\[... = \sum\limits_{\substack{j = 1}}^{i - 1} \frac{1}{i - j + 1} +
+\sum\limits_{\substack{j = i + 1}}^{n} \frac{1}{j - i + 1} <
+ln(n) + ln(n) = 2 ln(n)
+\]
+Finally, the depth of a node in a random search tree is expected to
+be \(2 ln(n)\).
+A variation on the same analysis can be performed to estimate the size
+of the subtree spanning from a given node. In this case, a similar
+indicator variable is defined with slightly different semantics:
+\[X_{ij} = 
+\begin{cases}
+1 & \textsc{if } j \textsc{ is an successor of  } i,\cr
+0 & otherwise
+\end{cases}
+\]
+The analysis and computations to be performed afterwards will follow the
+same structure as before, producing in the same expectancy results for
+the predicate.
+\\
+\textbf{SECOND SOLUTION}
+\\
 Let's start with some key observations: the comparisons are just made with the chosen root k, any two elements are compared at most once, and every time a node is compared with the root k, it will increase its depth in the tree. Let denote with $n_1,\dots,n_k$ the node of a BST (Binary Search Tree), where an $n_t \leq n_p \forall t\leq p$. Let's fix a generic node $n_i$ then we have:
 \begin{equation}
 X_{j} =  
@@ -65,6 +135,7 @@ P(X \geq (1 + c)2ln(n))\geq & e^{-\frac{c^2}{2+c}2ln(n)} \\
 						=   & \frac{1}{n^{\frac{2c^2}{2+c}}}\\
 						>   & \frac{1}{n^{c^3}}
 \end{align*}
+
 
 
 \end{document}
