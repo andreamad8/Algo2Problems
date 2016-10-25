@@ -1,0 +1,40 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{algpseudocode} 
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\newtheorem{theorem}{Theorem}
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{qtree}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+
+\usepackage{forest}
+\renewcommand{\rmdefault}{ptm}
+
+\begin{document}
+\section*{Family of uniform hash functions}
+The notion of pairwise independence says that, for any $x1 \neq x2$ and $c1, c2 \in Z_p$, we have that
+\begin{equation}
+Pr_{h\in H}[h(x1) = c1  \land  h(x2) = c2] = Pr_{h\in H} [h(x1) = c1] * Pr_{h\in H}[h(x2) = c2]
+\nonumber
+\end{equation}
+In other words, the joint probability is the product of the two individual probabilities. Show that the family of hash functions $H = \{ h_{ab}(x) = ((ax + b) \ mod \ p)\ mod \ m \ : a \in Z^*_p, b \in Z_p\}$ (seen in class) is "pairwise independent", where $p$ is a sufficiently large prime number $(m + 1 \leq p \leq 2m)$.
+\\
+\\
+\textbf{SOLUTION}
+\\
+
+\end{document}
