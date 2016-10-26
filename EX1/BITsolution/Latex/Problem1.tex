@@ -33,7 +33,56 @@ that $C[k] := C[k] + c$ for every $i \leq k \leq j$.
 \end{itemize}
 Design a data structure that uses O(n) space and implements each operation above in O(log n) time. Note that query(i) = sum(i, i) but it helps to reason. [Hint to further save space: use an implicit tree such as the Fenwick tree (see Wikipedia).]\\
 \\
-\textbf{SOLUTION}
+\textbf{SOLUTION WITH RANGE TREE}
+\\
+Given the problem, in which we want to efficiently (log. time, and linear
+space) work with values stored in an array contained within an arbitrary
+range \([1...n]\), we need to implement:
+
+\begin{itemize}
+\item
+  Updating a portion of the range by adding a value c: Update(i, j, c).
+\item
+  Querrying the value on a given index: Query(i).
+\item
+  Obtaining the sum of all elements within a range: Sum(i, j).
+\end{itemize}
+
+A possible solution is to model the range as trees, with branches
+partitioning the overall ranges in smaller ones to efficiently operate
+on them. Leaves store discrete indices while their parents represent the
+index ranges contained under them. A tree for \(n=8\), with indices
+\([0...7]\) is shown below:
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[scale=0.45]{Tree.png}
+\caption{Tree for N=8}
+\end{figure}
+Space-wise, this means that for an array of length \(n\), we will at
+most require \(\sum\limits_{i=0}^{\infty} \frac{n}{2^i}\) nodes in the
+tree, as \(\frac{n}{2}\) parents will be needed for the n leaves,
+\(\frac{n}{4}\) for those parents and so on. This geometric series
+converges to \(2n\), leaving us a space complexity bound of \(O(n)\).\\
+The implementation of 1-value query is simple: we use the intervals
+to binary-search our target node. In doing so, we traverse only one tree
+branch, with time complexity \(O(log\ n)\).\\
+Updating and range-summing, on the other hand, are trickier. For them to
+be efficient, we need to process a whole interval in \(O(log\ n)\).
+To do so, we perform the same binary-search process as before, stopping
+when the current interval matches the interval of the node. Otherwise we further splitting the interval towards their sub-trees.
+On a given tree, such splitting will happen at most on \(log(n)- 1\)
+times on both interval extreme, when the range covers all but there is an extreme of the
+interval that is not fully included. When the intervals match, the marking operation will be applied.
+\\
+Finally, to efficiently implement both range operations, branch nodes
+that represent intervals will require two variables: the amount that is
+added in common to all of their successors and the total sum of their
+values. That way, operations onto a given node will remain \(O(1)\),
+with our previous analysis being applicable translating into a time
+complexity bounded by \(O(log\ n)\).
+\newpage \qquad \\
+\textbf{SOLUTION WITH BIT TREE}
 \\
 The solution can be implemented using a Segment tree or a Fenwick Tree. Both allowed the aforementioned operation in O(log n). Here we will present a solution that use Fenwick Trees also called Binary Indexed Tree (BIT).\\
 Let's start with some considerations: 
