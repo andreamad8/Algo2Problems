@@ -27,7 +27,6 @@
 \begin{document}
 \section*{Hashing sets}
 Your company has a database $S \in U$ of keys. For this database, it uses a randomly chosen hash function $h$ from a universal family $H$ (as seen in class); it also keeps a bit vector $B_S$ of $m$ entries, initialized to zeroes, which are then set $B_S[h(k)] = 1$ for every $k \in S$ (note that collisions may happen). Unfortunately, the database $S$ has been lost, thus only $B_S$ and $h$ are known, and the rest is no more accessible. Now, given $k \in U$, how can you establish if $k$ was in $S$ or not? What is the probability of error? Under the hypothesis that $m \geq c|S|$ for some $c > 1$ (note: we do not know the actual values of $c$ and $|S|$) can you estimate the size $|S|$, i.e. the size of $S$, looking at just $h$ and $B_S$? What is the probability of error? Note that $S$ is no more accessible as it disappeared.\\ 
-Optional: Another database $R$ has been found to be lost: it was using the same hash function $h$, and the bit vector $B_R$ defined analogously as above. Using $h$, $B_S$, and $B_R$, how can you establish if $k$ was in $S \cup R$ (union), $S \cap R$ (intersection), or $S \setminus R$ (difference)? What is the probability of error?\\
 \\
 \textbf{SOLUTION}
 \\
@@ -43,17 +42,11 @@ X_{i} =
 \end{cases}
 \nonumber
 \end{equation}
-Than the expectation $E[X]$ represents the expected number of $1$ in the $B_s$ table. To calculate the expectation we need to estimate the $P(B_S[h(k)]=1)$, that, by the point a), should be $(1 - \frac{1}{m})^{|S|}$. Since we do not know $|S|$ we use the hypothesis, that is $|S|\leq \frac{m}{c}$. Therefore we have:
+Than the expectation $E[X]$ represents the expected number of $1$ in the $B_s$ table. To calculate the expectation we need to estimate the $P(B_S[h(k)]=1)$, that, by the point a), is $1-(1 - \frac{1}{m})^{|S|}$. Since we do not know $|S|$ we use the hypothesis, that is $|S|\leq \frac{m}{c}$. Therefore we have:
 \begin{equation}
-P(B_S[h(k)]=1)=(1 - \frac{1}{m})^{|S|} \leq (1 - \frac{1}{m})^{\frac{m}{c}}
+P(B_S[h(k)]=1)=1-(1 - \frac{1}{m})^{|S|} \leq 1-(1 - \frac{1}{m})^{\frac{m}{c}}
 \nonumber
 \end{equation}
-Hence we have $E[X]= \sum_{i=0}^{m-1} (1 - \frac{1}{m})^{\frac{m}{c}}=m(1 - \frac{1}{m})^{\frac{m}{c}}$. Now we have got a bound for $|S|$: $E[X]\leq|S|\leq \frac{m}{c}$.
-\item[\textbf{c)}] For the optional point we have:
-	\begin{itemize}
-	\item[\textbf{Union}] We need to check that $B_S[h(k)]=1 $ OR $B_R[h(k)]=1$ and then the probability of error is $P[B_S[h(k)]=1 \lor B_R[h(k)]=1]$ that , by set theory is equal to $P[B_S[h(k)]=1] +P[B_S[h(k)]=1] - P[B_S[h(k)]=1 \land B_R[h(k)]=1]$
-	\item[\textbf{Intersection}] We need to check that $B_S[h(k)]=1 $ AND $B_R[h(k)]=1$ and then the probability of error is $P[B_S[h(k)]=1 \land B_R[h(k)]=1]$ 
-	\item[\textbf{Difference}] We need to check that $B_S[h(k)]=1 $ AND $B_R[h(k)]=0$ and then the probability of error is $P[B_S[h(k)]=1 \land B_R[h(k)]=0]$ that , by set theory is equal to  $P[B_S[h(k)]=1] - P[B_S[h(k)]=1 \land B_R[h(k)]=1]$
-	\end{itemize}
+Hence we have $E[X]= \sum_{i=0}^{m-1} 1-(1 - \frac{1}{m})^{\frac{m}{c}}=m-m(1 - \frac{1}{m})^{\frac{m}{c}}$. Now we have got a bound for $|S|$: $E[X]\leq|S|\leq \frac{m}{c}$.
 \end{itemize}
 \end{document}
