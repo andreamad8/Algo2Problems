@@ -6,9 +6,6 @@ This a repo to keep track to some solution of the exercize of the Algorithm 2 co
 * EX3: Karp-Rabin fingerprinting on strings. **SOLVED**
 * EX4: Hashing sets. **SOLVED** (Notice that the professor changed the exercize text)
 * EX5: Family of uniform hash functions. **SOLVED** 
-* EX3: **ARRIVING SOON** 
-* EX4: **ARRIVING SOON** 
-* EX5: **ARRIVING SOON** 
 
 ## POLICY
 If you believe that the proposed solutions are wrong, or there are mistakes, or you have a better solution, please do not esitate to review the already existing file, or upload your solution. Actually, if you want to upload your solution, you are very welcome.
