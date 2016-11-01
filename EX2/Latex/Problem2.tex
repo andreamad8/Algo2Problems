@@ -124,11 +124,11 @@ Let's write down the Chernoff Bound:
 \begin{theorem}
 (Chernoff Bounds). Let $X=\sum_{i=1}^n X_{i}$, where $X_i = 1$ with probability $p_i$ and $X_i = 0$ with probability $1 − p_i$, and all $X_i$ are independent. Let $\mu = E(X) = \sum_{i=1}^n p_i$\footnote{\href{http://heather.cs.ucdavis.edu/~matloff/132/GenderExample.pdf}{Indicator variable}}. Then
 \begin{align*}
-(i) &\textbf{Upper Tail:} P(X \geq (1 + \delta)\mu) \geq e^{-\frac{\delta^2}{2+\delta}\mu} &for \ all \ \delta > 0 \\
-(ii) &\textbf{Lower Tail:} P(X \geq (1 - \delta)\mu) \geq e^{-\frac{\mu\delta^2}{2}}      &for \ all \ 0< \delta < 1 
+(i) &\textbf{Upper Tail:} P(X \geq (1 + \delta)\mu) \leq e^{-\frac{\delta^2}{2+\delta}\mu} &for \ all \ \delta > 0 \\
+(ii) &\textbf{Lower Tail:} P(X \leq (1 - \delta)\mu) \leq e^{-\frac{\mu\delta^2}{2}}      &for \ all \ 0< \delta < 1 
 \end{align*}
 \end{theorem}
-Therefore we have:
+Therefore we have: [DOUBLE-CHECK THIS PART!!!] 
 \begin{align*}
 P(X \geq (1 + c)2ln(n))\geq & e^{-\frac{c^2}{2+c}2ln(n)} \\
 						=   & \frac{1}{e^{\frac{c^2}{2+c}2ln(n)}}\\
