@@ -6,6 +6,10 @@ This repo is used to collect different exercize solution of the Algorithm course
 * EX3: Karp-Rabin fingerprinting on strings. **SOLVED**
 * EX4: Hashing sets. **SOLVED** (Notice that the professor changed the exercize text)
 * EX5: Family of uniform hash functions. **SOLVED** 
+* EX6: Deterministic data streaming.
+* EX7: Special case of most frequent item in a stream.
+* EX8: Count-min sketch: extension to negative counters.
+* EX9: Count-min sketch: range queries.
 
 ## POLICY
 If you believe that the proposed solutions are wrong, or there are mistakes, or you have a better solution, please do not esitate to review the already existing file, or upload your solution. Actually, if you want to upload your solution, you are very welcome.

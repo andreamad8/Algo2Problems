@@ -1,0 +1,32 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{algpseudocode}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\newtheorem{theorem}{Theorem}
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{qtree}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{forest}
+\renewcommand{\rmdefault}{ptm}
+
+\begin{document}
+\section*{Count-min sketch: extension to negative counters}
+Check the analysis seen in class, and discuss how to allow $F[i]$ to change by arbirary values read in the stream. Namely, the stream is a sequence of pairs of elements, where the first element indicates the item $i$ whose counter is to be changed, and the second element is the amount $v$ of that change ($v$ can vary in each pair). In this way, the operation on the counter becomes $F[i] = F[i]+v$, where the increment and decrement can be now seen as $(i, 1)$ and $(i, −1)$.
+\end{document}
