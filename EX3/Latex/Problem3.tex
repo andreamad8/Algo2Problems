@@ -46,7 +46,7 @@ Karp-Rabin hashing on strings (i.e. $str[n]$)for solving the longest common exte
         H[n-1]& = H[n-2]  p + h(str[n-1]) \ = \  h(str[0]) p^{n-1} +  \dots  +h(str[n-2]) p^1 + h(str[n-1])p^0\\ 
 \end{align*}
 Therefore the space used here is just O(n).
-\item Firstly we care about equality. To compare equality of a substring of length $l$ at indexes $i, j$, we need to know the sub-hash of the string. Thus, we take hashes of $H[i]$ and $H[i+l]$ and we compare calculate the hash of the sub-string between $i$ and $l$:
+\item Firstly we care about equality. To compare equality of a substring of length $l$ at indexes $i, j$, we need to know the sub-hash of the string. Thus, we take hashes of $H[i]$ and $H[i+l]$ and we calculate the hash of the sub-string between $i$ and $l$:
 \begin{align*}
 H[Substring_i] = &H[i + l] - H[i] * p ^{(l - 1)}\\
 =&h(str[0]) p^{i + l-1} +  \dots  +h(str[i + l-2]) p^1 + h(str[i + l-1])p^0\\
