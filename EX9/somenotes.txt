@@ -1,0 +1,5 @@
+Some useful links:
+http://cs.stanford.edu/~rishig/courses/ref/l12b.pdf
+http://dimacs.rutgers.edu/~graham/pubs/papers/cm-full.pdf
+http://cs.stackexchange.com/questions/34099/count-min-sketch-dyadic-ranges
+http://dimacs.rutgers.edu/~graham/pubs/papers/cmencyc.pdf

@@ -28,5 +28,40 @@
 
 \begin{document}
 \section*{Deterministic data streaming}
-Consider a stream of n items, where items can appear more than once in the stream. The problem is to find the most frequently appearing item in the stream (where ties broken arbitrarily if more than one item satisfies the latter). Suppose that only $k$ items can be stored, one item per memory cell, where the available storage is $k + O(1)$ memory cells. Show that the problem cannot be solved deterministically under the following rules: the algorithm can access only $O(log^c n)$ bits for each of the k items that it can store, and can read the next item of the stream; you, the adversarty, have access to all the stream, and the content of the $k$ items stored by the algorithm, and can decide what is the next item that the algorithm reads (please note that you cannot change the past, namely, the items already read by the algorithm) . Hint: it is an adversarial argument based on the $k$ items chosen by the hypothetical determinist streaming algorithm, and the fact that there can be a tie on $> k$ items till the last minute.
+Consider a stream of n items, where items can appear more than once in the stream. The problem is to find the most frequently appearing item in the stream (where ties broken arbitrarily if more than one item satisfies the latter). Suppose that only $k$ items can be stored, one item per memory cell, where the available storage is $k + O(1)$ memory cells. Show that the problem cannot be solved deterministically under the following rules: the algorithm can access only $O(log^c n)$ bits for each of the k items that it can store, and can read the next item of the stream; you, the adversary, have access to all the stream, and the content of the $k$ items stored by the algorithm, and can decide what is the next item that the algorithm reads (please note that you cannot change the past, namely, the items already read by the algorithm) . Hint: it is an adversarial argument based on the $k$ items chosen by the hypothetical deterministic streaming algorithm, and the fact that there can be a tie on $> k$ items till the last minute.
+\\
+\\
+\textbf{SOLUTION}
+\\
+\\
+Suppose to have a streaming of $n$ element, and $k$ counters to store the frequencies. Then, we first input $k$ distinct elements. After that, we put another element, still different from the precedent. Thus we expect that one element, previously stored in the one of the counter, is going to be replaced by the new one. Now we input the element that has been discarded. We repeat this process for the rest of the elements. 
+\\
+Obviously, at the end we obtain all the counter with frequency one. Let give a small example. Suppose $k=3$ and $n=5$, then the first three input of the stream are: $1,2,3$. Therefore the counters are going to be:
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Frequency & 1 & 1 & 1 \\ \hline
+Item      & 1 & 2 & 3 \\ \hline
+\end{tabular}
+\end{table}
+Then, we input 4, and without loss of generality we suppose that we remove the element 2.  Therefore the counters are going to be:
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Frequency & 1 & 1 & 1 \\ \hline
+Item      & 1 & 4 & 3 \\ \hline
+\end{tabular}
+\end{table}
+Now we input 2, and we substitute it removing the item 3. Then:
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|l|}
+\hline
+Frequency & 1 & 1 & 1 \\ \hline
+Item      & 1 & 4 & 2 \\ \hline
+\end{tabular}
+\end{table}
+Hence, at the end of the streaming $1,2,3,4,2$ we don't obtain the element with the higher frequency.
 \end{document}
