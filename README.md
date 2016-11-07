@@ -4,10 +4,10 @@ This repo is used to collect different exercize solution of the Algorithm course
 * EX1: Range updates. **SOLVED**
 * EX2: Depth of a node in a random search tree.**SOLVED** (Check second solution for Chernoff’s bounds.) 
 * EX3: Karp-Rabin fingerprinting on strings. **SOLVED**
-* EX4: Hashing sets. **SOLVED** (Notice that the professor changed the exercize text)
+* EX4: Hashing sets. **SOLVED** 
 * EX5: Family of uniform hash functions. **SOLVED** 
-* EX6: Deterministic data streaming.**SOLVED**
-* EX7: Special case of most frequent item in a stream.**SOLVED**
+* EX6: Deterministic data streaming. **SOLVED**
+* EX7: Special case of most frequent item in a stream. **SOLVED**
 * EX8: Count-min sketch: extension to negative counters.
 * EX9: Count-min sketch: range queries.
 
