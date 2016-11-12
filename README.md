@@ -10,6 +10,8 @@ This repo is used to collect different exercize solution of the Algorithm course
 * EX7: Special case of most frequent item in a stream. **SOLVED**
 * EX8: Count-min sketch: extension to negative counters. **SOLVED MISS Chernoff’s bounds**
 * EX9: Count-min sketch: range queries.
+* EX10: Space-efficient perfect hash
+* EX11: Bloom filters vs. space-efficient perfect hash
 
 ## POLICY
 If you believe that the proposed solutions are wrong, or there are mistakes, or you have a better solution, please do not esitate to review the already existing file, or upload your solution. Actually, if you want to upload your solution, you are very welcome.
