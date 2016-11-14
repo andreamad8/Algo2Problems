@@ -28,20 +28,33 @@
 
 \begin{document}
 \section*{Deterministic data streaming}
-Consider a stream of $n$ items, where items can appear more than once in the stream. The problem is to find the most frequently appearing item in the stream (where ties broken arbitrarily if more than one item satisfies the latter). Suppose that only $k$ items can be stored, one item per memory cell, where the available storage is $k + O(1)$ memory cells. Show that the problem cannot be solved deterministically under the following rules: the algorithm can access only $O(log^c n)$ bits for each of the k items that it can store, and can read the next item of the stream; you, the adversary, have access to all the stream, and the content of the $k$ items stored by the algorithm, and can decide what is the next item that the algorithm reads (please note that you cannot change the past, namely, the items already read by the algorithm) . Hint: it is an adversarial argument based on the $k$ items chosen by the hypothetical deterministic streaming algorithm, and the fact that there can be a tie on $> k$ items till the last minute.
+Consider a stream of $n$ items, where items can appear more than once in the stream. The problem is to find the most frequently appearing item in the stream (where ties broken arbitrarily if more than one item satisfies the latter). Suppose that only $k$ items can be stored, one item per memory cell, where the available storage is $k + O(1)$ memory cells. Show that the problem cannot be solved deterministically under the following rules: the algorithm can access only $O(log^c n)$ bits for each of the k items that it can store, and can read the next item of the stream; you, the adversary, have access to all the stream, and the content of the $k$ items stored by the algorithm, and can decide what is the next item that the algorithm reads (please note that you cannot change the past, namely, the items already read by the algorithm) . Hint: it is an adversarial argument based on the $k$ items chosen by the hypothetical deterministic streaming algorithm, and the fact that there can be a tie on $> k$ items till the last minute.\\
+\\
+Show that the problem cannot be solved deterministically under the following rules:
+the algorithm can only use b bits, and read the next item of the stream, one item at
+a time. You, the adversary, have access to all the stream, and the content of the b
+bits stored by the algorithm: you cannot change those b bits and the past, namely, the
+items already read by the algorithm, but you can change the future, namely, the next
+item to be read. Since the algorithm must be correct for any input, you can use any
+amount of streams to be fed to the algorithm and as many distinct items as you want.
+[Hint: it is an adversarial argument based on the fact that, for many streams, there
+can be a tie on the items.]
 \\
 \\
 \textbf{SOLUTION}
 \\
 \\
 Any deterministic algorithm can be described by a deterministic finite state machine, in which every state given an input move deterministically to another state. 
-Suppose to have a streaming of $n$ element, $k+1$ memory cell to store the frequencies, and $\theta$ are the bit necessary to store the algorithm state. Therefore we can have $2^{\theta}$ possible states. \\
+Suppose to have a streaming of $n$ element, $k$ memory cell to store the frequencies, and $\theta$ are the bit necessary to store the algorithm state. Therefore we can have $2^{\theta}$ possible states. \\
 \\
-Let's suppose to input $2^{\theta}+1$ different stream, where each stream has got a different most frequent element. Therefore, we can notice that the algorithm is going to be in the same state with two different input streaming (i.e. then with two different most frequent element). 
-Therefore, the algorithm is going to answer in two different way, that it's an absurd for a deterministic algorithm. Instead, in the case answer in the same way, one result is going to be wrong. 
+Let's suppose to input $2^{\theta}+1$ times the same element to the algorithm. Then must be the case that the algorithm is going to be in the same state in two different moment (notice that the state are $2^{\theta}$). Let's call $A_i$ and $A_j$ the states of the algorithm after it received the element for the $i-th$ and $j-th$ times respectively (with loss of generality $i < j-1$). Notice that those two states are in the same place in two different moment.
 \\
 \\
-The stream in input is made by $2^{\theta}+1$ items, all different a part of one that is going to be repeated twice, becoming then the most frequent. Obviously, the item	repeated twice is going to be different in each input. 
-
+Now let's insert $(i+1)$-times a different element to the algorithm. Then let's proof that the algorithm reply in two different way:
+\begin{itemize}
+\item[Case 1:] if we are in $A_i$, therefore we have seen $i$ times the first element, and $i+1$ the second one. Therefore, in this case the second element win.  
+\item[Case 2:] if we are in $A_j$, therefore we have seen $j$ times the first element (with $i < j-1$), and $i+1$ the second one. Therefore, in this case the first element win. 
+\end{itemize}
+Hence, we have a contradiction.
 
 \end{document}
