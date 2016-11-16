@@ -43,5 +43,30 @@ Operations $rank_0(i)$ and $select_0(j)$ can be defined in the same way as above
 \textbf{SOLUTION}
 \\
 \\
-
+The solution uses 4 data structure: Header [H], table to store $a$ [A], table to store $b$ [B], and the table in where we store the bit [T]. The table T concatenate the bit vector of each bucket $n_j$ ($n_0,\dots ,n_{m-1}$), notice the length of those bucket it can be different one of each other. We have indeed:
+\begin{itemize}
+\item $\sum_{j=1}^{m-1}n_j=n=m$
+\item In each bucket we use an universal hash function $h_j$ with $m=n_j^2$, and we have already proved that it's perfect (no error) with probability $\geq \frac{1}{2}$
+\item $\sum_{j=1}^{m-1}n_j^2=O(n)$ with probability $\geq \frac{1}{2}$
+\end{itemize}
+Now since we have concatenate all the buckets, we need to give a way to retrieve the range of the right bucket. To do so, we keep the length of each bucket in the header H. Therefore, we save the length in unary notation and we concatenate all of them. Then we have
+\begin{align*}
+H &= (n_1^2)_1 \ | \ \dots \ | \ (n_{m-1}^2)_1 \\
+T &= n_1 \ | \ \dots \ | \ n_{m-1}
+\end{align*}
+Notice that the element in T are all binary, as explained in the text of the exercise, and $(\_)_1$ means the unary notation. Now, given a key $x$ we are going to check the following: 
+\begin{align*}
+j & =h_{ab}(x)\\
+k & = select_1(j) \# \textsc{position of the $j_{th}$ 1} \\
+t & = rank_0(k) \# \textsc{number of 0s before the index $k$} \\
+\end{align*}
+Notice that $t$ is the bucket in T select by $h_{ab}$, the external hash (note that we stored $\forall j \ . \ n_j^2 \ 0s$ in H). Since we have this padding, we apply the correct hash function inside the bucket (using $A[j]=a'$ and $B[j]=b'$). Now, if the value in position $h_{a'b'}(x)+t$ of T is 0 the element is not present, instead if is 1 the element is present (with probability $\geq \frac{1}{2}$). \\
+The space occupied by the data structures used here is the following:
+\begin{itemize}
+\item H: the number of $0s=\sum_{j=1}^{m-1}n_j^2=O(n)$ and the number of $1s=\#\textsc{buckets}=n=m$
+\item T: the number of element are $\sum_{j=1}^{m-1}n_j^2=O(n)$
+\item A: here we have an array with $n=m$ elements, in which each $a\in [0,p]=Z_p$. Since, this $a_s$ are used to build the hash used in the bucket, where the size of the bucket is $n_j^2$, then $p>n_j^2$ ($(h_{ab}=(ax+b)mod\ p) mod \ n_j^2$). Therefore, we take the first prime grater that $n_j^2$, that by Bertrand's postulate, is between $n_j^2< p< 2n_j^2$. Therefore, each cell is going to use $log_2 2n_j^2 \leq 2 log_2 n_j$. Now, we have $2\sum_{j=1}^{n-1}log_2(n_j)\leq 2\sum_{j=1}^{n-1}n_j=2n$. Hence, we have $2n$ bits.
+\item B: here we have an array with $n=m$ elements, in which each $b\in[1,p]=Z_p^*$. By the same reasoning we have $2n$ bits.
+\end{itemize}
+Totally, the space used here is: $O(n)+n + O(n)+2n+2n=5n+O(n)$
 \end{document}
