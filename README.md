@@ -6,11 +6,11 @@ This repo is used to collect different exercize solution of the Algorithm course
 * EX3: Karp-Rabin fingerprinting on strings. **SOLVED**
 * EX4: Hashing sets. **SOLVED** 
 * EX5: Family of uniform hash functions. **SOLVED** 
-* EX6: Deterministic data streaming. **ALMOST SOLVED, TWO POSSIBLE SOL**
+* EX6: Deterministic data streaming. **SOLVED**
 * EX7: Special case of most frequent item in a stream. **SOLVED**
 * EX8: Count-min sketch: extension to negative counters. **SOLVED MISS Chernoff’s bounds**
 * EX9: Count-min sketch: range queries. **SOLVED, PLEASE DOUBLE CHECK IT**
-* EX10: Space-efficient perfect hash
+* EX10: Space-efficient perfect hash **SOLVED, PLEASE DOUBLE CHECK IT**
 * EX11: Bloom filters vs. space-efficient perfect hash
 
 ## POLICY
