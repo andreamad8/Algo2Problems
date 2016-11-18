@@ -31,6 +31,7 @@
 Consider the two-level perfect hash tables presented in [CLRS] and discussed in class. As already discussed, for a given set of $n$ keys from
 the universe $U$, a random universal hash function $h : U \rightarrow [m]$ is employed where $m = n$, thus creating $n$ buckets of size $n_j \geq 0$, where $\sum^{n−1}_{j=0} nj = n$. Each bucket $j$ uses a random universal hash function $h_j: U \rightarrow [m]$ with $m = n_j^2$. Key $x$ is thus stored in
 position $h_j (x)$ of the table for bucket $j$, where $j = h(x)$.
+
 This problem asks to replace each such table by a bitvector of length $n=n_j^2$, initialized to all 0s, where key $x$ is discarded and, in its place, a bit 1 is set in position $h_j (x)$ (a similar thing was proposed in Problem 4 and thus we can have a one-side error). Design
 a space-efficient implementation of this variation of perfect hash, using a couple of tips. First, it can be convenient to represent the value of the table size in unary (i.e., x zeroes followed by one for size x, so 000001 represents x = 5 and 1 represents x = 0). Second, it can be useful to employ a rank-select data structure that, given any bit vector B of b bits, uses additional o(b) bits to support in O(1) time the following operations on B:
 \begin{itemize}
@@ -41,32 +42,112 @@ Operations $rank_0(i)$ and $select_0(j)$ can be defined in the same way as above
 \\
 \\
 \textbf{SOLUTION}
+%
+%The solution uses 4 data structure: Header [H], table to store $a$ [A], table to store $b$ [B], and the table in where we store the bit [T]. The table T concatenate the bit vector of each bucket $n_j$ ($n_0,\dots ,n_{m-1}$), notice the length of those bucket it can be different one of each other. We have indeed:
+%\begin{itemize}
+%\item $\sum_{j=1}^{m-1}n_j=n=m$
+%\item In each bucket we use an universal hash function $h_j$ with $m=n_j^2$, and we have already proved that it's perfect (no error) with probability $\geq \frac{1}{2}$
+%\item $\sum_{j=1}^{m-1}n_j^2=O(n)$ with probability $\geq \frac{1}{2}$
+%\end{itemize}
+%Now since we have concatenate all the buckets, we need to give a way to retrieve the range of the right bucket. To do so, we keep the length of each bucket in the header H. Therefore, we save the length in unary notation and we concatenate all of them. Then we have
+%\begin{align*}
+%H &= (n_1^2)_1 \ | \ \dots \ | \ (n_{m-1}^2)_1 \\
+%T &= n_1 \ | \ \dots \ | \ n_{m-1}
+%\end{align*}
+%Notice that the element in T are all binary, as explained in the text of the exercise, and $(\_)_1$ means the unary notation. Now, given a key $x$ we are going to check the following: 
+%\begin{align*}
+%j & =h_{ab}(x)\\
+%k & = select_1(j) \# \textsc{position of the $j_{th}$ 1} \\
+%t & = rank_0(k) \# \textsc{number of 0s before the index $k$} \\
+%\end{align*}
+%Notice that $t$ is the bucket in T select by $h_{ab}$, the external hash (note that we stored $\forall j \ . \ n_j^2 \ 0s$ in H). Since we have this padding, we apply the correct hash function inside the bucket (using $A[j]=a'$ and $B[j]=b'$). Now, if the value in position $h_{a'b'}(x)+t$ of T is 0 the element is not present, instead if is 1 the element is present (with probability $\geq \frac{1}{2}$). \\
+%The space occupied by the data structures used here is the following:
+%\begin{itemize}
+%\item H: the number of $0s=\sum_{j=1}^{m-1}n_j^2=O(n)$ and the number of $1s=\#\textsc{buckets}=n=m$
+%\item T: the number of element are $\sum_{j=1}^{m-1}n_j^2=O(n)$
+%\item A: here we have an array with $n=m$ elements, in which each $a\in [0,p]=Z_p$. Since, this $a_s$ are used to build the hash used in the bucket, where the size of the bucket is $n_j^2$, then $p>n_j^2$ ($(h_{ab}=(ax+b)mod\ p) mod \ n_j^2$). Therefore, we take the first prime grater that $n_j^2$, that by Bertrand's postulate, is between $n_j^2< p< 2n_j^2$. Therefore, each cell is going to use $log_2 2n_j^2 \leq 2 log_2 n_j$. Now, we have $2\sum_{j=1}^{n-1}log_2(n_j)\leq 2\sum_{j=1}^{n-1}n_j=2n$. Hence, we have $2n$ bits.
+%\item B: here we have an array with $n=m$ elements, in which each $b\in[1,p]=Z_p^*$. By the same reasoning we have $2n$ bits.
+%\end{itemize}
+%Totally, the space used here is: $O(n)+n + O(n)+2n+2n=5n+O(n)$
 \\
 \\
-The solution uses 4 data structure: Header [H], table to store $a$ [A], table to store $b$ [B], and the table in where we store the bit [T]. The table T concatenate the bit vector of each bucket $n_j$ ($n_0,\dots ,n_{m-1}$), notice the length of those bucket it can be different one of each other. We have indeed:
-\begin{itemize}
-\item $\sum_{j=1}^{m-1}n_j=n=m$
-\item In each bucket we use an universal hash function $h_j$ with $m=n_j^2$, and we have already proved that it's perfect (no error) with probability $\geq \frac{1}{2}$
-\item $\sum_{j=1}^{m-1}n_j^2=O(n)$ with probability $\geq \frac{1}{2}$
-\end{itemize}
-Now since we have concatenate all the buckets, we need to give a way to retrieve the range of the right bucket. To do so, we keep the length of each bucket in the header H. Therefore, we save the length in unary notation and we concatenate all of them. Then we have
+The solution uses five data structures: 
+\begin{description}
+\item[\texttt{H}] is the Header table, it substitute the first level hash table and is memorized using a rank-select data structure;
+\item[\texttt{T}] is the bitvector in which we will sore the bits for the presence/absence of the elements, it plays the role of all the second level tables;
+\item[\texttt{A}] is the table that store the $a$ parameters for the hash functions of the second level;
+\item[\texttt{B}] is the table that store the $b$ parameters for the hash functions of the second level;
+\item[\texttt{P}] is the table that store the $p$ parameters for the hash functions of the second level.
+\end{description}
+Before continue we make some observations:
+\begin{enumerate}
+\item $\sum_{j=1}^{n}n_j=n$, where $n_j$ is the number of elements in the bucket $j$ (called $B_j$ from now on), as seen in class since by definition $n$ is the number of elements to be stored;
+\item in each bucket $B_j$ we use an universal hash function $h_j$ with $m=n_j^2$, and we have already proved that it's perfect (no collision
+%no error seem to refer to one-side error in deciding if a given x is in S or not
+) with probability $\geq \frac{1}{2}$;
+\item 
+given that $E[\sum_{j=1}^{n}n_j^2] < 2n$ and so by \textit{Markov’s inequality} that $Pr[\sum_{j=1}^{n}n_j^2 \geq 4n] < 1/2$, we know that $\sum_{j=1}^{n}n_j^2 \leq 4n$ with probability greater or equal to $1/2$;
+% $\sum_{j=1}^{m-1}n_j^2=O(n)$ with probability $\geq \frac{1}{2}$ is not enough since we want kn + o(n) bits (well Grossi said that, but isn't it actually the same?
+\item
+$p$, the parameter of the family of hash functions for the first level of hashing is a prime number greater than $n$, so for the \textit{Bertrand's postulate} we know that we can choose a $p < 2n$ and we need less than $log_2 2n = log_2 2 + log_2 n = 1 + log_2 n$ to store it;
+\item
+we take $a$ and $b$ (the parameters of the hash function in the first level) from $\mathbb{Z}_p$ and, since we know that we can choose a $p < 2n$, we need less than $log_2 2n = 1 + log_2 n$ bits for each one of them;
+\item
+for each bucket $B_j$ we choose randomly the parameters $a_j$ and $b_j$ of the hash function from $\mathbb{Z}_{p_j}$, with $p_j > n_j^2$ prime number  (greater than the size of the bitvector), since we can choose $p_j < 2n_j^2$, the number of bits needed for each one of the two is less then $log_2  2{n_j}^2 = 1 + log_2 {n_j}^2$, the same number of bits are needed also for storing $p_j$ itself.
+
+\end{enumerate}
+Now we can speak more precisely about \texttt{H} and \texttt{T}.
+
+\texttt{H} is simply the concatenation of the unary representation of $n_1^2$, $n_2^2$ ... $n_n^2$, so essentially $n_1^2$ times $0$, followed by a $1$ bit, then $n_2^2$ times $0$, followed by a $1$ bit, etc.
+We will use an additional amount of bits because of the rank-select data structure.
+
+The table \texttt{T} is the concatenation of the bit vector of each bucket: the one for $B_1$ followed by the one for $B_2$, and so on, until $B_n$.
+Notice that the length of those buckets (and respectively of the vectors) can be different one from each other.
+For each bucket $B_j$ we will call its bitvector $Bv_j$, we recall that the size of $B_j$ is $n_j$ and the size of $Bv_j$ is $n_j^2$.
+We have
 \begin{align*}
-H &= (n_1^2)_1 \ | \ \dots \ | \ (n_{m-1}^2)_1 \\
-T &= n_1 \ | \ \dots \ | \ n_{m-1}
+H &= (n_1^2)_1 \ | (n_2^2)_1 \ | \ \dots \ | \ (n_n^2)_1 \\
+T &= Bv_1 \ | Bv_2 \ | \ \dots \ | \ Bv_n
 \end{align*}
-Notice that the element in T are all binary, as explained in the text of the exercise, and $(\_)_1$ means the unary notation. Now, given a key $x$ we are going to check the following: 
+where $(\_)_1$ means the unary notation.
+
+So we have that initially \texttt{T} is the concatenation of $n_1^2$ bits at $0$, $n_2^2$ bits at $0$ etc...
+Notice that in $H$ we can consider the $1$ bits as separator between the information about one bucket and the others, but we don't have anything similar in $T$: since we have concatenate all the bitvectors, we need some way to retrieve the range of any bitvector.
+To do so, we use the length of the bitvectors, contained in the header $H$.
+
+The procedure for setting to $1$ the bits relative to a given key $x$, and for looking whether the key is in $S$ or not is the following:
 \begin{align*}
-j & =h_{ab}(x)\\
-k & = select_1(j) \# \textsc{position of the $j_{th}$ 1} \\
-t & = rank_0(k) \# \textsc{number of 0s before the index $k$} \\
+j & = h_{abpn}(x)\\
+k & = H.select_1(j - 1)\ \#\ \textsc{position of the ${j-1}_{th}$ 1} \\
+\texttt{base} & = H.rank_0(k)\ \#\ \textsc{number of 0s before the index $k$} \\
+a' & = A[j] \\
+b' & = B[j] \\
+p' & = P[j] \\
+m' & = H.select_1(j) - H.select_1(j-1) - 1 \\
+\texttt{offset} & = h_{a' b' p' m'}(x) \\
+T[\texttt{base} + \texttt{offset}] & = 1\ \slash\slash\ return\ T[\texttt{base} + \texttt{offset}] \\
 \end{align*}
-Notice that $t$ is the bucket in T select by $h_{ab}$, the external hash (note that we stored $\forall j \ . \ n_j^2 \ 0s$ in H). Since we have this padding, we apply the correct hash function inside the bucket (using $A[j]=a'$ and $B[j]=b'$). Now, if the value in position $h_{a'b'}(x)+t$ of T is 0 the element is not present, instead if is 1 the element is present (with probability $\geq \frac{1}{2}$). \\
+where $a$ and $b$ are the parameters of the hash function in the first level, and the last operation is $T[\texttt{base} + \texttt{offset}] = 1$ if we are filling the table (creation phase), and $return\ T[\texttt{base} + \texttt{offset}]$ if we are querying the hash table for key $x$.
+Notice that by definition of \texttt{H}, $m'$ is the number of $0$s between the ${j-1}_{th}$ and the ${j}_{th}$ $1$ and so it is $n_j^2$.
+Notice also that we can calculate \texttt{base} as $k - j$ since all but $j$ bits are at $0$ from the position $0$ to the position $k$.
+We used the notation $h_{abpm}(x)$ for $((ax + b)\ mod\ p)\ mod\ m$.
+
+If we are querying the table and the value returned is $0$ then the element is not present, instead if it is $1$ we say that the element is present, with a probability of error (one side error as usual).
+% I don't see why $\geq \frac{1}{2}$...
+
+\
+
+\noindent
 The space occupied by the data structures used here is the following:
-\begin{itemize}
-\item H: the number of $0s=\sum_{j=1}^{m-1}n_j^2=O(n)$ and the number of $1s=\#\textsc{buckets}=n=m$
-\item T: the number of element are $\sum_{j=1}^{m-1}n_j^2=O(n)$
-\item A: here we have an array with $n=m$ elements, in which each $a\in [0,p]=Z_p$. Since, this $a_s$ are used to build the hash used in the bucket, where the size of the bucket is $n_j^2$, then $p>n_j^2$ ($(h_{ab}=(ax+b)mod\ p) mod \ n_j^2$). Therefore, we take the first prime grater that $n_j^2$, that by Bertrand's postulate, is between $n_j^2< p< 2n_j^2$. Therefore, each cell is going to use $log_2 2n_j^2 \leq 2 log_2 n_j$. Now, we have $2\sum_{j=1}^{n-1}log_2(n_j)\leq 2\sum_{j=1}^{n-1}n_j=2n$. Hence, we have $2n$ bits.
-\item B: here we have an array with $n=m$ elements, in which each $b\in[1,p]=Z_p^*$. By the same reasoning we have $2n$ bits.
-\end{itemize}
-Totally, the space used here is: $O(n)+n + O(n)+2n+2n=5n+O(n)$
+\begin{description}
+\item [\texttt{H} :] the number of $0s=\sum_{j=1}^{n}n_j^2$ plus the number of $1s=\#\textsc{buckets}=n$ plus the extra space for the rank-select data structure, so totally $\sum_{j=1}^{n}n_j^2 + n + o(\sum_{j=1}^{n}n_j^2 + n) \leq 4n + n + o(4n + n) = 5n + o(n)$ with probability grater or equal $1/2$;
+\item [\texttt{T} :] the same number of $0s$ in \texttt{H}, $\sum_{j=1}^{n}n_j^2 \leq 4n$ whit probability grater or equal to $1/2$;
+\item [\texttt{A} :] one array of $n$ elements, each one needs less than $1 + log_2 {n_j}^2$ bits, then the total number of bits is less than $\sum_{j=1}^{n}(1 + log_2 {n_j}^2) = n + \sum_{j=1}^{n}(2 log_2 n_j) = n + 2 \sum_{j=1}^{n}(log_2 {n_j}) < n + 2 \sum_{j=1}^{n}n_j = n + 2n = 3n$;
+\item [\texttt{B} :] by the same reasoning made for \texttt{A} we have less than $3n$ bits.
+\item [\texttt{P} :] by the same reasoning made for \texttt{A} we have less than $3n$ bits.
+\end{description}
+Considering the space needed for $a$, $b$ and $p$ of the first level hash function, the total space used is less than:
+$5n + 4n + 3n + 3n + 3n + 3(1 + log_2 n) + o(n) = 18n + o(n)$.
+
+Notice that if we use $p_j = p$ for each bucket $B_j$, than the size of \texttt{A} is $n log_2 2n = n(1 + log_2 n) = n + n log_2 n$, which is a problem since $nlog_2 n\not\in o(n)$  
 \end{document}
