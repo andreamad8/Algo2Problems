@@ -48,10 +48,7 @@ Pr&[|X_{ji}|\leq 3\epsilon \|F\|]\\
 \end{align*}
 From what we have seen in class and by the property of the absolute value, we have $E[|X_{ji}|]\leq E[X_{ji}]= \frac{\epsilon}{e} \|F\|$. Then we can apply the Markov inequality and since universal hash are pairwise independence we have:
 \begin{align*}
-& Pr[|X_{ji}|>   3\epsilon \|F\| ]\\
-<&\frac{E[|X_{ji}|]}{3\epsilon \|F\|}\\
-<& \frac{\frac{\epsilon}{e} \|F\|}{3\epsilon \|F\|}\\
-=& \frac{1}{3e } < \frac{1}{8}\\
+ Pr[|X_{ji}|>   3\epsilon \|F\| ]< \frac{E[|X_{ji}|]}{3\epsilon \|F\|}< \frac{\frac{\epsilon}{e} \|F\|}{3\epsilon \|F\|}= \frac{1}{3e } < \frac{1}{8}\\
 \end{align*}
 Let's now define the condition variable $Y=\sum_{j=0}^r Y_j$ which tell us the number of element $i$ (column) that have a garbage $|X_{ji}|$ greater that $\epsilon \|F\|$. 
 \begin{equation}
@@ -63,9 +60,15 @@ Y_{j} =
 \nonumber
 \end{equation}
 The median of $\hat{F}[i]$ is going to be a good approximation if we don't have more that $\frac{r}{2}$ rows such that $|X_{ji}|>   3\epsilon \|F\|$ ( that is we want $Y < \frac{r}{2}$). \\
-Therefore, to calculate the probability of error, we calculate the probability that $Pr[ Y \geq \frac{r}{2}]$. Here, we can use the Chernoff’s Bound
-We set $(1 + \delta)\mu=\frac{r}{2}$, where $\mu= E(Y)=rp$. Therefore, we have:
+Therefore, to calculate the probability of error, we calculate the probability that $Pr[ Y \geq \frac{t}{2}]$. Here, we can use the Chernoff’s Bound
+With: $(1+\lambda )\mu =\frac{t}{2}$, $\mu = E[Y]=rp$.
 \begin{align*}
-P[X \geq \frac{r}{2}] <
+\Pr[Y\geq (1+\lambda )\mu] &< \left[{\frac {e^{\lambda }}{(1+\lambda )^{1+\lambda }}}\right]^{\mu}=\left[{\frac{e}{e} \frac {e^{\lambda }}{(1+\lambda )^{1+\lambda }}}\right]^{\mu}=\frac{1}{e^{\mu}}\left[{\frac {e}{(1+\lambda )}}\right]^{(1+\lambda)\mu}=\frac{1}{e^{rp}}\left[{\frac {1}{(1+\lambda )}e}\right]^{\frac{r}{2}}=\frac{1}{e^{rp}}\left[{2pe}\right]^{\frac{r}{2}}\\
 \end{align*}
+Now we need to prove that $\frac{1}{e^{rp}}\left[{2pe}\right]^{\frac{r}{2}} \leq \delta^{\frac{1}{4}}=\frac{1}{2^{\frac{r}{4}}}$. If we use the reciprocal we have:
+\begin{align*}
+2^{\frac{r}{4}} \leq \frac{e^{rp}}{\left[{2pe}\right]^{\frac{r}{2}} }\leq \frac{1}{\left[{2pe}\right]^{\frac{r}{2}} }\\
+2^{\frac{1}{4}} \leq \frac{1}{ \sqrt{2pe} } 
+\end{align*} 
+Since $e^{rp}\geq 1$. Then, if we take $\frac{1}{ 2pe } > \sqrt{2} $, that is possible just if $p < \frac{1}{ 2 \sqrt{2}e }$, indeed $p=\frac{1}{8}$.
 \end{document}

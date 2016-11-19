@@ -128,12 +128,12 @@ Let's write down the Chernoff Bound:
 (ii) &\textbf{Lower Tail:} P(X \leq (1 - \delta)\mu) \leq e^{-\frac{\mu\delta^2}{2}}      &for \ all \ 0< \delta < 1 
 \end{align*}
 \end{theorem}
-Therefore we have: [DOUBLE-CHECK THIS PART!!!] 
+Therefore we have: 
 \begin{align*}
-P(X \geq (1 + c)2ln(n))\geq & e^{-\frac{c^2}{2+c}2ln(n)} \\
+P(X \geq (1 + c)2ln(n))\leq & e^{-\frac{c^2}{2+c}2ln(n)} \\
 						=   & \frac{1}{e^{\frac{c^2}{2+c}2ln(n)}}\\
 						=   & \frac{1}{n^{\frac{2c^2}{2+c}}}\\
-						>   & \frac{1}{n^{c^3}}
+						=   & \frac{1}{n^{c}} \textsc{WITH }c>2 \\
 \end{align*}
 
 
