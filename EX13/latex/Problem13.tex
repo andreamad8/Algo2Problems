@@ -1,0 +1,66 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+\section*{Randomized min-cut algorithm}
+Consider the randomized min-cut algorithm discussed in class.
+We have seen that its probability of success is at least $1 / \binom{n}{2}$, where $n$ is the number of its vertices.
+\begin{itemize}
+\item Describe how to implement the algorithm when the graph is represented by adjacency lists, and analyze its running time.
+In particular, a contraction step can be done in $O(n)$ time.
+\item A weighted graph has a weight $w(e)$ on each edge $e$, which  is  a  positive  real number.
+The  min-cut  in  this  case  is  meant  to  be  min-weighted  cut,  where  the sum  of  the  weights  in  the  cut  edges  is  minimum.
+Describe  how  to  extend  the algorithm  to  weighted  graphs,  and  show  that  the  probability  of  success  is  still $\geq 1/\binom{n}{2}$. [hint: define the weighted degree of a node]
+\item Show that running the algorithm multiple times independently at random, and taking the minimum among the min-cuts thus produced, the probability of success can be made at least $1 - 1/n^c$ or a constant $c > 0$ (hence, with high probability).
+\end{itemize}
+\
+\\
+\\
+\textbf{SOLUTION}
+\\
+\\
+
+\noindent
+\textbf{First Point}
+\\
+
+\noindent
+\textbf{Second Point}
+\\
+
+\noindent
+\textbf{Third Point}
+\\
+
+We know that $P(n) \geq 1 / \binom{n}{2}$ is the probability of choose well for $N$ times.
+We have seen also that the probability of error is $\leq (1 - 1/\binom{n}{2})$.
+Then the probability of having an error each time in $N$ repetitions of the algorithm is 
+\begin{align*}
+leq (1 - \frac{1}{\binom{n}{2}})^N \approx e^{-\frac{2N}{n(n-1)}}
+\end{align*}
+
+Given a $c$ we want the probability of success to be $\geq 1 - 1/n^c$.
+This is equivalent to ask that the probability of error is $\leq 1/n^c$.
+Making some calculations:
+\begin{align*}
+\frac{1}{e^{\frac{2N}{n(n-1)}}} = e^{-\frac{2N}{n(n-1)}} &\leq \frac{1}{n^c}\\
+n^c &\leq e^{\frac{2N}{n(n-1)}}\\
+ln(n^c) &\leq ln(e^{\frac{2N}{n(n-1)}}) = \frac{2N}{n(n-1)}\\
+N \geq \frac{n(n-1)ln(n^c)}{2}
+\end{align*}
+So, for each given $c$, to make the probability of success at least $1 - 1/n^c$ is sufficient to take $N$ grater or equal than $\frac{1}{2} n(n-1)ln(n^c)$.
+
+\end{document}
