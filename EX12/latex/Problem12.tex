@@ -1,0 +1,72 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\begin{document}
+\section*{MinHash sketches}
+As  discussed  in  class,  for  a  min-wise  independent  family $H$, we can associate a sketch
+\begin{align*}
+s(X) = \langle min\ h_1(X), min\ h_2(X), \dots min\ h_k(X) \rangle
+\end{align*}
+with each set $X$ in the given data collection, where $h_1, h_2 , \dots, h_k$ are independently chosen at random from $H$. 
+Consider now any two sets $A$ and $B$, with their sketches $s(A)$ and $s(B)$. 
+Can you compute a sketch for $A \cup B$ using just $s(A)$ and $s(B)$ in $O(k)$ time?
+Can you prove that it is equivalent to compute $s(A \cup B)$ from scratch directly from $A \cup B$?
+\\
+\\
+\textbf{SOLUTION}
+\\
+\\
+We have the two sketches of $A$ and $B$:
+\begin{align*}
+s(A) &= \langle min\ h_1(A), min\ h_2(A), \dots min\ h_k(A) \rangle \\
+s(B) &= \langle min\ h_1(B), min\ h_2(B), \dots min\ h_k(B) \rangle
+\end{align*}
+We want to compute the sketch for $A \cup B$:
+\begin{align*}
+s(A \cup B) &= \langle min\ h_1(A \cup B), min\ h_2(A \cup B), \dots min\ h_k(A \cup B) \rangle
+\end{align*}
+For each $i \in {1, 2, \dots k}$ we will take $min\ \{\ min\ h_i(A),\ min\ h_i(B)\ \}$ as $min\ h_i(A \cup B)$.
+This procedure require a constant number of operation (exactly one $min$) and must be repeated $k$ times, so the time needed is $O(k)$.
+
+In order to prove that what we obtain is exactly the sketch of $A \cup B$ we exploit the following lemma.
+\begin{lemma}
+For each $i \in \{ 1, 2, \dots k\}$ it holds $h_i(A \cup B) = h_i(A) \cup h_i(A)$.
+\end{lemma}
+\begin{proof}
+take any $x$, then all the following are equivalent:
+\begin{align*}
+& x \in h_i(A \cup B) \\
+& \exists y \in A \cup B\ .\ h_i(y) = x \\
+& \exists y \in A\ .\ h_i(y) = x \ \ \ OR \ \ \exists y \in A\ .\ h_i(y) = x \\
+& x \in h_i(A) \ \ \ \ \ \ OR \ \ \ \ \ x \in h_i(B) \\
+& x \in h_i(A) \cup h_i(B)
+\end{align*}
+\end{proof}
+
+Finally.
+\begin{theorem}
+For each $i \in \{1, 2, \dots k\}$ it holds $min\ h_i(A \cup B) = min\ \{\ min\ h_i(A),\ min\ h_i(B)\ \}$.
+\end{theorem}
+\begin{proof}
+take any $i \in \{1, 2, \dots k\}$, then
+\begin{align*}
+& min\ h_i(A \cup B) = &[using\ lemma1]\\
+& min\ (h_i(A) \cup h_i(B)) = &[trivial\ property\ of\ min]\\
+& min\ \{ min\ h_i(A),\ min\ h_i(B) \}
+\end{align*}
+\end{proof}
+
+\end{document}
