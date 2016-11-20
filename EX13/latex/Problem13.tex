@@ -43,46 +43,57 @@ Describe  how  to  extend  the algorithm  to  weighted  graphs,  and  show  that
 \\
 
 In the algorithm we change the way we choose an edge to contract: edges with high weight will have a greater probability to be chosen with respect to others with lower weight.
-We define $cost: E \longrightarrow \mathbb{R}$ as the function that associate the cost to a given edge.
-
-For each edge $x \in E$ the probability to be choose for a contraction is given by
+We define $weight: E \longrightarrow \mathbb{R}$ as the function that associate the weight to a given edge.
+We will use the $weight$ function also on subsets of $E$, intending for $weight(X)$ with $X \subseteq E$ the sum of the weight of all the edges in $X$.
 \begin{align*}
-Pr[extract\ x] = \frac{cost(x)}{c(E)}\\
-\texttt{where} \ c(E) = \sum_{e \in E} cost(e)
+&weight(X) = \sum_{e \in X} weight(e) &where\ X \subseteq E
 \end{align*}
-
-Now the probability of making an error, when extracting an edge at random, is the probability of extracting one of the ``bad'' edges.
+As seen in class, the \textit{min cut} is not unique, nevertheless the sum of weights in all \textit{min\_cuts} is the same, than with a notation abuse we will call it $weight(min\_cut)$.
+For each edge $x \in E$ the probability to be choose for a contraction is given by its weights normalized with the total sum of the weights of all the edges of the graph.
 \begin{align*}
-&Pr[error] = \sum_{e \in BAD} Pr[extract\ e] = \sum_{e \in BAD} \frac{cost(e)}{c(E)} = \frac{\sum_{e \in BAD} cost(e)}{c(E)} &[1]
+Pr[extract\ x] = \frac{weight(x)}{weight(E)}\\
 \end{align*}
-As usual bad edges ($BAD$) are those belonging to every \textit{min cut}, so the total cost of bad edges is less or equal to the cost of \textit{min cut}.
+Now the probability of making an error, when extracting an edge at random, is the probability of extracting one of the ``bad'' edges, i.e. edges such that their contraction cause a variation in $weight(min\_cut)$.
+We name $BAD$ the set of ``bad'' edges.
 \begin{align*}
-&\sum_{e \in BAD} cost(e) \leq {cost(min\_cut)} &[2]
+&Pr[error] = \sum_{e \in BAD} Pr[extract\ e] = \sum_{e \in BAD} \frac{weight(e)}{weight(E)} = \frac{weight(BAD)}{weight(E)} \tag{1}
 \end{align*}
-
-For the same reasons explained in class, for each node $v$ the cost of \textit{min cut} must be less or equal to the sum of the costs of the edges connected at $v$.
+As usual bad edges are those belonging to every \textit{min cut}, so the total weight of bad edges is less or equal to the weight of \textit{min cut}.
 \begin{align*}
-&\forall\ n \in V\ .\ c(min\_cut) \leq \sum_{e \in star(n)} cost(e) = cost(star(n))\\
-&\texttt{where} \ n' \in star(n)\ \ \texttt{iff}\ (n', n) \in E
+&weight(BAD) \leq {weight(min\_cut)} \tag{2}
 \end{align*}
-Where we refer to $\sum_{e \in star(n)} cost(e)$ as $cost(star(n))$. 
-Now we can reformulate the \textit{handshaking lemma} in the following way.
+Given a node $v$, we define $star(v)$ as the set of all the edges touching $v$.
+For the same reasons explained in class, for each node $v$ the weight of \textit{min cut} must be less or equal to the sum of the weights of the edges touching $v$.
+This is because otherwise we would have a cut, $star(n)$, with weight less than \textit{min cut}, which is absurd.
 \begin{align*}
-c(E) = \frac{\sum_{v \in V} cost(star(v))}{2}
+&\forall\ v \in V\ .\ weight(min\_cut) \leq weight(star(v)) \tag{3}
 \end{align*}
-Now we have all the ingredients for the proof:
+We can reformulate the \textit{handshaking lemma} for weighted graph in the following way, in which $weight(star(v))$ is something like the ``weighted degree'' of the node $v$.
 \begin{align*}
-c(E) = \frac{\sum_{v \in V} cost(star(v))}{2} &\geq \frac{\vert V \vert cost(min\_cut)}{2}\\
-cost(min\_cut) &\leq \frac{2c(E)}{\vert V \vert} &[3]
+weight(E) = \frac{\sum_{v \in V} weight(star(v))}{2} \tag{4}
 \end{align*}
-Finally
+Now we can derive:
 \begin{align*}
-Pr[error] &= \frac{\sum_{e \in BAD} cost(e)}{c(E)} &[\texttt{for}\ 1]\\
-&\leq \frac{cost(min\_cut)}{c(E)} &[\texttt{for}\ 2]\\
-&\leq \frac{\frac{2c(E)}{\vert V \vert}}{c(E)} &[\texttt{for}\ 3]\\= 
-&\frac{2c(E)}{\vert V \vert c(E)} = \frac{2}{\vert V \vert}
+weight(E) &= \frac{\sum_{v \in V} weight(star(v))}{2} \tag{from 4}\\
+&\geq \frac{\vert V \vert weight(min\_cut)}{2} \tag{from 3}\\ \\
+weight(min\_cut) &\leq \frac{2\ weight(E)}{\vert V \vert} \tag{5}
 \end{align*}
-The probability of making an error when selecting an edge is the same, so the probability of success is still $\geq 1/ \binom{n}{2}$ as for the case seen in class.
+Finally we have all the ingredients for the proof:
+\begin{theorem}
+Selecting the edges for the contraction according to the probability described, each time we choose an edge the probability of choosing a ``bad'' edge is less or equal than $2 / \vert V \vert$.
+\begin{align*}
+Pr[error] \leq \frac{2}{\vert V \vert}
+\end{align*}
+\end{theorem}
+\begin{proof}
+\begin{align*}
+Pr[error] &= \frac{weight(BAD)}{weight(E)} \tag{from 1}\\
+&\leq \frac{weight(min\_cut)}{weight(E)} \tag{from 2}\\
+&\leq \frac{\frac{2\ weight(E)}{\vert V \vert}}{weight(E)} \tag{from 5}\\
+&= \frac{2\ weight(E)}{\vert V \vert weight(E)} = \frac{2}{\vert V \vert}
+\end{align*}
+\end{proof}
+The probability of making an error when selecting an edge is the same as for the case of a normal graph seen in class, so the probability of success for the algorithm (i.e. the probability of choosing well all the times) is still $\geq 1/ \binom{n}{2}$.
 \\
 \\
 \noindent
