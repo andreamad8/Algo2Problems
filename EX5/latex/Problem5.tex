@@ -40,7 +40,7 @@ In other words, the joint probability is the product of the two individual proba
 Each probability from the right hand side of the equation are equal to
 \(\frac{1}{m}\), simply because there are \(m\) buckets chosen uniformly (Universal hash function).
 Therefore, in the right hand side
-we have a probability equal to \(\frac{1}{m^2}\). On the left side of the equation, \(h(x_1)\) 
+we have a probability equal to \(\frac{1}{m^2}\). \\ On the left side of the equation, we will first count all the possible solutions $(x_1, x_2)$, and then we will count only the good solutions (that is, the solutions $x_1$ and $x_2$ that match, respectively,  \(c_1\) and \(c_2\) ).\\  \(h(x_1)\) 
 and \(h(x_2)\) can be rewrite with their expression, such as:
 \[
 \left.
@@ -55,21 +55,21 @@ x_1 \ne x_2
 Now, let's consider the inner modulo \(p\) expressions as \(r = a\cdot x_1 + b\) mod
 \(p\) and \(s = a \cdot x_2 + b\) mod \(p\), since $p$ is prime and there is a linear transformation). 
 Thus we can rewrite the original expression as: \({Pr}[r \text{ mod } m = c_1 \wedge s \text{ mod } m = c_2]\). Since
-$a \in [1 \dots p-1]=\mathbb{Z}^*$ and $b \in [1 \dots p]=\mathbb{Z}$, and both \(a\) and \(b\) are fixed for \(r\) and \(s\), then there are \(p\cdot(p-1)\) possible combination. \\
+$a \in [1 \dots p-1]=\mathbb{Z}_p^*$ and $b \in [0 \dots p-1]=\mathbb{Z}_p$, and both \(a\) and \(b\) are fixed for \(r\) and \(s\), then there are \(p\cdot(p-1)\) possible different combination for $x_1$ and $x_2$ ($x_1 \neq x_2$). \\
 \qquad \\
-Now, we focus on \(c_1\) and \(c_2\). When \(p\) is sufficiently
-larger than \(m\), the number of values that will match with a given
+Now, we focus on the "good" solutions. When \(p\) is sufficiently
+larger than \(m\), the number of $x_i$ that will match a given
 value \(c_i\) are \(\frac{p}{m}\), as we have seen in class. 
-However, we need to take in account modular arithmetic: not all values of \(m\)
-is going to be a multiple of \(p\). Adding this into the
+However, we need to take in account modular arithmetic: not every values of \(m\)
+is going to be a multiple of \(p\). Adding this to the
 analysis, the number of matches are bound by considering the
 round-to-floor and round-to-ceil limits:
 
 \[
-\Bigl \lfloor \frac{p}{m} \Bigr \rfloor \le \textsc{\# of values matching a value} c_i \le \Bigl \lceil \frac{p}{m} \Bigr\rceil
+\Bigl \lfloor \frac{p}{m} \Bigr \rfloor \le \textsc{\# of $x_i$ matching } c_i \le \Bigl \lceil \frac{p}{m} \Bigr\rceil
 \]
 \qquad \\
-Since we have $c_1$ and $c_2$, we need to consider their joint probability (i.g. multiplication), and then we can be bound it by combining both pieces of the analysis (dividing bad cases by all possible combination), giving us an approximation to the expected $\frac{1}{m^2}$:
+Since we have both $c_1$ and $c_2$, we need to consider their joint probability (i.g. multiplication), and then we can be bound it by combining both pieces of the analysis (dividing "good" solutions by all possible combination), giving us an approximation to the expected $\frac{1}{m^2}$:
 
 $$
 \frac{1}{p\cdot(p-1)}\Bigl(\Bigl\lfloor\frac{p}{m}\Bigr\rfloor\Bigr)^2  \le {Pr}[r \text{ mod } m = c_1 \wedge s \text{ mod } m  = c_2] \le \frac{1}{p\cdot(p-1)}\Bigl(\Bigl\lceil\frac{p}{m}\Bigr\rceil\Bigr)^2 
