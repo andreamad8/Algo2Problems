@@ -40,7 +40,7 @@ Describe  how  to  extend  the algorithm  to  weighted  graphs,  and  show  that
 \noindent
 \textbf{First Point}
 \\
-In order to solve this point, we use two data structure, pre-processed, to have linear access on the data. The graph is saved as adjacency list but, instead saving in a list one entry for each edge, we will save a cell that contains the edge ID and its multiplicity. 
+In order to solve this point, we use two data structure, pre-processed, to have linear access on the data. The graph is saved as a sorted adjacency list but, instead saving in a list one entry for each edge, we will save a cell that contains the edge ID and its multiplicity. 
 
 \begin{tikzpicture}
 \matrix (M) [matrix of nodes,
@@ -66,40 +66,61 @@ column 1/.style={minimum height=.8cm}]{
 \draw[->] (M-2-7.center)--(M-2-8.west);
 \end{tikzpicture}
 
-Another data structure that we will use is a \textit{Virtual Table} $V_T$. $V_T$ is an array of size $n$, that contains for each entry the node that includes the $i^{th}$ node. E.g. The item 4 contains the value 2 ($V_T[4] = 2$): this means that the node 4 is included in the node 2 because the nodes are contracted. Moreover, we assume that the adjacency lists are ordered (if not, then order them!). \\
+Another data structure that we will use is a \textit{Virtual Table} $V_T$. $V_T$ is an array of size $n$ initialized so that 
+$$ \forall i \in [n].\ V_t[i]=i$$
+Suppose we decide to contract the edge $(i,j)$: in line of principle, this would replace nodes $i$ and $j$ with a new node $n_{ij}$; however, we will will rather collapse node $j$ \emph{into} $i$ ($n_{ij} = i$) by setting $V_T[j] := i$ (and properly updating the adjacency list for $i$).
+
+Throughout the algorithm, $V_T$ will thus accumulate a number of node redirections (aliases).
+\\
 
 \noindent
-\textit{Random choice of edge}
-To choose a edge we will use another data structure, an array $\Delta$ that are initialized as $\Delta[i] = \delta(i)$ (where $\delta(i) =$ the grade of node $i$). Generate, at random, an integer $r \in [0, 2m
-]$ and use $r$ to choose the edge: 
+\textit{Random choice of edge}\\
+Let $N$ be the initial number of nodes, $n$ be the number of remaining unique nodes.
+
+Let $M$ be the initial number of edges, $m$ be the number of remaining edges.
+
+Let $\Delta$ be an array of $N$ elements, each containing $\delta(i)$, the degree of node $i$ (NB: contracted nodes will have degree 0). Then:\\
+
+
 \begin{algorithmic}
-\State i = 0
-\While {$r > 0$}
-	\If {$\Delta[i] < r$} 
-		\State $r = r - \Delta[i]$
-	\Else 
-		\State \text{choose} $\Delta[i]$
-	\EndIf
-	\State $i++$
+\Function{ChooseEdge}{}
+\State $r \gets rand(0, 2m-1)$ \Comment{note $\sum_{i=1}^{n}\delta(i) = 2m$}
+\State $i = 0$ \
+\While {$\Delta[i] < r$}
+	\State $r \gets r - \Delta[i]$
+	\State $i \gets i + 1$
 \EndWhile
-\end{algorithmic}
-Another, equivalent, approach is to imagine the adjacency lists all concatenated and scroll them until $r > 0$, subtracting from $r$ the multiplicity of the item considered:
-\begin{algorithmic}
-\State i = 0
-\State L = all the adjacency lists concatenated
-\While {$r > 0$}
-	\If {$L[i].multiplicity < r$} 
-		\State $r = r - L[i]$
-	\Else 
-		\State \text{choose} $L[i]$
-	\EndIf
-	\State $i++$
+\State $j = 0$
+\While {$nodes[i].adj[j].mult < r$}
+	\State $r \gets r - nodes[i].adj[j].mult$
+	\State $j \gets j + 1$
 \EndWhile
+\State \Return $(i,\ V_T[j])$
+\State
+\EndFunction
 \end{algorithmic}
 
+You can think of what we're doing as having concatenated the adjacency lists and then crawled through them to edge $r$. This would require $O(n^2)$ steps done naively, but saving the degree of the node (the length of the adjacency list) allows us to skip to the next done in one step (a sort of skip-pointer).
+\\
+
+This procedures results in a random uniform choice of the edge. In fact, the chance that a specific (directed!) edge $(i, j)_k$ is chosen ends up being:
+$$P_r[(i,j_k)] = \frac{\delta(i)}{2 \times m} \times \frac{mult(i,j)}{\delta(i)} \times \frac{1}{mult(i,j)} = \frac{1}{2 \times m}$$
+where
+$$\frac{\delta(i)}{2 \times m} = P_r[node\ i\ is\ chosen]$$
+$$\frac{mult(i,j)}{\delta(i)} = P_r[\{(i,j)_k\}|\ node\ i]$$
+$$\frac{1}{mult(i,j)} = P_r[(i,j)_k|\ \{(i,j)_k\}]$$
+$$\{(i,j)_k\}\ \text{is the set of all edges going from i to j}$$
+$$mult(i,j) = |\{(i,j)_k\}|\ \text{is the multiplicity of edge (i,j)}$$
+\\
+
+Thus, the probability that an (undirected!) edge $(i,j)_k$ is chosen results
+$$\frac{1}{2m} + \frac{1}{2m} = \frac{1}{m}$$
+\\
 \noindent
-\textit{Merging two adjacency lists}
-To merge two nodes we need to scroll the lists of the merged nodes  and, assuming the ordered data, we can merge into one list in $O(2n) = O(n)$ (we use an approach like the merge sort where the resulting multiplicity is the sum of the multiplicity, if exists, of the original lists).
+\textit{Contraction}\\
+To merge two nodes $i$ and $j$ we need to scroll the lists of the merging nodes and, assuming the ordered data, we can merge into one list in $O(2n) = O(n)$ (whenever $i$ and $j$ both point to a third node $k$, i.e. there are edges $(i,k),\ (j,k)$, the multiplicity of the new edges $(n_{ij},k)$ and $(k, n_{ij}$) will be the sum of the multiplicities of $(i,k)$ and $(j,k)$).
+
+It is also necessary to appropriately update $V_T$ and $\Delta$.
 \\
 \\
 
