@@ -5,6 +5,9 @@
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
 
+\usepackage{tikz}
+\usetikzlibrary{matrix}
+\usepackage{algpseudocode} 
 
 %% Sets page size and margins
 \usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
@@ -36,6 +39,68 @@ Describe  how  to  extend  the algorithm  to  weighted  graphs,  and  show  that
 
 \noindent
 \textbf{First Point}
+\\
+In order to solve this point, we use two data structure, pre-processed, to have linear access on the data. The graph is saved as adjacency list but, instead saving in a list one entry for each edge, we will save a cell that contains the edge ID and its multiplicity. 
+
+\begin{tikzpicture}
+\matrix (M) [matrix of nodes,
+column sep=0pt,
+row sep=0pt,
+nodes={draw,fill=gray!20,minimum width=.5cm,outer sep=0pt,minimum
+height=.7cm,anchor=center},
+column 1/.style={minimum height=.8cm}]{
+ \mbox{} &[2mm] <2, 3> & \mbox{} &[2mm] < \ 5, 13   > & $/$  &[2mm]   &   &[2mm]   & \\
+ \mbox{} & <1, 2> & \mbox{} & <id, mul> & \mbox{}  & .. &  \mbox{} & .. & $/$  \\
+ \mbox{}  & <.., ..>  & \mbox{} & <id, mul> & $/$  &   &   &   & \\
+ \mbox{} & <.., ..> & \mbox{} & <id, mul> & \mbox{}  & .. & $/$  &   & \\
+ \mbox{} & <.., ..> & \mbox{} & <id, mul> & \mbox{}  & .. & $/$  &   & \\
+};
+\foreach \i in {1,2,3,4,5}{
+\path (M-\i-1) [late options={label=left:\i}];
+\draw[->] (M-\i-1.center)--(M-\i-2.west);
+\draw[->] (M-\i-3.center)--(M-\i-4.west);
+}
+\draw[->] (M-2-5.center)--(M-2-6.west);
+\draw[->] (M-4-5.center)--(M-4-6.west);
+\draw[->] (M-5-5.center)--(M-5-6.west);
+\draw[->] (M-2-7.center)--(M-2-8.west);
+\end{tikzpicture}
+
+Another data structure that we will use is a \textit{Virtual Table} $V_T$. $V_T$ is an array of size $n$, that contains for each entry the node that includes the $i^{th}$ node. E.g. The item 4 contains the value 2 ($V_T[4] = 2$): this means that the node 4 is included in the node 2 because the nodes are contracted. Moreover, we assume that the adjacency lists are ordered (if not, then order them!). \\
+
+\noindent
+\textit{Random choice of edge}
+To choose a edge we will use another data structure, an array $\Delta$ that are initialized as $\Delta[i] = \delta(i)$ (where $\delta(i) =$ the grade of node $i$). Generate, at random, an integer $r \in [0, 2m
+]$ and use $r$ to choose the edge: 
+\begin{algorithmic}
+\State i = 0
+\While {$r > 0$}
+	\If {$\Delta[i] < r$} 
+		\State $r = r - \Delta[i]$
+	\Else 
+		\State \text{choose} $\Delta[i]$
+	\EndIf
+	\State $i++$
+\EndWhile
+\end{algorithmic}
+Another, equivalent, approach is to imagine the adjacency lists all concatenated and scroll them until $r > 0$, subtracting from $r$ the multiplicity of the item considered:
+\begin{algorithmic}
+\State i = 0
+\State L = all the adjacency lists concatenated
+\While {$r > 0$}
+	\If {$L[i].multiplicity < r$} 
+		\State $r = r - L[i]$
+	\Else 
+		\State \text{choose} $L[i]$
+	\EndIf
+	\State $i++$
+\EndWhile
+\end{algorithmic}
+
+\noindent
+\textit{Merging two adjacency lists}
+To merge two nodes we need to scroll the lists of the merged nodes  and, assuming the ordered data, we can merge into one list in $O(2n) = O(n)$ (we use an approach like the merge sort where the resulting multiplicity is the sum of the multiplicity, if exists, of the original lists).
+\\
 \\
 
 \noindent
