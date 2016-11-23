@@ -12,7 +12,7 @@ This repo is used to collect different exercize solution of the Algorithm course
 * EX9: Count-min sketch: range queries. **SOLVED, PLEASE DOUBLE CHECK IT**
 * EX10: Space-efficient perfect hash **SOLVED**
 * EX11: Bloom filters vs. space-efficient perfect hash **SOLVED, PLEASE DOUBLE CHECK IT**
-* EX12: MinHash sketches **SOLVED, PLEASE DOUBLE CHECK IT**
+* EX12: MinHash sketches **SOLVED**
 * EX13: Randomized min-cut algorithm **PARTIALLY SOLVED, PLEASE DOUBLE CHECK IT**
 
 ## POLICY
