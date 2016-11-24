@@ -42,7 +42,7 @@ Describe  how  to  extend  the algorithm  to  weighted  graphs,  and  show  that
 
 We shall keep nodes in an array. We expect to run $N-2$ contractions, spawning a new node for each of them, thus the array shall be of length $2N-2$, the last $N-2$ elements initially NULL.
 
-Nodes will be annotated with their \emph{degree} and a \emph{new} field with the ID of the node they're currently "contained" in (initially themselves, then the nodes they get contracted to).
+Nodes will be annotated with their \emph{degree} and a \emph{container} field with the ID of the node they're currently "contained" in (initially themselves, then the nodes they get contracted into).
 
 An edge $(i,j)$ shall be a vector of three elements $<dest, mult, reverse>$:
 \begin{itemize}
@@ -134,7 +134,7 @@ $$\frac{1}{2m} + \frac{1}{2m} = \frac{1}{m}$$
 General idea for contracting over edge $(i,j)$:
 \begin{itemize}
 \item Spawn a new node that will represent $i$ and $j$ contracted;
-\item Update the \emph{new} field of nodes "contained" in $i$ or $j$;
+\item Update the \emph{container} field of nodes "contained" in $i$ or $j$;
 \item Crawl through $i$ and $j$'s adjacency lists: nodes pointed by one but not the other get appended to the new node's list; nodes pointed by both are also appended, but their multiplicity is the sum of the old egdes' multiplicity.
 
 This can be done in linear time w.r.t. the length of the adjacency lists ($O(N)$) because they're sorted, so we proceed as in a \emph{merge} operation of a MergeSort.
@@ -146,7 +146,11 @@ In all cases, we take advantage of $(i,j).reverse$ to update the adjacency list 
 \Function{Contract}{i, j}
 \State $nID \gets$ position of next NULL element in the tail of $nodes[]$
 \State $nodes[n] \gets new\ Node()$
-\State $\forall x$ in $nodes \mid x.new = i \lor x.new = j\ .\ x.new \gets nID$
+\For{$x$ in $nodes$}
+	\If{$x.container = i \lor x.container = j$}
+		\State $x.container \gets nID$
+	\EndIf
+\EndFor
 \State $it_i \gets$ iterator\ over\ $nodes[i].adj$
 \State $it_j \gets$ iterator\ over\ $nodes[j].adj$
 \While{$it_i.hasNext()$ and $it_j.hasNext()$}
@@ -156,8 +160,9 @@ In all cases, we take advantage of $(i,j).reverse$ to update the adjacency list 
 		\State $it_j.next()$
 	\ElsIf{$it_i.dest = it_j.dest$}
 		\State /* create a pair of edges, one the reverse of the other */
-		\State $e \gets new\ Edge(it_i.dest, it_i.mult+it_j.mult, new\ Edge(nID, it_i.mult+it_j.mult, NULL))$
-		\State $e.reverse \gets e$
+		\State /* constructor takes, in order, $dest$, $mult$, $reverse$ */
+		\State /* also passing $e$ to its own constructor is questionable but this is just pseudocode */
+		\State $e \gets new\ Edge(it_i.dest, it_i.mult+it_j.mult, new\ Edge(nID, it_i.mult+it_j.mult, e))$
 		\State /* remove old edges from the destination's adjacency list */
 		\State $it_i.reverse.remove()$
 		\State $it_j.reverse.remove()$
@@ -170,16 +175,14 @@ In all cases, we take advantage of $(i,j).reverse$ to update the adjacency list 
 		\State /* increment $nodes[nID]$'s degree by $e.mult$ */
 		\State $nodes[nID].degree \gets nodes[nID].degree + e.mult$
 	\ElsIf{$it_i.dest < it_j.dest$}
-		\State $e \gets new\ Edge(it_i.dest, it_i.mult, new\ Edge(nID, it_i.mult, NULL))$
-		\State $e.reverse \gets e$
+		\State $e \gets new\ Edge(it_i.dest, it_i.mult, new\ Edge(nID, it_i.mult, e))$
 		\State $it_i.reverse.remove()$
 		\State $nodes[e.dest].adj.append(e.reverse)$
 		\State $nodes[nID].adj.append(e)$
 		\State $it_i.next()$
 		\State $nodes[nID].degree \gets nodes[nID].degree + e.mult$
 	\Else \Comment{$it_j.dest < it_i.dest$}
-		\State $e \gets new\ Edge(it_j.dest, it_j.mult, new\ Edge(nID, it_j.mult, NULL))$
-		\State $e.reverse \gets e$
+		\State $e \gets new\ Edge(it_j.dest, it_j.mult, new\ Edge(nID, it_j.mult, e))$
 		\State $it_j.reverse.remove()$
 		\State $nodes[e.dest].adj.append(e.reverse)$
 		\State $nodes[nID].adj.append(e)$
@@ -201,9 +204,9 @@ After running $N-2$ contractions, you'll end up with two nodes $hl_1$ and $hl_2$
 
 The size of the cut will be $hl_1.degree = hl_2.degree$.
 
-The \emph{new} field of the first $N$ elements of $nodes$ will be either $hl_1$ or $hl_2$. 
+The \emph{container} field of the first $N$ elements of $nodes$ will be either $hl_1$ or $hl_2$. 
 
-The two classes will thus define the cut. Should you need the actual edges making up the cut, you'll crawl through the original graph and output edges connecting nodes of the two classes ($O(N^2)$).
+The two classes of nodes will thus define the cut. Should you need the actual edges making up the cut, you'll crawl through the original graph and output edges connecting nodes of the two classes ($O(N^2)$).
 
 \break
 \noindent

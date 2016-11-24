@@ -13,7 +13,7 @@ This repo is used to collect different exercize solution of the Algorithm course
 * EX10: Space-efficient perfect hash **SOLVED**
 * EX11: Bloom filters vs. space-efficient perfect hash **SOLVED, PLEASE DOUBLE CHECK IT**
 * EX12: MinHash sketches **SOLVED**
-* EX13: Randomized min-cut algorithm **PARTIALLY SOLVED, PLEASE DOUBLE CHECK IT**
+* EX13: Randomized min-cut algorithm **SOLVED**
 
 ## POLICY
 If you believe that the proposed solutions are wrong, or there are mistakes, or you have a better solution, please do not esitate to review the already existing file, or upload your solution. Actually, if you want to upload your solution, you are very welcome.
