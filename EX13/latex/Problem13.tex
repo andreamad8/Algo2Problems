@@ -39,9 +39,24 @@ Describe  how  to  extend  the algorithm  to  weighted  graphs,  and  show  that
 
 \noindent
 \textbf{First Point}
-\\
-In order to solve this point, we use two data structure, pre-processed, to have linear access on the data. The graph is saved as a sorted adjacency list but, instead saving in a list one entry for each edge, we will save a cell that contains the edge ID and its multiplicity. 
 
+We shall keep nodes in an array. We expect to run $N-2$ contractions, spawning a new node for each of them, thus the array shall be of length $2N-2$, the last $N-2$ elements initially NULL.
+
+Nodes will be annotated with their \emph{degree} and a \emph{new} field with the ID of the node they're currently "contained" in (initially themselves, then the nodes they get contracted to).
+
+An edge $(i,j)$ shall be a vector of three elements $<dest, mult, reverse>$:
+\begin{itemize}
+\item \emph{dest}: the node ID of the destination (i.e. $j$);
+\item \emph{mult}: recall we're in a multigraph, so there can be many edges $(i,j)_k$. We represent them as a single edge annotated with a \emph{multiplicity} value, i.e. $(i,j).mult = |\{(i,j)_k\}|$.
+
+This way, each adjacency list contains $O(N)$ elements;
+\item \emph{reverse}: as we're in an undirected graph, for each edge $(i,j)$ there is the reverse $(j,i)$. In $reverse$ we store a pointer to $(j,i)$, as we'll need it for bookkeeping during contraction operations.
+\end{itemize}
+
+Adjacency lists shall be doubly linked and sorted on $dest$ fields.
+\\
+\iffalse
+%%%% I'm commenting out the picture because I don't know how to fix it :( %%%%
 \begin{tikzpicture}
 \matrix (M) [matrix of nodes,
 column sep=0pt,
@@ -65,42 +80,39 @@ column 1/.style={minimum height=.8cm}]{
 \draw[->] (M-5-5.center)--(M-5-6.west);
 \draw[->] (M-2-7.center)--(M-2-8.west);
 \end{tikzpicture}
+\fi
 
-Another data structure that we will use is a \textit{Virtual Table} $V_T$. $V_T$ is an array of size $n$ initialized so that 
-$$ \forall i \in [n].\ V_t[i]=i$$
-Suppose we decide to contract the edge $(i,j)$: in line of principle, this would replace nodes $i$ and $j$ with a new node $n_{ij}$; however, we will will rather collapse node $j$ \emph{into} $i$ ($n_{ij} = i$) by setting $V_T[j] := i$ (and properly updating the adjacency list for $i$).
-
-Throughout the algorithm, $V_T$ will thus accumulate a number of node redirections (aliases).
-\\
 
 \noindent
-\textit{Random choice of edge}\\
+\textit{Random choice of edge}
+
 Let $N$ be the initial number of nodes, $n$ be the number of remaining unique nodes.
 
 Let $M$ be the initial number of edges, $m$ be the number of remaining edges.
 
-Let $\Delta$ be an array of $N$ elements, each containing $\delta(i)$, the degree of node $i$ (NB: contracted nodes will have degree 0). Then:\\
-
+Let $\delta(i)$ be the degree of node $i$ (NB: contracted nodes will have degree 0). Then:\\
 
 \begin{algorithmic}
 \Function{ChooseEdge}{}
 \State $r \gets rand(0, 2m-1)$ \Comment{note $\sum_{i=1}^{n}\delta(i) = 2m$}
-\State $i = 0$ \
-\While {$\Delta[i] < r$}
-	\State $r \gets r - \Delta[i]$
+\State $i \gets 0$ \
+\While {$nodes[i].degree < r$} \Comment{note we'll never reach the NULL tail of $nodes[]$}
+	\State $r \gets r - nodes[i].degree$
 	\State $i \gets i + 1$
 \EndWhile
-\State $j = 0$
+\State $j \gets 0$
 \While {$nodes[i].adj[j].mult < r$}
 	\State $r \gets r - nodes[i].adj[j].mult$
 	\State $j \gets j + 1$
 \EndWhile
-\State \Return $(i,\ V_T[j])$
+\State \Return $(i,\ j)$
 \State
 \EndFunction
 \end{algorithmic}
 
-You can think of what we're doing as having concatenated the adjacency lists and then crawled through them to edge $r$. This would require $O(n^2)$ steps done naively, but saving the degree of the node (the length of the adjacency list) allows us to skip to the next done in one step (a sort of skip-pointer).
+You can think of what we're doing as having concatenated the adjacency lists and then crawled through them to edge $r$. This would require $O(n^2)$ steps done naively, but saving the degree of the node (the length of the adjacency list) allows us to skip to the next node in one step (a sort of skip-pointer).
+
+In fact, what we do is crawl the list of nodes ($O(n)$) and then one adjacency list ($O(n)$ again).
 \\
 
 This procedures results in a random uniform choice of the edge. In fact, the chance that a specific (directed!) edge $(i, j)_k$ is chosen ends up being:
@@ -117,13 +129,83 @@ Thus, the probability that an (undirected!) edge $(i,j)_k$ is chosen results
 $$\frac{1}{2m} + \frac{1}{2m} = \frac{1}{m}$$
 \\
 \noindent
-\textit{Contraction}\\
-To merge two nodes $i$ and $j$ we need to scroll the lists of the merging nodes and, assuming the ordered data, we can merge into one list in $O(2n) = O(n)$ (whenever $i$ and $j$ both point to a third node $k$, i.e. there are edges $(i,k),\ (j,k)$, the multiplicity of the new edges $(n_{ij},k)$ and $(k, n_{ij}$) will be the sum of the multiplicities of $(i,k)$ and $(j,k)$).
+\textit{Contraction}
 
-It is also necessary to appropriately update $V_T$ and $\Delta$.
-\\
-\\
+General idea for contracting over edge $(i,j)$:
+\begin{itemize}
+\item Spawn a new node that will represent $i$ and $j$ contracted;
+\item Update the \emph{new} field of nodes "contained" in $i$ or $j$;
+\item Crawl through $i$ and $j$'s adjacency lists: nodes pointed by one but not the other get appended to the new node's list; nodes pointed by both are also appended, but their multiplicity is the sum of the old egdes' multiplicity.
 
+This can be done in linear time w.r.t. the length of the adjacency lists ($O(N)$) because they're sorted, so we proceed as in a \emph{merge} operation of a MergeSort.
+
+In all cases, we take advantage of $(i,j).reverse$ to update the adjacency list of the pointed node with the new node. As the lists are doubly linked and assuming a pointer to the last element is kept, this can be done in $O(1)$ time.
+\end{itemize}
+
+\begin{algorithmic}
+\Function{Contract}{i, j}
+\State $nID \gets$ position of next NULL element in the tail of $nodes[]$
+\State $nodes[n] \gets new\ Node()$
+\State $\forall x$ in $nodes \mid x.new = i \lor x.new = j\ .\ x.new \gets nID$
+\State $it_i \gets$ iterator\ over\ $nodes[i].adj$
+\State $it_j \gets$ iterator\ over\ $nodes[j].adj$
+\While{$it_i.hasNext()$ and $it_j.hasNext()$}
+	\If{$it_i.dest = j$}
+		\State $it_i.next()$
+	\ElsIf{$it_j.dest = i$}
+		\State $it_j.next()$
+	\ElsIf{$it_i.dest = it_j.dest$}
+		\State /* create a pair of edges, one the reverse of the other */
+		\State $e \gets new\ Edge(it_i.dest, it_i.mult+it_j.mult, new\ Edge(nID, it_i.mult+it_j.mult, NULL))$
+		\State $e.reverse \gets e$
+		\State /* remove old edges from the destination's adjacency list */
+		\State $it_i.reverse.remove()$
+		\State $it_j.reverse.remove()$
+		\State /* put reverse in destinations; note $nID$ is highest so it goes to the tail*/
+		\State $nodes[e.dest].adj.append(e.reverse)$
+		\State /* put $e$ at the tail of $nodes[nID].adj$ */
+		\State $nodes[nID].adj.append(e)$
+		\State $it_i.next()$
+		\State $it_j.next()$
+		\State /* increment $nodes[nID]$'s degree by $e.mult$ */
+		\State $nodes[nID].degree \gets nodes[nID].degree + e.mult$
+	\ElsIf{$it_i.dest < it_j.dest$}
+		\State $e \gets new\ Edge(it_i.dest, it_i.mult, new\ Edge(nID, it_i.mult, NULL))$
+		\State $e.reverse \gets e$
+		\State $it_i.reverse.remove()$
+		\State $nodes[e.dest].adj.append(e.reverse)$
+		\State $nodes[nID].adj.append(e)$
+		\State $it_i.next()$
+		\State $nodes[nID].degree \gets nodes[nID].degree + e.mult$
+	\Else \Comment{$it_j.dest < it_i.dest$}
+		\State $e \gets new\ Edge(it_j.dest, it_j.mult, new\ Edge(nID, it_j.mult, NULL))$
+		\State $e.reverse \gets e$
+		\State $it_j.reverse.remove()$
+		\State $nodes[e.dest].adj.append(e.reverse)$
+		\State $nodes[nID].adj.append(e)$
+		\State $it_j.next()$	
+		\State $nodes[nID].degree \gets nodes[nID].degree + e.mult$
+	\EndIf
+\EndWhile
+\State Process leftovers from either $i$ or $j$'s adjacency lists, if there are any, in a similar fashion.
+\State $nodes[i].degree \gets 0$ \Comment{degrees of $i$ and $j$ are put to 0 for ChooseEdge's conveniency}
+\State $nodes[j].degree \gets 0$ \Comment{we could also detach the adjacency lists if we liked, but it's not necessary}
+\EndFunction
+\end{algorithmic}
+\hfill
+
+\noindent
+\textit{Computing the cut}
+
+After running $N-2$ contractions, you'll end up with two nodes $hl_1$ and $hl_2$ (highlanders) left over in the graph.
+
+The size of the cut will be $hl_1.degree = hl_2.degree$.
+
+The \emph{new} field of the first $N$ elements of $nodes$ will be either $hl_1$ or $hl_2$. 
+
+The two classes will thus define the cut. Should you need the actual edges making up the cut, you'll crawl through the original graph and output edges connecting nodes of the two classes ($O(N^2)$).
+
+\break
 \noindent
 \textbf{Second Point}
 \\
