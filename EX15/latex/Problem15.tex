@@ -14,6 +14,8 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{lemma}[theorem]{Lemma}
 
+\usepackage{graphicx}
+
 \begin{document}
 \section*{Implicit navigation in vEB layout}
 Consider $N = 2h − 1$ keys where $h$ is a power of 2,
@@ -27,8 +29,163 @@ search tree and (b) a heap data structure, discussing the cache complexity
 \\
 \\
 \textbf{SOLUTION}
+\subsection*{Assumptions}
+Suppose you have a binary vEB tree $T$ stored in an array \texttt{T[]} in external memory, as seen in class. Let the tree be complete and let its height, \texttt{H}, be a power of two. Also suppose you can store \texttt{H} locally.
 \\
-\\
+\begin{tiny}N.B. In the code that follows, all division signs (\texttt{/}) represent integer division (div).\end{tiny}
+
+\subsection*{ZoomSequence}
+The following function generates a sequence $zs$ of indexes of \emph{nested} subtrees of $T$ that uniquely identifies the position of node \texttt{target} in both $T$ and \texttt{T[]}.
+
+Starting from $T$, the decomposition will split a generic binary vEB tree $A$ of height $h$ into a \emph{top tree} of index $0$ and height $\frac{h}{2}$ and $2^\frac{h}{2}$ \emph{bottom trees} (two per leaf of the top tree) of indexes 1\dots $2^\frac{h}{2}$ and again height $2^\frac{h}{2}$.
+
+An element $zs_i$ will thus correspond to the index of a subtree of height $2^\frac{H}{2^{i+1}}$, nested into the subtree identified by $zs_{i-1}$ (or $T$ for $zs_0$).
+
+Note that the sequence $zs$ contains exactly $log_2(H)$ entries.
+\begin{verbatim}
+ZoomSequence(target, H)
+  let zs = Sequence.Empty; /* empty ordered list, first element will have index 0 */
+  let h = H, i = target, blocksize = 0;
+  while (h > 1)
+    blocksize = 2^(h/2) -1;
+    zs.Enqueue(i/blocksize);
+    i = i mod blocksize;
+    h = h/2;
+  end
+  return zs;
+end
+\end{verbatim}
+
+Note that this requires no accesses to the tree, generating no cachefaults.
+
+\subsection*{GetElement}
+The following function retrieves node \texttt{i} \emph{of the tree} from the array \texttt{T[]}.
+\begin{verbatim}
+GetElement(i):
+  let zs = ZoomSequence(i, H)
+  let h = H, curr = 0, blocksize = 0;
+  for t in zs do
+    blocksize = 2^(h/2) -1;
+    curr = curr + t*blocksize;
+    h = h/2;
+  end
+  return T[curr];
+end
+\end{verbatim}
+
+This only accesses the one element/node we need: $O(1)$ I/O's.
+
+\subsection*{GetChildren}
+The following (absolutely horrific...) function returns the \emph{tree node} indexes of the left and right children of tree node \texttt{i}. These can be fed to \texttt{GetElement} to obtain the contents of the actual nodes.
+
+The basic idea is to traverse $zs$ looking for the largest $j$ such that $zs_j = 0$, which identifies the biggest vEB subtree that i is a leaf of (it is $T$ if there is no such $j$, which means i has no children). Then it is a matter of going up one level from that, and moving ahead by an appropriate amount of subtrees of height $\frac{H}{2^{j+1}}$.
+\begin{verbatim}
+GetChildren(i)
+  if (i mod 3 = 0) then /* subtrees of height 2 are stored consecutively */
+    return <i+1, i+2>; /* note that such children nodes necessarily exist
+      because T is a complete tree */
+  end
+  let zs = ZoomSequence(i, H);
+  let idx0 = zs.LastIndexOf(0);  /* index of last zero element in zs
+    or -1 if no such element exists */
+  if (idx0 = -1) then /* i is a leaf of T, so it has no children */
+    return <-1, -1>
+  end
+  /* from here on out we're sure we're not a leaf of T itself */
+  let h = H, blocksize = 0;
+  let k = H/2^(idx0+1); /* height of the biggest tree i is a leaf of */
+  let off = 0; /* will be the index of the root of the tree immediately
+    encompassing the biggest tree i is a leaf of */
+  for i = 0 to idx0-1 do
+    blocksize = 2^(h/2)-1;
+    off = off + zs.Get(i)*blocksize;
+    h = h/2;
+  end
+  h = H;
+  let leafidx = 0; /* leafidx will be s.t. i is the leafidx-th leaf
+    of the tree of height k, starting from 0 */
+  for i = idx0+1 to zs.Length do /* stuff following last zero element in zs */
+    blocksize = 2^(h/2 -1);
+    leafidx = (zs.Get(i)-1);
+    h = h/2;
+  end
+  let left = off + (2^k -1)*(2*leafidx +1); /* 2 children per leaf of top tree
+    +1 because of top tree */
+  let right = off + (2^k -1)*(2*leafidx +2); /* +2 because of top tree and left child */
+  return <left, right>;
+end
+\end{verbatim}
+Again, the function never accessed the tree itself, generating no cachefaults.
+
+\subsection*{Binary Search Tree}
+\includegraphics[scale = 0.65]{pic}
+
+As is quite evident from Professor Grossi's very excellent picture, given any block size $B$ (which we can reasonably assume to be a power of two), a block will be able to hold a subtree of height $log_2(B)$.
+
+For a binary vEB tree $T$ made up of $N$ nodes, a single lookup will traverse $H = log_2(N)$ nodes. Such nodes residing into blocked memory, we will observe a total of $$O\bigg(\frac{log_2(N)}{log_2(B)}\bigg) = O(log_B(N))$$ cachefaults.
+
+\subsubsection*{ReachLeaf}
+The following function returns a pointer to the $i^{th}$ leaf of a non-singleton vEB BST. We number leaves starting from 0, left to right.
+
+\begin{verbatim}
+ReachLeaf(curr, l, h) /* curr root of tree, l-th leaf to reach, h height of tree */
+  if (h = 2) then
+    /* recursion endcase (we won't need to contemplate a singleton tree) */
+    if (l = 0) then
+      return curr.L;
+    else
+      return curr.R;
+    end
+  end
+  curr = ReachLeaf(curr, l/2^(h-1), h/2);
+  /* we have traversed the top half of the tree; now we must reach the bottom half.
+    To do so, we look at the position of leaf l in a tree of height h+1 */
+  if (l mod 2^h >= 2^(h/2)) then
+    root = curr.R;
+  else
+    root = curr.L;
+  end
+  curr = ReachLeaf(curr, l mod 2^(h-1), h/2);
+  return curr;
+end
+\end{verbatim}
+
+\subsubsection*{GetNode}
+The following function allows navigating a vEB BST saved as a tree with pointers, returning a pointer to the $i^{th}$ node.
+
+The intuition is to recursively split the tree in two by halving its height and navigating to the leaves of the subtrees thus defined that lie on the path to the destination.
+
+\begin{verbatim}
+GetNode(curr, i, h) /* curr root of tree, i-th node to reach, h height of tree */
+  if (h <= 2) then
+    /* recursion endcase. Note that it takes care of singleton trees,
+      assuming a sensible query (i.e. h = 1 => i = 0) */
+    if (i = 0) then
+      return curr;
+    elif (i = 1) then
+      return curr.L;
+    else
+      return curr.R;
+    end
+  end
+  let zs = ZoomSequence(i, h);
+  let b = zs.Dequeue();
+  if (b = 0) then
+    /* path to destination stays in the top tree */
+    return GetNode(curr, i mod 2^(h/2 -1), h/2);
+  end
+  /* path to destination reaches a bottom tree so let's traverse the top tree */
+  curr = ReachLeaf(curr, (b-1)/2, h/4); /* navigate first half of top tree */
+  curr = ReachLeaf(curr, b mod 2^(h/4 -1), h/4); /* navigate second half of top tree */
+  /* we're on a leaf of the top tree, so let's reach the appropriate bottom tree */
+  if (b-1 mod 2 = 0) then
+    curr = curr.L;
+  else
+    curr = curr.R;
+  end
+  return GetNode(curr, i mod 2^(h/2 -1), h/2); /* recursion on bottom tree */
+end
+\end{verbatim}
 
 
 \end{document}
