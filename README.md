@@ -14,6 +14,9 @@ This repo is used to collect different exercize solution of the Algorithm course
 * EX11: Bloom filters vs. space-efficient perfect hash **THERE IS A MISTAKE, PLEASE DOUBLE CHECK IT**
 * EX12: MinHash sketches **SOLVED**
 * EX13: Randomized min-cut algorithm **SOLVED**
+* EX14: External memory implicit hashing **TO DO**
+* EX15: Implicit navigation in vEB layour **SOLVED**
+* EX16: 1-D range query **TO DO**
 
 ## POLICY
 If you believe that the proposed solutions are wrong, or there are mistakes, or you have a better solution, please do not esitate to review the already existing file, or upload your solution. Actually, if you want to upload your solution, you are very welcome.
