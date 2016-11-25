@@ -1,0 +1,47 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{algpseudocode}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\newtheorem{theorem}{Theorem}
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{qtree}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\newcommand\floor[1]{\lfloor#1\rfloor}
+\newcommand\ceil[1]{\lceil#1\rceil}
+
+\usepackage{forest}
+\renewcommand{\rmdefault}{ptm}
+
+\begin{document}
+\section*{External memory implicit searching}
+Given a static input array A of N keys in the
+EMM (external memory or cache-aware model), describe how to organize the keys
+inside A by suitably permuting them during a preprocessing step, so that any subsequent
+search of a key requires $O(log_B N)$ block transfers using just $O(1)$ memory words
+of auxiliary storage (besides those necessary to store A). Clearly, the CPU complexity
+should remain $O(log N)$. Discuss the I/O complexity of the above preprocessing,
+assuming that it can uses $O(N/B)$ blocks of auxiliary storage. (Note that the additional
+$O(N/B)$ blocks are employed only during the preprocessing; after that, they are
+discarded as the search is implicit and thus just O(1) words can be employed.)
+\\
+\\
+\textbf{SOLUTION}
+\\
+\\
+\end{document}
