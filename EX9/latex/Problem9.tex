@@ -75,6 +75,7 @@ Thus we have $$\frac{\sum_{i}^{2log_2(n)} E[X_i]}{2\epsilon\ log\ n ||F||} \leq 
 This is the probability of error (that the sum of garbage is more the $2\epsilon\ log\ n ||F||$) in row $j$ (the min, potentially distinct for each table).
 \\
 \\
-Since we choose the row of each table that minimize the sum of the counter (by definition), then there must be an error in all the row $r$. Thus we have $\frac{1}{e^r}=\delta$ since $r=ln(\frac{1}{\delta})$.
+Since we choose the row of each table that minimize the sum of the counter (by definition), then there must be an error in all the row $r$. Thus we have $\frac{1}{e^r}=\delta$ since $r=ln(\frac{1}{\delta})$.\\ \\
 
+A little example: suppose we have $n=16$ (item), then a range $[1 \dots 16]$. Thus, we query $(8,12)$, this interval is fully included, then we split in $[1 \dots 8]$ and $[9 \dots 16]$ (we go down in the tree). $[1 \dots 8]$ is still too big then we split in $[1 \dots 4]$ and $[5 \dots 8]$,  $[1 \dots 4]$ is not included then we take it off. $[5 \dots 8]$ for the same reason we split it in $[5 \dots 6]$ and $[7 \dots 8]$ and so on.\\
 \end{document}
