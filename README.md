@@ -9,7 +9,7 @@ This repo is used to collect different exercize solution of the Algorithm course
 * EX6: Deterministic data streaming. **SOLVED**
 * EX7: Special case of most frequent item in a stream. **SOLVED**
 * EX8: Count-min sketch: extension to negative counters. **SOLVED (UPDATE: PLEASE DOUBLE CHECK THE MINOR CHANGES)**
-* EX9: Count-min sketch: range queries. **SOLVED, PLEASE DOUBLE CHECK IT**
+* EX9: Count-min sketch: range queries. **SOLVED**
 * EX10: Space-efficient perfect hash **SOLVED**
 * EX11: Bloom filters vs. space-efficient perfect hash **THERE IS A MISTAKE, PLEASE DOUBLE CHECK IT**
 * EX12: MinHash sketches **SOLVED**
