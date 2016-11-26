@@ -34,20 +34,45 @@ Show and analyse the application of count-min sketch to range queries $(i,j)$ fo
 \textbf{SOLUTION}
 \\
 \\
-We use the Dyadic Range: a dyadic range is a range of the form $[x2^y+1 . . .(x+1)2^y]$  for parameters x and y. Each point in the range $[1\dots n]$ is a member of $log_2 n$ dyadic ranges, one for each y in the range $0\dots log_2(n) − 1$ (think it as tree, where we slit the interval in 2 at each level).
-A count-min sketch table is kept for each set of dyadic ranges of length $2^y$, one for each level in the tree, thus we have $log_2 n$ CM sketches.
+We use the Dyadic Interval: a dyadic interval is a range of the form $[x2^y+1 . . .(x+1)2^y]$  for parameters x and y. Each point in the range $[1\dots n]$ is a member of $log_2 n$ dyadic interval, one for each y in the range $0\dots log_2(n) − 1$ (think it as tree, where we split the interval in 2 at each level).
+
+A count-min sketch table is kept for each set of dyadic ranges of length $2^y$, one for each level in the tree, thus we have $log_2 n$ vectors $\widetilde{F_i}$.
+
+Witnessing a new element in the stream will therefore trigger an update to all the $log_2 n$ tables.
 \\
 \\
-Therefore, each time an element arrive we will update all the $log_2 n$ tables. When instead we have a range query $[i,j]$,  we compute the at most $2 log_2 n$ dyadic ranges which canonically cover the range (this is the same of the exercise 1). We can think at them as many point queries to the CM sketch table, that with their sum gives the estimate result. [this is quite hard to explain, have a look to this \href{http://dimacs.rutgers.edu/~graham/pubs/papers/cm-full.pdf}{LINK}]
+The idea for a range query is to partition the range into dyadic intervals and return as result the sum of the values stored in the CMS tables for the corresponding intervals [see this \href{http://dimacs.rutgers.edu/~graham/pubs/papers/cm-full.pdf}{link} for further reference].
 \\
 \\
-Therefore for each query we have $t \leq 2\ log\ n$ counters $c_1,c_2,...,c_t$. We then, want to proof $Pr[\sum^t_{l=1}c_l > \sum^j_{k=i}F[k] + 2\epsilon\ log\ n ||F||]<\delta$. Firstly, we notice that each counter $c_i$ represents an interval $[a,b]$ and it value is $\sum_{k=a}^b (F[k]) + X_i$, where $X_i$ is the rubbish of that particular interval. Then, give an interval $[l,r]$, and the counters we have $\sum^t_{i=1}c_i = \sum^r_{k=l}F[k] +X $, where X is the total error (notice that this works because the interval are disjoint). Then we substitute to the previous equation and we have:
+It can be shown\footnotemark that any range will be split at most into $2log_2 n$ dyadic intervals.
+
+\footnotetext{First, note that:
+\begin{itemize}
+\item No three intervals of the same length can be contained in the partition of the same query, otherwise you could merge two of them;
+\item If there are two consecutive intervals of the same length, they must belong to two different larger "parent" intervals (otherwise you could replace them with their parent), i.e. their union cannot belong to the dyadic partition.
+\end{itemize}
+Thus, there are at most 2 intervals of each possible size in the partition. As the sizes are $log_2n$ in all, the partition is made up of at most $2log_2n$ intervals.
+}
+
+Therefore for each query we access $t \leq 2\ log\ n$ counters $c_1,c_2,...,c_t$. We then, want to proof $Pr[\sum^t_{l=1}c_l > \sum^j_{k=i}F[k] + 2\epsilon\ log\ n ||F||]<\delta$.
+
+Firstly, we notice that each counter $c_i$ represents an interval $[a,b]$ and it value is $\sum_{k=a}^b (F[k]) + X_i$, where $X_i$ is the rubbish of that particular interval. Then, give an interval $[l,r]$, and the counters we have $\sum^t_{i=1}c_i = \sum^r_{k=l}F[k] +X $, where X is the total error (notice that this works because the interval are disjoint). Then we substitute to the previous equation and we have:
 \begin{align*}
 Pr &[\sum^t_{l=1}c_l > \sum^r_{k=l}F[k] + 2\epsilon\ log\ n ||F||]<\delta \\
 Pr &[ \sum^r_{k=l}F[k] +X  > \sum^r_{k=l}F[k] + 2\epsilon\ log\ n ||F||]<\delta \\
 Pr &[ X  >  2\epsilon\ log\ n ||F||]<\delta \\
 \end{align*}
-Now, we apply Markov inequality and by the linearity of the expectation we have: $Pr [ X  >  2\epsilon\ log\ n ||F||] \leq \frac{E[X]}{2\epsilon\ log\ n ||F||} \leq \frac{\sum_{i}^{2log_2(n)} E[X_i]}{2\epsilon\ log\ n ||F||}$. Since, for each $E[X_i]< \frac{\epsilon}{e}||F||$ we have $\frac{\sum_{i}^{2log_2(n)} E[X_i]}{2\epsilon\ log\ n ||F||} \leq \frac{2 \frac{\epsilon}{e}log \ n||F||}{2\epsilon\ log\ n ||F||}= \frac{1}{e}$. This is the probability of error (that the sum of garbage is more the $2\epsilon\ log\ n ||F||$) in row $j$ (the min).
+Now, we apply Markov inequality and by the linearity of the expectation we have: $$Pr [ X  >  2\epsilon\ log\ n ||F||] \leq \frac{E[X]}{2\epsilon\ log\ n ||F||} \leq \frac{\sum_{i}^{2log_2(n)} E[X_i]}{2\epsilon\ log\ n ||F||}$$
+\\
+\\
+Now, $\forall i.E[X_i]< \frac{\epsilon}{e}||F_i||_1$, but $\forall  i, j.||F_i||_1 = ||F_j||_1 = ||F||_1 \implies E[X_i]< \frac{\epsilon}{e}||F||_1$.
+
+\noindent
+(by definition $||A||_1 = \sum^n_{h=1}|A[h]|$, that is in our case we sum the frequencies of symbols, which sum up to the same total amount no matter how we group them)
+\\
+\\
+Thus we have $$\frac{\sum_{i}^{2log_2(n)} E[X_i]}{2\epsilon\ log\ n ||F||} \leq \frac{2 \frac{\epsilon}{e}log \ n||F||}{2\epsilon\ log\ n ||F||}= \frac{1}{e}$$
+This is the probability of error (that the sum of garbage is more the $2\epsilon\ log\ n ||F||$) in row $j$ (the min, potentially distinct for each table).
 \\
 \\
 Since we choose the row of each table that minimize the sum of the counter (by definition), then there must be an error in all the row $r$. Thus we have $\frac{1}{e^r}=\delta$ since $r=ln(\frac{1}{\delta})$.
