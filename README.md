@@ -16,7 +16,7 @@ This repo is used to collect different exercize solution of the Algorithm course
 * EX13: Randomized min-cut algorithm **SOLVED**
 * EX14: External memory implicit hashing **TO DO**
 * EX15: Implicit navigation in vEB layour **SOLVED**
-* EX16: 1-D range query **TO DO**
+* EX16: 1-D range query **BRUTALLY SOLVED, JUST A DRAFT, PLEASE DOUBLE CHECK IT**
 
 ## POLICY
 If you believe that the proposed solutions are wrong, or there are mistakes, or you have a better solution, please do not esitate to review the already existing file, or upload your solution. Actually, if you want to upload your solution, you are very welcome.
