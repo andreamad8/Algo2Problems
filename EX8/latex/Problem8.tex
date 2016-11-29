@@ -40,10 +40,11 @@ Instead, if we have also decrement, it could happen that $X_{ij}<0$ therefore th
 F[i] - 3\epsilon \|F\|\leq \hat{F}[i] \leq F[i]  + 3\epsilon \|F\|
 \nonumber
 \end{equation}
-First, let's do some consideration. The value of $\hat{F}[i]=median_j T[j, h_j(i)]$, and $T[j, h_j(i)]= F[i] +|X_{ji}| $. The first inequality(i.e. $F[i] \leq \hat{F}[i]$) holds because we took the absolute value of $X_{ji}$. Now we shall prove that $Pr[\hat{F}[i]> F[i]  + 3\epsilon \|F\|] \leq 1/8 $ [\textbf{NB: double check this last statement} (I'm not sure whether it is indeed $1/8$ or $\delta^{1/4}$)]. Taken $j$ such that $\hat{F}[i]=median_j T[j, h_j(i)] = F[i] +|X_{ji}|$, then we have:
+First, let's do some consideration. The value of $\hat{F}[i]=median_j T[j, h_j(i)]$, and $T[j, h_j(i)]= F[i] +|X_{ji}| $. The first inequality(i.e. $F[i] \leq \hat{F}[i]$) holds because we took the absolute value of $X_{ji}$. Now we shall prove that $Pr[|X_{ji}|>   3\epsilon \|F\| ] \leq 1/8 $. Taken $j$ such that $\hat{F}[i]=median_j T[j, h_j(i)] = F[i] +|X_{ji}|$, then we have:
 \begin{align*}
-Pr[\hat{F}[i] &\leq F[i]  + 3\epsilon \|F\|]\\
-Pr[F[i] +|X_{ji}| &\leq F[i]  + 3\epsilon \|F\|]\\
+Pr[F[i] - 3\epsilon \|F\|&\leq \hat{F}[i] \leq F[i]  + 3\epsilon \|F\|]\\
+Pr[F[i] - 3\epsilon \|F\|&\leq F[i] +|X_{ji}| \leq F[i]  + 3\epsilon \|F\|]\\
+Pr[- 3\epsilon \|F\|&\leq |X_{ji}| \leq 3\epsilon \|F\|]\\
 Pr[|X_{ji}|&\leq 3\epsilon \|F\|]\\
 \end{align*}
 From what we have seen in class and by the property of the absolute value, we have $E[|X_{ji}|]\leq E[X_{ji}]= \frac{\epsilon}{e} \|F\|$. Then we can apply the Markov inequality and since universal hash functions are pairwise independent, we have:
