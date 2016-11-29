@@ -1,0 +1,1598 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.27)  29 NOV 2016 09:53
+entering extended mode
+**./MergeProblem.tex
+(MergeProblem.tex
+LaTeX2e <2015/10/01> patch level 2
+Babel <3.9n> and hyphenation patterns for 69 languages loaded.
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article.cls"
+Document Class: article 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size10.clo"
+File: size10.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.sty
+"
+Package: babel 2016/01/08 3.9n The Babel package
+
+*************************************
+* Local config file bblopts.cfg used
+*
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\bblopts.
+cfg"
+File: bblopts.cfg 2006/07/31 v1.0 MiKTeX 'babel' configuration
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\babel-english\eng
+lish.ldf"
+Language: english 2012/08/20 v3.3p English support from the babel system
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.def
+"
+File: babel.def 2016/01/08 3.9n Babel common definitions
+\babel@savecnt=\count87
+\U@D=\dimen103
+)
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inputenc.sty
+"
+Package: inputenc 2015/03/17 v1.2c Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+ ("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\utf8x.def"
+File: utf8x.def 2004/10/17 UCS: Input encoding UTF-8
+)) ("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\ucs.sty"
+Package: ucs 2013/05/11 v2.2 UCS: Unicode input support
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\uni-global.de
+f"
+File: uni-global.def 2013/05/13 UCS: Unicode global data
+)
+\uc@secondtry=\count88
+\uc@combtoks=\toks16
+\uc@combtoksb=\toks17
+\uc@temptokena=\toks18
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\fontenc.sty"
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\t1enc.def"
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
+))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\frontendlayer
+\tikz.sty"
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\basiclayer\pg
+f.sty"
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\pgf
+rcs.sty"
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\p
+gfutil-common.tex"
+\pgfutil@everybye=\toks19
+\pgfutil@tempdima=\dimen104
+\pgfutil@tempdimb=\dimen105
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\p
+gfutil-common-lists.tex"))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\p
+gfutil-latex.def"
+\pgfutil@abb=\box26
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ms\everyshi.sty"
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\p
+gfrcs.code.tex"
+Package: pgfrcs 2015/08/07 v3.0.1a (rcs-revision 1.31)
+))
+Package: pgf 2015/08/07 v3.0.1a (rcs-revision 1.15)
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\basiclayer\pg
+fcore.sty"
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx
+.sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.s
+ty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks20
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics
+.sty"
+Package: graphics 2014/10/28 v1.0p Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty
+"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\graphics
+.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: pdftex.def on input line 94.
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdftex-def\pdftex
+.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\infwar
+err.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ltxcmd
+s.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count89
+))
+\Gin@req@height=\dimen106
+\Gin@req@width=\dimen107
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\systemlayer\p
+gfsys.sty"
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer
+\pgfsys.code.tex"
+Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\p
+gfkeys.code.tex"
+\pgfkeys@pathtoks=\toks21
+\pgfkeys@temptoks=\toks22
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\p
+gfkeysfiltered.code.tex"
+\pgfkeys@tmptoks=\toks23
+))
+\pgf@x=\dimen108
+\pgf@y=\dimen109
+\pgf@xa=\dimen110
+\pgf@ya=\dimen111
+\pgf@xb=\dimen112
+\pgf@yb=\dimen113
+\pgf@xc=\dimen114
+\pgf@yc=\dimen115
+\w@pgf@writea=\write3
+\r@pgf@reada=\read1
+\c@pgf@counta=\count90
+\c@pgf@countb=\count91
+\c@pgf@countc=\count92
+\c@pgf@countd=\count93
+\t@pgf@toka=\toks24
+\t@pgf@tokb=\toks25
+\t@pgf@tokc=\toks26
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer
+\pgf.cfg"
+File: pgf.cfg 2008/05/14  (rcs-revision 1.7)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer
+\pgfsys-pdftex.def"
+File: pgfsys-pdftex.def 2014/10/11  (rcs-revision 1.35)
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer
+\pgfsys-common-pdf.def"
+File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
+)))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer
+\pgfsyssoftpath.code.tex"
+File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
+\pgfsyssoftpath@smallbuffer@items=\count94
+\pgfsyssoftpath@bigbuffer@items=\count95
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\systemlayer
+\pgfsysprotocol.code.tex"
+File: pgfsysprotocol.code.tex 2006/10/16  (rcs-revision 1.4)
+))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\xcolor\xcolor.sty
+"
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\color.cf
+g"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcore.code.tex"
+Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmat
+h.code.tex"
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmat
+hcalc.code.tex"
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmat
+hutil.code.tex")
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmat
+hparser.code.tex"
+\pgfmath@dimen=\dimen116
+\pgfmath@count=\count96
+\pgfmath@box=\box27
+\pgfmath@toks=\toks27
+\pgfmath@stack@operand=\toks28
+\pgfmath@stack@operation=\toks29
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmat
+hfunctions.code.tex"
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmat
+hfunctions.basic.code.tex")
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmat
+hfunctions.trigonometric.code.tex")
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmat
+hfunctions.random.code.tex")
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmat
+hfunctions.comparison.code.tex")
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmat
+hfunctions.base.code.tex")
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmat
+hfunctions.round.code.tex")
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmat
+hfunctions.misc.code.tex")
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmat
+hfunctions.integerarithmetics.code.tex")))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmat
+hfloat.code.tex"
+\c@pgfmathroundto@lastzeros=\count97
+))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcorepoints.code.tex"
+File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
+\pgf@picminx=\dimen117
+\pgf@picmaxx=\dimen118
+\pgf@picminy=\dimen119
+\pgf@picmaxy=\dimen120
+\pgf@pathminx=\dimen121
+\pgf@pathmaxx=\dimen122
+\pgf@pathminy=\dimen123
+\pgf@pathmaxy=\dimen124
+\pgf@xx=\dimen125
+\pgf@xy=\dimen126
+\pgf@yx=\dimen127
+\pgf@yy=\dimen128
+\pgf@zx=\dimen129
+\pgf@zy=\dimen130
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcorepathconstruct.code.tex"
+File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
+\pgf@path@lastx=\dimen131
+\pgf@path@lasty=\dimen132
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcorepathusage.code.tex"
+File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
+\pgf@shorten@end@additional=\dimen133
+\pgf@shorten@start@additional=\dimen134
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcorescopes.code.tex"
+File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
+\pgfpic=\box28
+\pgf@hbox=\box29
+\pgf@layerbox@main=\box30
+\pgf@picture@serial@count=\count98
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcoregraphicstate.code.tex"
+File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
+\pgflinewidth=\dimen135
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcoretransformations.code.tex"
+File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
+\pgf@pt@x=\dimen136
+\pgf@pt@y=\dimen137
+\pgf@pt@temp=\dimen138
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcorequick.code.tex"
+File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcoreobjects.code.tex"
+File: pgfcoreobjects.code.tex 2006/10/11  (rcs-revision 1.2)
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcorepathprocessing.code.tex"
+File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcorearrows.code.tex"
+File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
+\pgfarrowsep=\dimen139
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcoreshade.code.tex"
+File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
+\pgf@max=\dimen140
+\pgf@sys@shading@range@num=\count99
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcoreimage.code.tex"
+File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcoreexternal.code.tex"
+File: pgfcoreexternal.code.tex 2014/07/09  (rcs-revision 1.21)
+\pgfexternal@startupbox=\box31
+))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcorelayers.code.tex"
+File: pgfcorelayers.code.tex 2013/07/18  (rcs-revision 1.7)
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcoretransparency.code.tex"
+File: pgfcoretransparency.code.tex 2013/09/30  (rcs-revision 1.5)
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\basiclayer\
+pgfcorepatterns.code.tex"
+File: pgfcorepatterns.code.tex 2013/11/07  (rcs-revision 1.5)
+)))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pgf
+moduleshapes.code.tex"
+File: pgfmoduleshapes.code.tex 2014/03/21  (rcs-revision 1.35)
+\pgfnodeparttextbox=\box32
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pgf
+moduleplot.code.tex"
+File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\compatibility
+\pgfcomp-version-0-65.sty"
+Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
+\pgf@nodesepstart=\dimen141
+\pgf@nodesepend=\dimen142
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\compatibility
+\pgfcomp-version-1-18.sty"
+Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
+))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\pgf
+for.sty"
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\utilities\pgf
+keys.sty"
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\p
+gfkeys.code.tex"))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pgf\math\pgfmath.
+sty"
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmat
+h.code.tex"))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\utilities\p
+gffor.code.tex"
+Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\math\pgfmat
+h.code.tex")
+\pgffor@iter=\dimen143
+\pgffor@skip=\dimen144
+\pgffor@stack=\toks30
+\pgffor@toks=\toks31
+))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlay
+er\tikz\tikz.code.tex"
+Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\libraries\p
+gflibraryplothandlers.code.tex"
+File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
+\pgf@plot@mark@count=\count100
+\pgfplotmarksize=\dimen145
+)
+\tikz@lastx=\dimen146
+\tikz@lasty=\dimen147
+\tikz@lastxsaved=\dimen148
+\tikz@lastysaved=\dimen149
+\tikzleveldistance=\dimen150
+\tikzsiblingdistance=\dimen151
+\tikz@figbox=\box33
+\tikz@figbox@bg=\box34
+\tikz@tempbox=\box35
+\tikz@tempbox@bg=\box36
+\tikztreelevel=\count101
+\tikznumberofchildren=\count102
+\tikznumberofcurrentchild=\count103
+\tikz@fig@count=\count104
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\modules\pgf
+modulematrix.code.tex"
+File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
+\pgfmatrixcurrentrow=\count105
+\pgfmatrixcurrentcolumn=\count106
+\pgf@matrix@numberofcolumns=\count107
+)
+\tikz@expandcount=\count108
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlay
+er\tikz\libraries\tikzlibrarytopaths.code.tex"
+File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
+)))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\pgf\frontendlay
+er\tikz\libraries\tikzlibrarymatrix.code.tex"
+File: tikzlibrarymatrix.code.tex 2013/07/12 v3.0.1a (rcs-revision 1.4)
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\algorithmicx\algp
+seudocode.sty"
+Package: algpseudocode 
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ifthen.sty"
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\algorithmicx\algo
+rithmicx.sty"
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count109
+\c@ALG@rem=\count110
+\c@ALG@nested=\count111
+\ALG@tlm=\skip43
+\ALG@thistlm=\skip44
+\c@ALG@Lnr=\count112
+\c@ALG@blocknr=\count113
+\c@ALG@storecount=\count114
+\c@ALG@tmpcounter=\count115
+\ALG@tmplength=\skip45
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry
+.sty"
+Package: geometry 2010/09/12 v5.6 Page Geometry
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.
+sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifvtex
+.sty"
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxetex
+.sty"
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+\Gm@cnth=\count116
+\Gm@cntv=\count117
+\c@Gm@tempcnt=\count118
+\Gm@bindingoffset=\dimen152
+\Gm@wd@mp=\dimen153
+\Gm@odd@mp=\dimen154
+\Gm@even@mp=\dimen155
+\Gm@layoutwidth=\dimen156
+\Gm@layoutheight=\dimen157
+\Gm@layouthoffset=\dimen158
+\Gm@layoutvoffset=\dimen159
+\Gm@dimlist=\toks32
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\geometry\geometry
+.cfg"))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.s
+ty"
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip46
+
+For additional information on amsmath, use the `?' option.
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext.s
+ty"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.st
+y"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks33
+\ex@=\dimen160
+))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.st
+y"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen161
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.st
+y"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count119
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count120
+\leftroot@=\count121
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count122
+\DOTSCASE@=\count123
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box37
+\strutbox@=\box38
+\big@size=\dimen162
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count124
+\c@MaxMatrixCols=\count125
+\dotsspace@=\muskip10
+\c@parentequation=\count126
+\dspbrk@lvl=\count127
+\tag@help=\toks34
+\row@=\count128
+\column@=\count129
+\maxfields@=\count130
+\andhelp@=\toks35
+\eqnshift@=\dimen163
+\alignsep@=\dimen164
+\tagshift@=\dimen165
+\tagwidth@=\dimen166
+\totwidth@=\dimen167
+\lineht@=\dimen168
+\@envbody=\toks36
+\multlinegap=\skip47
+\multlinetaggap=\skip48
+\mathdisplay@stack=\toks37
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amscls\amsthm.sty
+"
+Package: amsthm 2015/03/04 v2.20.2
+\thm@style=\toks38
+\thm@bodyfont=\toks39
+\thm@headfont=\toks40
+\thm@notefont=\toks41
+\thm@headpunct=\toks42
+\thm@preskip=\skip49
+\thm@postskip=\skip50
+\thm@headsep=\skip51
+\dth@everypar=\toks43
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amssymb.
+sty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfonts
+.sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdfpages\pdfpages
+.sty"
+Package: pdfpages 2016/04/19 v0.5f Insert pages of external PDF documents (AM)
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\calc.sty"
+Package: calc 2014/10/28 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count131
+\calc@Bcount=\count132
+\calc@Adimen=\dimen169
+\calc@Bdimen=\dimen170
+\calc@Askip=\skip52
+\calc@Bskip=\skip53
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count133
+\calc@Cskip=\skip54
+)
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\eso-pic\eso-pic.s
+ty"
+Package: eso-pic 2015/07/21 v2.0g eso-pic (RN)
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\atbegs
+hi.sty"
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+))
+\AM@pagewidth=\dimen171
+\AM@pageheight=\dimen172
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdfpages\pppdftex
+.def"
+File: pppdftex.def 2016/04/19 v0.5f Pdfpages driver for pdfTeX (AM)
+)
+\AM@pagebox=\box39
+\AM@global@opts=\toks44
+\AM@toc@title=\toks45
+\c@AM@survey=\count134
+\AM@templatesizebox=\box40
+)
+\c@theorem=\count135
+ (MergeProblem.aux)
+\openout1 = `MergeProblem.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 22.
+LaTeX Font Info:    ... okay on input line 22.
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\ucsencs.def"
+File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
+) ABD: EveryShipout initializing macros
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.m
+kii"
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count136
+\scratchdimen=\dimen173
+\scratchbox=\box41
+\nofMPsegments=\count137
+\nofMParguments=\count138
+\everyMPshowfont=\toks46
+\MPscratchCnt=\count139
+\MPscratchDim=\dimen174
+\MPnumerator=\count140
+\makeMPintoPDFobject=\count141
+\everyMPtoPDFconversion=\toks47
+)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+*geometry* verbose mode - [ preamble ] result:
+* driver: pdftex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(85.35826pt, 426.79135pt, 85.35826pt)
+* v-part:(T,H,B)=(85.35826pt, 702.78308pt, 56.9055pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=426.79135pt
+* \textheight=702.78308pt
+* \oddsidemargin=13.08827pt
+* \evensidemargin=13.08827pt
+* \topmargin=-23.91173pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=10.0pt
+* \footskip=30.0pt
+* \marginparwidth=49.79231pt
+* \marginparsep=11.0pt
+* \columnsep=10.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
+
+\AtBeginShipoutBox=\box42
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\pdflscap
+e.sty"
+Package: pdflscape 2008/08/11 v0.10 Display of landscape pages in PDF (HO)
+
+("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\lscape.s
+ty"
+Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 80.
+) <../EX1/Problem1_SOLUTION.pdf, id=4, 597.50829pt x 845.0471pt>
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf used on input line 23.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX1/Problem1_SOLUTION.pdf>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf used on input line 23.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf used on input line 23.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX1/Problem1_SOLUTION.pdf>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf used on input line 23.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf used on input line 23.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+
+<../EX1/Problem1_SOLUTION.pdf, id=10, page=1, 597.50829pt x 845.0471pt>
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf, page1 used on input line
+ 23.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf, page1 used on input line
+ 23.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf, page1 used on input line
+ 23.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf, page1 used on input line
+ 23.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf, page1 used on input line
+ 23.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [1
+
+ <../EX1/Problem1_SOLUTION.pdf{C:/Users/Andrea/AppData/Local/MiKTeX/2.9/pdftex/
+config/pdftex.map}>]
+<../EX1/Problem1_SOLUTION.pdf, id=69, page=2, 597.50829pt x 845.0471pt>
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf, page2 used on input line
+ 23.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf, page2 used on input line
+ 23.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf, page2 used on input line
+ 23.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [2 <../EX1/Problem1_SOLUTION.pdf>]
+<../EX1/Problem1_SOLUTION.pdf, id=73, page=3, 597.50829pt x 845.0471pt>
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf, page 3>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf, page3 used on input line
+ 23.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf, page 3>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf, page3 used on input line
+ 23.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf, page 3>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf, page3 used on input line
+ 23.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [3 <../EX1/Problem1_SOLUTION.pdf>]
+<../EX1/Problem1_SOLUTION.pdf, id=82, page=4, 597.50829pt x 845.0471pt>
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf, page 4>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf, page4 used on input line
+ 23.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf, page 4>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf, page4 used on input line
+ 23.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX1/Problem1_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX1/Problem1_SOLUTION.pdf, page 4>
+Package pdftex.def Info: ../EX1/Problem1_SOLUTION.pdf, page4 used on input line
+ 23.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [4 <../EX1/Problem1_SOLUTION.pdf>]
+<../EX2/Problem2_SOLUTION.pdf, id=86, 597.50829pt x 845.0471pt>
+File: ../EX2/Problem2_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX2/Problem2_SOLUTION.pdf>
+Package pdftex.def Info: ../EX2/Problem2_SOLUTION.pdf used on input line 24.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX2/Problem2_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX2/Problem2_SOLUTION.pdf>
+Package pdftex.def Info: ../EX2/Problem2_SOLUTION.pdf used on input line 24.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX2/Problem2_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX2/Problem2_SOLUTION.pdf>
+Package pdftex.def Info: ../EX2/Problem2_SOLUTION.pdf used on input line 24.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+
+<../EX2/Problem2_SOLUTION.pdf, id=90, page=1, 597.50829pt x 845.0471pt>
+File: ../EX2/Problem2_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX2/Problem2_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX2/Problem2_SOLUTION.pdf, page1 used on input line
+ 24.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX2/Problem2_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX2/Problem2_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX2/Problem2_SOLUTION.pdf, page1 used on input line
+ 24.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX2/Problem2_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX2/Problem2_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX2/Problem2_SOLUTION.pdf, page1 used on input line
+ 24.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX2/Problem2_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX2/Problem2_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX2/Problem2_SOLUTION.pdf, page1 used on input line
+ 24.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX2/Problem2_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX2/Problem2_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX2/Problem2_SOLUTION.pdf, page1 used on input line
+ 24.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [5 <../EX2/Problem2_SOLUTION.pdf>]
+<../EX2/Problem2_SOLUTION.pdf, id=122, page=2, 597.50829pt x 845.0471pt>
+File: ../EX2/Problem2_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX2/Problem2_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX2/Problem2_SOLUTION.pdf, page2 used on input line
+ 24.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX2/Problem2_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX2/Problem2_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX2/Problem2_SOLUTION.pdf, page2 used on input line
+ 24.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX2/Problem2_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX2/Problem2_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX2/Problem2_SOLUTION.pdf, page2 used on input line
+ 24.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [6 <../EX2/Problem2_SOLUTION.pdf>]
+<../EX3/Problem3_SOLUTION.pdf, id=142, 597.50829pt x 845.0471pt>
+File: ../EX3/Problem3_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX3/Problem3_SOLUTION.pdf>
+Package pdftex.def Info: ../EX3/Problem3_SOLUTION.pdf used on input line 25.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX3/Problem3_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX3/Problem3_SOLUTION.pdf>
+Package pdftex.def Info: ../EX3/Problem3_SOLUTION.pdf used on input line 25.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX3/Problem3_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX3/Problem3_SOLUTION.pdf>
+Package pdftex.def Info: ../EX3/Problem3_SOLUTION.pdf used on input line 25.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX3/Problem3_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX3/Problem3_SOLUTION.pdf>
+Package pdftex.def Info: ../EX3/Problem3_SOLUTION.pdf used on input line 25.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+
+<../EX3/Problem3_SOLUTION.pdf, id=147, page=1, 597.50829pt x 845.0471pt>
+File: ../EX3/Problem3_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX3/Problem3_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX3/Problem3_SOLUTION.pdf, page1 used on input line
+ 25.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX3/Problem3_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX3/Problem3_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX3/Problem3_SOLUTION.pdf, page1 used on input line
+ 25.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX3/Problem3_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX3/Problem3_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX3/Problem3_SOLUTION.pdf, page1 used on input line
+ 25.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX3/Problem3_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX3/Problem3_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX3/Problem3_SOLUTION.pdf, page1 used on input line
+ 25.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX3/Problem3_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX3/Problem3_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX3/Problem3_SOLUTION.pdf, page1 used on input line
+ 25.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [7 <../EX3/Problem3_SOLUTION.pdf>]
+<../EX3/Problem3_SOLUTION.pdf, id=174, page=2, 597.50829pt x 845.0471pt>
+File: ../EX3/Problem3_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX3/Problem3_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX3/Problem3_SOLUTION.pdf, page2 used on input line
+ 25.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX3/Problem3_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX3/Problem3_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX3/Problem3_SOLUTION.pdf, page2 used on input line
+ 25.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX3/Problem3_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX3/Problem3_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX3/Problem3_SOLUTION.pdf, page2 used on input line
+ 25.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [8 <../EX3/Problem3_SOLUTION.pdf>]
+<../EX3/Problem3_SOLUTION.pdf, id=190, page=3, 597.50829pt x 845.0471pt>
+File: ../EX3/Problem3_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX3/Problem3_SOLUTION.pdf, page 3>
+Package pdftex.def Info: ../EX3/Problem3_SOLUTION.pdf, page3 used on input line
+ 25.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX3/Problem3_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX3/Problem3_SOLUTION.pdf, page 3>
+Package pdftex.def Info: ../EX3/Problem3_SOLUTION.pdf, page3 used on input line
+ 25.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX3/Problem3_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX3/Problem3_SOLUTION.pdf, page 3>
+Package pdftex.def Info: ../EX3/Problem3_SOLUTION.pdf, page3 used on input line
+ 25.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [9 <../EX3/Problem3_SOLUTION.pdf>]
+<../EX4/Problem4_SOLUTION.pdf, id=194, 597.50829pt x 845.0471pt>
+File: ../EX4/Problem4_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX4/Problem4_SOLUTION.pdf>
+Package pdftex.def Info: ../EX4/Problem4_SOLUTION.pdf used on input line 26.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX4/Problem4_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX4/Problem4_SOLUTION.pdf>
+Package pdftex.def Info: ../EX4/Problem4_SOLUTION.pdf used on input line 26.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+
+<../EX4/Problem4_SOLUTION.pdf, id=197, page=1, 597.50829pt x 845.0471pt>
+File: ../EX4/Problem4_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX4/Problem4_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX4/Problem4_SOLUTION.pdf, page1 used on input line
+ 26.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX4/Problem4_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX4/Problem4_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX4/Problem4_SOLUTION.pdf, page1 used on input line
+ 26.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX4/Problem4_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX4/Problem4_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX4/Problem4_SOLUTION.pdf, page1 used on input line
+ 26.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX4/Problem4_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX4/Problem4_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX4/Problem4_SOLUTION.pdf, page1 used on input line
+ 26.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX4/Problem4_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX4/Problem4_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX4/Problem4_SOLUTION.pdf, page1 used on input line
+ 26.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [10 <../EX4/Problem4_SOLUTION.pdf>]
+<../EX5/Problem5_SOLUTION.pdf, id=232, 597.50829pt x 845.0471pt>
+File: ../EX5/Problem5_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX5/Problem5_SOLUTION.pdf>
+Package pdftex.def Info: ../EX5/Problem5_SOLUTION.pdf used on input line 27.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX5/Problem5_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX5/Problem5_SOLUTION.pdf>
+Package pdftex.def Info: ../EX5/Problem5_SOLUTION.pdf used on input line 27.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+
+<../EX5/Problem5_SOLUTION.pdf, id=235, page=1, 597.50829pt x 845.0471pt>
+File: ../EX5/Problem5_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX5/Problem5_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX5/Problem5_SOLUTION.pdf, page1 used on input line
+ 27.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX5/Problem5_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX5/Problem5_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX5/Problem5_SOLUTION.pdf, page1 used on input line
+ 27.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX5/Problem5_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX5/Problem5_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX5/Problem5_SOLUTION.pdf, page1 used on input line
+ 27.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX5/Problem5_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX5/Problem5_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX5/Problem5_SOLUTION.pdf, page1 used on input line
+ 27.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX5/Problem5_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX5/Problem5_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX5/Problem5_SOLUTION.pdf, page1 used on input line
+ 27.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [11 <../EX5/Problem5_SOLUTION.pdf>]
+<../EX6/Problem6_SOLUTION.pdf, id=275, 597.50829pt x 845.0471pt>
+File: ../EX6/Problem6_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX6/Problem6_SOLUTION.pdf>
+Package pdftex.def Info: ../EX6/Problem6_SOLUTION.pdf used on input line 28.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX6/Problem6_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX6/Problem6_SOLUTION.pdf>
+Package pdftex.def Info: ../EX6/Problem6_SOLUTION.pdf used on input line 28.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+
+<../EX6/Problem6_SOLUTION.pdf, id=278, page=1, 597.50829pt x 845.0471pt>
+File: ../EX6/Problem6_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX6/Problem6_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX6/Problem6_SOLUTION.pdf, page1 used on input line
+ 28.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX6/Problem6_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX6/Problem6_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX6/Problem6_SOLUTION.pdf, page1 used on input line
+ 28.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX6/Problem6_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX6/Problem6_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX6/Problem6_SOLUTION.pdf, page1 used on input line
+ 28.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX6/Problem6_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX6/Problem6_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX6/Problem6_SOLUTION.pdf, page1 used on input line
+ 28.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX6/Problem6_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX6/Problem6_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX6/Problem6_SOLUTION.pdf, page1 used on input line
+ 28.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [12 <../EX6/Problem6_SOLUTION.pdf>]
+<../EX7/Problem7_SOLUTION.pdf, id=317, 597.50829pt x 845.0471pt>
+File: ../EX7/Problem7_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX7/Problem7_SOLUTION.pdf>
+Package pdftex.def Info: ../EX7/Problem7_SOLUTION.pdf used on input line 29.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX7/Problem7_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX7/Problem7_SOLUTION.pdf>
+Package pdftex.def Info: ../EX7/Problem7_SOLUTION.pdf used on input line 29.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+
+<../EX7/Problem7_SOLUTION.pdf, id=320, page=1, 597.50829pt x 845.0471pt>
+File: ../EX7/Problem7_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX7/Problem7_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX7/Problem7_SOLUTION.pdf, page1 used on input line
+ 29.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX7/Problem7_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX7/Problem7_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX7/Problem7_SOLUTION.pdf, page1 used on input line
+ 29.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX7/Problem7_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX7/Problem7_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX7/Problem7_SOLUTION.pdf, page1 used on input line
+ 29.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX7/Problem7_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX7/Problem7_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX7/Problem7_SOLUTION.pdf, page1 used on input line
+ 29.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX7/Problem7_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX7/Problem7_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX7/Problem7_SOLUTION.pdf, page1 used on input line
+ 29.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [13 <../EX7/Problem7_SOLUTION.pdf>]
+<../EX8/Problem8_SOLUTION.pdf, id=358, 597.50829pt x 845.0471pt>
+File: ../EX8/Problem8_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX8/Problem8_SOLUTION.pdf>
+Package pdftex.def Info: ../EX8/Problem8_SOLUTION.pdf used on input line 30.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX8/Problem8_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX8/Problem8_SOLUTION.pdf>
+Package pdftex.def Info: ../EX8/Problem8_SOLUTION.pdf used on input line 30.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+
+<../EX8/Problem8_SOLUTION.pdf, id=361, page=1, 597.50829pt x 845.0471pt>
+File: ../EX8/Problem8_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX8/Problem8_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX8/Problem8_SOLUTION.pdf, page1 used on input line
+ 30.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX8/Problem8_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX8/Problem8_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX8/Problem8_SOLUTION.pdf, page1 used on input line
+ 30.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX8/Problem8_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX8/Problem8_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX8/Problem8_SOLUTION.pdf, page1 used on input line
+ 30.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX8/Problem8_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX8/Problem8_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX8/Problem8_SOLUTION.pdf, page1 used on input line
+ 30.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX8/Problem8_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX8/Problem8_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX8/Problem8_SOLUTION.pdf, page1 used on input line
+ 30.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [14 <../EX8/Problem8_SOLUTION.pdf>]
+<../EX9/Problem9_SOLUTION.pdf, id=399, 597.50829pt x 845.0471pt>
+File: ../EX9/Problem9_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX9/Problem9_SOLUTION.pdf>
+Package pdftex.def Info: ../EX9/Problem9_SOLUTION.pdf used on input line 31.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX9/Problem9_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX9/Problem9_SOLUTION.pdf>
+Package pdftex.def Info: ../EX9/Problem9_SOLUTION.pdf used on input line 31.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX9/Problem9_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX9/Problem9_SOLUTION.pdf>
+Package pdftex.def Info: ../EX9/Problem9_SOLUTION.pdf used on input line 31.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+
+<../EX9/Problem9_SOLUTION.pdf, id=403, page=1, 597.50829pt x 845.0471pt>
+File: ../EX9/Problem9_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX9/Problem9_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX9/Problem9_SOLUTION.pdf, page1 used on input line
+ 31.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX9/Problem9_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX9/Problem9_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX9/Problem9_SOLUTION.pdf, page1 used on input line
+ 31.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX9/Problem9_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX9/Problem9_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX9/Problem9_SOLUTION.pdf, page1 used on input line
+ 31.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX9/Problem9_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX9/Problem9_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX9/Problem9_SOLUTION.pdf, page1 used on input line
+ 31.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX9/Problem9_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX9/Problem9_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX9/Problem9_SOLUTION.pdf, page1 used on input line
+ 31.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [15 <../EX9/Problem9_SOLUTION.pdf>]
+<../EX9/Problem9_SOLUTION.pdf, id=455, page=2, 597.50829pt x 845.0471pt>
+File: ../EX9/Problem9_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX9/Problem9_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX9/Problem9_SOLUTION.pdf, page2 used on input line
+ 31.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX9/Problem9_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX9/Problem9_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX9/Problem9_SOLUTION.pdf, page2 used on input line
+ 31.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX9/Problem9_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX9/Problem9_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX9/Problem9_SOLUTION.pdf, page2 used on input line
+ 31.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [16 <../EX9/Problem9_SOLUTION.pdf>]
+<../EX10/Problem10_SOLUTION.pdf, id=462, 597.50829pt x 845.0471pt>
+File: ../EX10/Problem10_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX10/Problem10_SOLUTION.pdf>
+Package pdftex.def Info: ../EX10/Problem10_SOLUTION.pdf used on input line 32.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX10/Problem10_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX10/Problem10_SOLUTION.pdf>
+Package pdftex.def Info: ../EX10/Problem10_SOLUTION.pdf used on input line 32.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX10/Problem10_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX10/Problem10_SOLUTION.pdf>
+Package pdftex.def Info: ../EX10/Problem10_SOLUTION.pdf used on input line 32.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+
+<../EX10/Problem10_SOLUTION.pdf, id=466, page=1, 597.50829pt x 845.0471pt>
+File: ../EX10/Problem10_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX10/Problem10_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX10/Problem10_SOLUTION.pdf, page1 used on input li
+ne 32.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX10/Problem10_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX10/Problem10_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX10/Problem10_SOLUTION.pdf, page1 used on input li
+ne 32.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX10/Problem10_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX10/Problem10_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX10/Problem10_SOLUTION.pdf, page1 used on input li
+ne 32.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX10/Problem10_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX10/Problem10_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX10/Problem10_SOLUTION.pdf, page1 used on input li
+ne 32.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX10/Problem10_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX10/Problem10_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX10/Problem10_SOLUTION.pdf, page1 used on input li
+ne 32.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [17 <../EX10/Problem10_SOLUTION.pdf>] <../EX10/Problem10_SOLUTION.pdf, id=523,
+ page=2, 597.50829pt x 845.0471pt>
+File: ../EX10/Problem10_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX10/Problem10_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX10/Problem10_SOLUTION.pdf, page2 used on input li
+ne 32.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX10/Problem10_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX10/Problem10_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX10/Problem10_SOLUTION.pdf, page2 used on input li
+ne 32.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX10/Problem10_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX10/Problem10_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX10/Problem10_SOLUTION.pdf, page2 used on input li
+ne 32.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [18 <../EX10/Problem10_SOLUTION.pdf>] <../EX11/Problem11_SOLUTION.pdf, id=530,
+ 597.50829pt x 845.0471pt>
+File: ../EX11/Problem11_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX11/Problem11_SOLUTION.pdf>
+Package pdftex.def Info: ../EX11/Problem11_SOLUTION.pdf used on input line 33.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX11/Problem11_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX11/Problem11_SOLUTION.pdf>
+Package pdftex.def Info: ../EX11/Problem11_SOLUTION.pdf used on input line 33.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+
+<../EX11/Problem11_SOLUTION.pdf, id=533, page=1, 597.50829pt x 845.0471pt>
+File: ../EX11/Problem11_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX11/Problem11_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX11/Problem11_SOLUTION.pdf, page1 used on input li
+ne 33.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX11/Problem11_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX11/Problem11_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX11/Problem11_SOLUTION.pdf, page1 used on input li
+ne 33.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX11/Problem11_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX11/Problem11_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX11/Problem11_SOLUTION.pdf, page1 used on input li
+ne 33.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX11/Problem11_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX11/Problem11_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX11/Problem11_SOLUTION.pdf, page1 used on input li
+ne 33.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX11/Problem11_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX11/Problem11_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX11/Problem11_SOLUTION.pdf, page1 used on input li
+ne 33.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [19 <../EX11/Problem11_SOLUTION.pdf>] <../EX12/Problem12_SOLUTION.pdf, id=569,
+ 597.50829pt x 845.0471pt>
+File: ../EX12/Problem12_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX12/Problem12_SOLUTION.pdf>
+Package pdftex.def Info: ../EX12/Problem12_SOLUTION.pdf used on input line 34.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX12/Problem12_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX12/Problem12_SOLUTION.pdf>
+Package pdftex.def Info: ../EX12/Problem12_SOLUTION.pdf used on input line 34.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+
+<../EX12/Problem12_SOLUTION.pdf, id=572, page=1, 597.50829pt x 845.0471pt>
+File: ../EX12/Problem12_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX12/Problem12_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX12/Problem12_SOLUTION.pdf, page1 used on input li
+ne 34.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX12/Problem12_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX12/Problem12_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX12/Problem12_SOLUTION.pdf, page1 used on input li
+ne 34.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX12/Problem12_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX12/Problem12_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX12/Problem12_SOLUTION.pdf, page1 used on input li
+ne 34.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX12/Problem12_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX12/Problem12_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX12/Problem12_SOLUTION.pdf, page1 used on input li
+ne 34.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX12/Problem12_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX12/Problem12_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX12/Problem12_SOLUTION.pdf, page1 used on input li
+ne 34.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [20 <../EX12/Problem12_SOLUTION.pdf>] <../EX13/Problem13_SOLUTION.pdf, id=689,
+ 597.50829pt x 845.0471pt>
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf used on input line 35.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX13/Problem13_SOLUTION.pdf>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf used on input line 35.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf used on input line 35.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX13/Problem13_SOLUTION.pdf>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf used on input line 35.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf used on input line 35.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+ <use ../EX13/Problem13_SOLUTION.pdf>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf used on input line 35.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+
+<../EX13/Problem13_SOLUTION.pdf, id=696, page=1, 597.50829pt x 845.0471pt>
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page1 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.50682pt x 845.04504pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page1 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page1 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page1 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 1>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page1 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [21 <../EX13/Problem13_SOLUTION.pdf>] <../EX13/Problem13_SOLUTION.pdf, id=895,
+ page=2, 597.50829pt x 845.0471pt>
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page2 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page2 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 2>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page2 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [22 <../EX13/Problem13_SOLUTION.pdf>] <../EX13/Problem13_SOLUTION.pdf, id=899,
+ page=3, 597.50829pt x 845.0471pt>
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 3>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page3 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 3>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page3 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 3>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page3 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [23 <../EX13/Problem13_SOLUTION.pdf>] <../EX13/Problem13_SOLUTION.pdf, id=903,
+ page=4, 597.50829pt x 845.0471pt>
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 4>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page4 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 4>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page4 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 4>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page4 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [24 <../EX13/Problem13_SOLUTION.pdf>] <../EX13/Problem13_SOLUTION.pdf, id=913,
+ page=5, 597.50829pt x 845.0471pt>
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 5>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page5 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 5>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page5 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+File: ../EX13/Problem13_SOLUTION.pdf Graphic file (type pdf)
+
+<use ../EX13/Problem13_SOLUTION.pdf, page 5>
+Package pdftex.def Info: ../EX13/Problem13_SOLUTION.pdf, page5 used on input li
+ne 35.
+(pdftex.def)             Requested size: 597.53416pt x 845.08372pt.
+ [25 <../EX13/Problem13_SOLUTION.pdf>] (MergeProblem.aux) ) 
+Here is how much of TeX's memory you used:
+ 14715 strings out of 493634
+ 285637 string characters out of 3134831
+ 331317 words of memory out of 3000000
+ 17803 multiletter control sequences out of 15000+200000
+ 4403 words of font info for 15 fonts, out of 3000000 for 9000
+ 1025 hyphenation exceptions out of 8191
+ 55i,18n,54p,419b,438s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/Andrea/App
+Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Us
+ers/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmm
+i10.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmmi12.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/
+type1/public/amsfonts/cm/cmmi5.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKT
+eX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/Andrea/AppData/Local/
+Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/Andrea/A
+ppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/U
+sers/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cm
+r12.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/a
+msfonts/cm/cmr5.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmr6.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Andrea/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/Andrea/AppDat
+a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users
+/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy5.
+pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
+nts/cm/cmsy7.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
+/public/amsfonts/cm/cmsy8.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.
+9/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/Andrea/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Andrea/AppData/
+Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/Andrea/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/Andr
+ea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
+Output written on MergeProblem.pdf (25 pages, 545094 bytes).
+PDF statistics:
+ 950 PDF objects out of 1000 (max. 8388607)
+ 0 named destinations out of 1000 (max. 500000)
+ 393 words of extra memory for PDF output out of 10000 (max. 10000000)
+
