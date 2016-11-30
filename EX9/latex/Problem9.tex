@@ -23,7 +23,6 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 
-\usepackage{forest}
 \renewcommand{\rmdefault}{ptm}
 
 \begin{document}
@@ -34,14 +33,17 @@ Show and analyse the application of count-min sketch to range queries $(i,j)$ fo
 \textbf{SOLUTION}
 \\
 \\
-We use the Dyadic Interval: a dyadic interval is a range of the form $[x2^y+1 . . .(x+1)2^y]$  for parameters x and y. Each point in the range $[1\dots n]$ is a member of $log_2 n$ dyadic interval, one for each y in the range $0\dots log_2(n) − 1$ (think it as tree, where we split the interval in 2 at each level).
+We use the Dyadic Interval: a dyadic interval is a range of the form $[x2^i+1 . . .(x+1)2^i]$  for parameters x and i. Each point in the range $[1\dots n]$ is a member of $log_2 n$ dyadic intervals, one for each i in the range $0\dots log_2(n) − 1$ (think it as a tree, where we split the interval in 2 at each level).
 
-A count-min sketch table is kept for each set of dyadic ranges of length $2^y$, one for each level in the tree, thus we have $log_2 n$ vectors $\widetilde{F_i}$.
+A count-min sketch table is kept for each set of dyadic intervals of length $2^i$, one for each level in the tree. Thus we have $log_2 n$ vectors $\widetilde{F_i}$ and, in line of principle, $log_2 n$ vectors $F_i$.
+
+You can see this as associating each new sketch to a reencoding of the original stream, where you have partitioned the alphabet in $2^i$ subsets of symbols and represented each of them with a single new symbol.
+Say: ABCD as alphabet, map AB $\rightarrow$ E, CD $\rightarrow$ F; each time you witness A \emph{or} B you count an occurrence of E, each time you witness C \emph{or} D you count an occurrence of F.
 
 Witnessing a new element in the stream will therefore trigger an update to all the $log_2 n$ tables.
 \\
 \\
-The idea for a range query is to partition the range into dyadic intervals and return as result the sum of the values stored in the CMS tables for the corresponding intervals [see this \href{http://dimacs.rutgers.edu/~graham/pubs/papers/cm-full.pdf}{link} for further reference].
+The idea for a range query is to partition the range into dyadic intervals (of a number of sizes, in general, thus from a number of CMS tables) and return as result the sum of the values stored in the CMS tables for the corresponding intervals [see this \href{http://dimacs.rutgers.edu/~graham/pubs/papers/cm-full.pdf}{link} for further reference].
 \\
 \\
 It can be shown\footnotemark that any range will be split at most into $2log_2 n$ dyadic intervals.
@@ -65,10 +67,10 @@ Pr &[ X  >  2\epsilon\ log\ n ||F||]<\delta \\
 Now, we apply Markov inequality and by the linearity of the expectation we have: $$Pr [ X  >  2\epsilon\ log\ n ||F||] \leq \frac{E[X]}{2\epsilon\ log\ n ||F||} \leq \frac{\sum_{i}^{2log_2(n)} E[X_i]}{2\epsilon\ log\ n ||F||}$$
 \\
 \\
-Now, $\forall i.E[X_i]< \frac{\epsilon}{e}||F_i||_1$, but $\forall  i, j.||F_i||_1 = ||F_j||_1 = ||F||_1 \implies E[X_i]< \frac{\epsilon}{e}||F||_1$.
+Now, let $d(X_i)$ be the depth in the tree to which the dyadic interval $X_i$ belongs (identifying its CMS table). We see that $\forall i.E[X_i]< \frac{\epsilon}{e}||F_{d(X_i)}||_1$, but $\forall  x, y.||F_x||_1 = ||F_y||_1 = ||F||_1 \implies E[X_i]< \frac{\epsilon}{e}||F||_1$.
 
 \noindent
-(by definition $||A||_1 = \sum^n_{h=1}|A[h]|$, that is in our case we sum the frequencies of symbols, which sum up to the same total amount no matter how we group them)
+(by definition $||A||_1 = \sum^n_{h=1}|A[h]|$, that is in our case we sum the frequencies of symbols, which sum up to the same total amount no matter how we group them with a reencoding)
 \\
 \\
 Thus we have $$\frac{\sum_{i}^{2log_2(n)} E[X_i]}{2\epsilon\ log\ n ||F||} \leq \frac{2 \frac{\epsilon}{e}log \ n||F||}{2\epsilon\ log\ n ||F||}= \frac{1}{e}$$
