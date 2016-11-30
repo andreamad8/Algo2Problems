@@ -67,7 +67,7 @@ Pr &[ X  >  2\epsilon\ log\ n ||F||]<\delta \\
 Now, we apply Markov inequality and by the linearity of the expectation we have: $$Pr [ X  >  2\epsilon\ log\ n ||F||] \leq \frac{E[X]}{2\epsilon\ log\ n ||F||} \leq \frac{\sum_{i}^{2log_2(n)} E[X_i]}{2\epsilon\ log\ n ||F||}$$
 \\
 \\
-Now, let $d(X_i)$ be the depth in the tree to which the dyadic interval $X_i$ belongs (identifying its CMS table). We see that $\forall i.E[X_i]< \frac{\epsilon}{e}||F_{d(X_i)}||_1$, but $\forall  x, y.||F_x||_1 = ||F_y||_1 = ||F||_1 \implies E[X_i]< \frac{\epsilon}{e}||F||_1$.
+Now, let $d(i)$ be the depth in the tree to which the dyadic interval $i$ belongs (identifying its CMS table). We see that $\forall i.E[X_i]< \frac{\epsilon}{e}||F_{d(i)}||_1$, but $\forall  x, y.||F_x||_1 = ||F_y||_1 = ||F||_1 \implies E[X_i]< \frac{\epsilon}{e}||F||_1$.
 
 \noindent
 (by definition $||A||_1 = \sum^n_{h=1}|A[h]|$, that is in our case we sum the frequencies of symbols, which sum up to the same total amount no matter how we group them with a reencoding)
