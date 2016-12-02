@@ -26,6 +26,11 @@
 \newcommand\ceil[1]{\lceil#1\rceil}
 
 \usepackage{forest}
+\usepackage{cancel}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{mdframed}
 \renewcommand{\rmdefault}{ptm}
 
 \begin{document}
@@ -44,4 +49,500 @@ discarded as the search is implicit and thus just O(1) words can be employed.)
 \textbf{SOLUTION}
 \\
 \\
+We start with a sorted array $A$ (we can sort it otherwise).
+First we will build a k-way search tree with exactly the same elements of $A$ (no duplication) i.e. a B-tree.
+Second we will describe how to store the tree implicitly in an array.
+Finally we will say how to find the children of a given node without explicit pointers (smell like heap spirit).
+
+\
+
+Given the block size $B$, the arity of the tree must be $k = B + 1$.
+For the construction of the k-way search tree first we need to calculate the height.
+A complete k-ary tree of height $h$ has 1 node for the first level plus $k$ for the second, plus the square of $k$ for the third etc
+\footnote{Note that we count the height of a tree assuming that a single node tree has height zero, not one.
+}.
+\begin{align*}
+nodes(h) &= \sum_{i = 0}^{h}{k^i}\\
+		  &= k^0 + k^1 + k^2 \dots + k^h\\
+		  &= \frac{k^{h + 1} - 1}{k - 1}\\
+\end{align*}
+Using
+\begin{align*}
+(k^0 + k^1 + k^2 \dots + k^h)(k - 1) &= (k^1 + k^2 + k^3 \dots + k^h + k^{h+1}) - (k^0 + k^1 + k^2 \dots + k^h) = k^h - 1\\
+\end{align*}
+And since each node contains $B$ elements of the array
+\begin{align*}
+elements(h) &= B\frac{k^{h + 1} - 1}{k - 1}\\
+\end{align*}
+But in the tree we are going to build we assume that $k - 1 = B$, then
+\begin{align*}
+elements(h) &= B\frac{k^{h + 1} - 1}{k - 1} = k^{h + 1} - 1\\
+\end{align*}
+The inverse gives us the formula for the height given the number of elements $N$
+\begin{align*}
+height(n) = \ceil{\log_{k} (N + 1) - 1}\\
+\end{align*}
+Before starting the construction of the tree we need one more information about the structure it should have.
+For reasons that will be clarified later we want a complete tree i.e. one such that every level, except possibly the last, is completely filled, and all nodes in the last level are as far left as possible.
+Given this shape we want to know how many elements are there in the last level nodes (we name their number $L$).
+The calculation is simple since we know the dept of the last level and the number of elements in all the other levels.
+\begin{align*}
+L\ [\textit{last\_level\_elements(N, h)}] &= N - elements(h-1)\\
+							&= N - (k^{h} - 1)\\
+\end{align*}
+
+Now we build the tree, selecting the elements to insert in each node of the tree ($B$ elements for node since every node must be contained in a memory block).
+We will proceed level by level, from the last to the root (see \ref{constr}).
+
+For the last level we need exactly $L$ elements, we traverse the sorted array $A$ from left to right selecting $B$ elements and then skipping the next, then taking the $B$ following, then skipping the next and so on, until we select $L$ elements.
+This way we build the $L/B$ blocks (i.e. nodes) for the last level.
+It is possible that the last block selected this way remain half empty, we pad with $\infty$ in that case.
+Selected elements must be removed from the array (we can work on indexes in practice, no real work is needed for deleting).
+
+For the next level the procedure is the same, we scan the remaining array left to right and select blocks of $B$ consecutive elements, than skip the following one and continue, we continue until the end of the array.
+The procedure is exactly the same for each level until the root, for which we put the remaining $B$ elements.
+
+\begin{figure}
+\begin{subfigure}[b]{1\textwidth}
+\begin{mdframed}
+\begin{center}
+\begin{footnotesize}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41$
+]
+\end{forest}
+\end{footnotesize}
+\end{center}
+
+\caption{nodes $N = 41$, $B = 2$, $k = 3$, $h = 3$, $L = 15$}
+\end{mdframed}
+\end{subfigure}
+
+\par\bigskip
+
+\begin{subfigure}[b]{1\textwidth}
+\begin{mdframed}
+\begin{center}
+\begin{footnotesize}
+
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$1|2$]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$4|5$]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$7|8$]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$10|11$]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$13|14$]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$16|17$]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$19|20$]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$22|\infty$]
+\end{forest}
+
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$\cancel{1}|\cancel{2}|3|\cancel{4}|\cancel{5}|6|\cancel{7}|\cancel{8}|9|\cancel{10}|\cancel{11}|12|\cancel{13}|\cancel{14}|15|\cancel{16}|\cancel{17}|18|\cancel{19}|\cancel{20}|21|\cancel{22}|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41$]
+\end{forest}
+\end{footnotesize}
+\end{center}
+
+\caption{level $i = 3$}
+\end{mdframed}
+\end{subfigure}
+
+\par\bigskip
+
+\begin{subfigure}[b]{1\textwidth}
+\begin{mdframed}
+\begin{center}
+\begin{footnotesize}
+
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$3|6$, baseline
+	[$1|2$]
+	[$4|5$]
+	[$7|8$]
+]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$12|15$, baseline
+	[$10|11$]
+	[$13|14$]
+	[$16|17$]
+]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$21|23$, baseline
+	[$19|20$]
+	[$22|\infty$]
+]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$25|26$, baseline]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$28|29$, baseline]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$31|32$, baseline]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$34|35$, baseline]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$37|38$, baseline]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$40|41$, baseline]
+\end{forest}
+
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$\cancel{1}|\cancel{2}|\cancel{3}|\cancel{4}|\cancel{5}|\cancel{6}|\cancel{7}|\cancel{8}|9|\cancel{10}|\cancel{11}|\cancel{12}|\cancel{13}|\cancel{14}|\cancel{15}|\cancel{16}|\cancel{17}|18|\cancel{19}|\cancel{20}|\cancel{21}|\cancel{22}|\cancel{23}|24|\cancel{25}|\cancel{26}|27|\cancel{28}|\cancel{29}|30|\cancel{31}|\cancel{32}|33|\cancel{34}|\cancel{35}|36|\cancel{37}|\cancel{38}|39|\cancel{40}|\cancel{41}$]
+\end{forest}
+\end{footnotesize}
+\end{center}
+
+\caption{level $i = 2$}
+\end{mdframed}
+\end{subfigure}
+
+\par\bigskip
+
+\begin{subfigure}[b]{1\textwidth}
+\begin{mdframed}
+\begin{center}
+\begin{footnotesize}
+
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$9|18$, baseline
+	[$3|6$
+		[$1|2$]
+		[$4|5$]
+		[$7|8$]
+	]
+	[$12|15$
+		[$10|11$]
+		[$13|14$]
+		[$16|17$]
+	]
+	[$21|23$
+		[$19|20$]
+		[$22|\infty$]
+	]
+]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$27|30$, baseline
+	[$25|26$]
+	[$28|29$]
+	[$31|32$]
+]
+\end{forest}
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$36|39$, baseline
+	[$34|35$]
+	[$37|38$]
+	[$40|41$]
+]
+\end{forest}
+
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$\cancel{1}|\cancel{2}|\cancel{3}|\cancel{4}|\cancel{5}|\cancel{6}|\cancel{7}|\cancel{8}|\cancel{9}|\cancel{10}|\cancel{11}|\cancel{12}|\cancel{13}|\cancel{14}|\cancel{15}|\cancel{16}|\cancel{17}|\cancel{18}|\cancel{19}|\cancel{20}|\cancel{21}|\cancel{22}|\cancel{23}|24|\cancel{25}|\cancel{26}|\cancel{27}|\cancel{28}|\cancel{29}|\cancel{30}|\cancel{31}|\cancel{32}|33|\cancel{34}|\cancel{35}|\cancel{36}|\cancel{37}|\cancel{38}|\cancel{39}|\cancel{40}|\cancel{41}$]
+\end{forest}
+\end{footnotesize}
+\end{center}
+
+\caption{level $i = 1$}
+\end{mdframed}
+\end{subfigure}
+
+\par\bigskip
+
+\begin{subfigure}[b]{1\textwidth}
+\begin{mdframed}
+\begin{center}
+\begin{footnotesize}
+
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$24|33$, baseline
+	[$9|18$
+		[$3|6$
+			[$1|2$]
+			[$4|5$]
+			[$7|8$]
+		]
+		[$12|15$
+			[$10|11$]
+			[$13|14$]
+			[$16|17$]
+		]
+		[$21|23$
+			[$19|20$]
+			[$22|\infty$]
+		]
+	]
+	[$27|30$
+		[$25|26$]
+		[$28|29$]
+		[$31|32$]
+	]
+	[$36|39$
+		[$34|35$]
+		[$37|38$]
+		[$40|41$]
+	]
+]
+\end{forest}
+
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$\cancel{1}|\cancel{2}|\cancel{3}|\cancel{4}|\cancel{5}|\cancel{6}|\cancel{7}|\cancel{8}|\cancel{9}|\cancel{10}|\cancel{11}|\cancel{12}|\cancel{13}|\cancel{14}|\cancel{15}|\cancel{16}|\cancel{17}|\cancel{18}|\cancel{19}|\cancel{20}|\cancel{21}|\cancel{22}|\cancel{23}|\cancel{24}|\cancel{25}|\cancel{26}|\cancel{27}|\cancel{28}|\cancel{29}|\cancel{30}|\cancel{31}|\cancel{32}|\cancel{33}|\cancel{34}|\cancel{35}|\cancel{36}|\cancel{37}|\cancel{38}|\cancel{39}|\cancel{40}|\cancel{41}$]
+\end{forest}
+\end{footnotesize}
+\end{center}
+\caption{level $i = 0$}
+\end{mdframed}
+\end{subfigure}
+
+\par\bigskip
+
+\begin{subfigure}[b]{1\textwidth}
+\begin{mdframed}
+\begin{center}
+\begin{footnotesize}
+
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$24|33$, baseline
+	[$9|18$
+		[$3|6$
+			[$1|2$]
+			[$4|5$]
+			[$7|8$]
+		]
+		[$12|15$
+			[$10|11$]
+			[$13|14$]
+			[$16|17$]
+		]
+		[$21|23$
+			[$19|20$]
+			[$22|\infty$]
+		]
+	]
+	[$27|30$
+		[$25|26$]
+		[$28|29$]
+		[$31|32$]
+	]
+	[$36|39$
+		[$34|35$]
+		[$37|38$]
+		[$40|41$]
+	]
+]
+\end{forest}
+
+\begin{forest}for tree={inner sep=1pt,outer sep=1pt, draw}
+[$24|33|9|18|27|30|36|39|3|6|12|15|21|23|25|26|28|29|31|32|34|35|37|38|40|41|1|2|4|5|7|8|10|11|13|14|16|17|19|20|22|\infty$
+]
+\end{forest}
+\end{footnotesize}
+\end{center}
+
+\caption{implicit tree representation}
+\end{mdframed}
+\end{subfigure}
+\caption{tree construction}
+\label{constr}
+\end{figure}
+
+\
+
+We number the nodes of the obtained tree level by level, from root to leaves, and left to right.
+We use this numbering for storing the tree in implicit way (as is usual for heap data structure), with the advantage that pointers are not needed this way.
+Since we don't use pointers, we must show, given the index of an element, how to find the node which it belongs to and the indexes of the children of the node.
+
+The first problem is trivial: since the number of elements in each node is exactly the block size, the node containing the element at index $i$ is the $n$-th, with $n = \floor{i/B}$ i.e. the block containing $i$.
+In the following we call $i$ the index of the element and $n$ the index of the node containing the element.
+
+The problem of finding the children of a given node can be solved in a very elegant way.
+It comes out that the children of the node $n$ are the nodes $kn + 1$, $kn + 2$, $kn + 3$... $kn + k$.
+The idea is the following.
+
+Consider that the numbering is such that the index of a node is the number of nodes preceding it in a level by level scan.
+We call $prec$ the set of preceding nodes of our node $n$.
+You can see that multiplying the index by $k$ is equal to taking as number of preceding nodes the number of all the children of the nodes in $prec$, this way we loose the root, but we reach exactly the first child of $n$.
+This is because we have the same elements that are in $prec$, all but the root, plus the whole level of $n$, plus $k$ nodes for each node at the left side of $n$ (see figure \ref{child}).
+We add $1$ for the root and we are done.
+
+Note that we can do this because the tree is complete.
+Since we want the indexes of the first element of those nodes we have to multiply those numbers by $B$, obtaining: $B(kn + 1)$ for the first child, $B(kn + 2)$ for the second, $B(kn + 3)$ for the third etc, until $B(kn + k)$ for the k-th child.
+
+\begin{figure}
+
+\begin{subfigure}[b]{1\textwidth}
+\begin{mdframed}
+\begin{center}
+\begin{forest}for tree={inner sep=2pt,outer sep=1.5pt, draw}
+[p, baseline
+	[p
+		[p
+			[]
+			[]
+			[]
+		]
+		[p
+			[]
+			[]
+			[]
+		]
+		[p
+			[]
+			[]
+			[]
+		]
+	]
+	[p
+		[p
+			[]
+			[]
+			[]
+		]
+		[n
+			[]
+			[]
+			[]
+		]
+		[
+			[]
+			[]
+			[]
+		]
+	]
+	[p
+		[
+			[]
+			[]
+			[]
+		]
+		[
+			[]
+			[]
+			[]
+		]
+		[
+			[]
+			[]
+			[]
+		]
+	]
+]
+\end{forest}
+\end{center}
+\end{mdframed}
+\caption{given node is n, p are elements of prec}
+\end{subfigure}
+
+\par\bigskip
+
+\begin{subfigure}[b]{1\textwidth}
+\begin{mdframed}
+\begin{center}
+\begin{forest}for tree={inner sep=2pt,outer sep=1.5pt, draw}
+[
+	[c
+		[c
+			[c]
+			[c]
+			[c]
+		]
+		[c
+			[c]
+			[c]
+			[c]
+		]
+		[c
+			[c]
+			[c]
+			[c]
+		]
+	]
+	[c
+		[c
+			[c]
+			[c]
+			[c]
+		]
+		[c
+			[]
+			[]
+			[]
+		]
+		[c
+			[]
+			[]
+			[]
+		]
+	]
+	[c
+		[c
+			[]
+			[]
+			[]
+		]
+		[c
+			[]
+			[]
+			[]
+		]
+		[c
+			[]
+			[]
+			[]
+		]
+	]
+]
+\end{forest}
+\end{center}
+\end{mdframed}
+\caption{given node is n, c are children of elements of prec}
+\end{subfigure}
+
+\caption{number of nodes preceding the children of node $n$}
+\label{child}
+\end{figure}
+
+\
+
+The way we traverse the tree for finding an element $e$ is the usual one.
+\begin{algorithmic}
+\Function{Find}{e}
+\State $n \gets 0$ \Comment{we start from the root}
+\While {$n < size of the array$}
+	\State load the block in position $n$
+	\If {$e$ is in the block in position $j$}
+		\State \Return $n + j$
+	\Else 
+		\State find the position $j$ of the first element in the block grater than $e$, if none $j = B + 1$
+		\State $n \gets B * (k*n + j)$
+	\EndIf
+\EndWhile
+\State \Return $-1$
+\EndFunction
+\end{algorithmic}
+
 \end{document}
+
+
+
+
+
