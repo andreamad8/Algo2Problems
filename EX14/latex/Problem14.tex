@@ -97,7 +97,7 @@ We will proceed level by level, from the last to the root (see \ref{constr}).
 For the last level we need exactly $L$ elements, we traverse the sorted array $A$ from left to right selecting $B$ elements and then skipping the next, then taking the $B$ following, then skipping the next and so on, until we select $L$ elements.
 This way we build the $L/B$ blocks (i.e. nodes) for the last level.
 It is possible that the last block selected this way remain half empty, we pad with $\infty$ in that case.
-Selected elements must be removed from the array (we can work on indexes in practice, no real work is needed for deleting).
+Selected elements must be removed from the array.
 
 For the next level the procedure is the same, we scan the remaining array left to right and select blocks of $B$ consecutive elements, than skip the following one and continue, we continue until the end of the array.
 The procedure is exactly the same for each level until the root, for which we put the remaining $B$ elements.
@@ -540,6 +540,36 @@ The way we traverse the tree for finding an element $e$ is the usual one.
 \EndFunction
 \end{algorithmic}
 
+\
+
+
+The cost of searching is of course $O(\log_{B} N)$ because at each iteration we divide the tree in which we search by $B$.
+The data structure we build occupy exactly the same number of block occupied by $A$ the original array, i.e. $\ceil{(N/B)}$ since we store each value only once and all block but one are completely full.
+
+What remain is to discuss the I/O complexity of the construction phase and to show that it doesn't need more than $O(N/B)$ auxiliary storage.
+For each level of the tree, while building it we must scan the array of remaining elements $A$ block by block, one block is sufficient for this in main memory since when we pass to the next block we don't need the old anymore.
+We also build the node of each level of the tree in order, from left to right, then we need one block of memory for this, when the node is complete we store it in external memory and start building the next.
+While building the node of a given level of the tree we also build the new $A$ array for the next iteration, inserting the unused element of the actual $A$; also this array is build left to right one block at the time, so it require only one block.
+The procedure require memory size $M \geq 3B + O(1)$.
+
+Note that even if we don't build the nodes of the tree in the exact order we have to store them, for every node, when we build it, we know exactly where to place it since we know the level and the number of previous node in the level.
+Then we can transform the sorted array $A$ in the implicit tree version without storing in external memory any intermediate form.
+In external memory we need extra $\ceil{N/B}$ blocks for containing the tree we are building (additional with respect to the $\ceil{N/B}$ that we need for the original $A$ and that we can continue to use for the array of remaining elements).
+At the end of the building we remove the space reserved for $A$ and we remain with exactly $\ceil{N/B}$.
+
+
+The I/O cost of the construction phase is then the cost of the creation of the k-ary search tree.
+For each level we read from memory what remain of the array $A$ and write the exact same number of block in external memory in the form of nodes of the tree or in the form of the new remaining array $A$.
+
+So the total cost is two times the sum of the length of $A$ divided by the size of the block, for each level.
+The first iteration is somehow nonstandard, but for all the others we have that the dimension of $A$ decrease and become exactly $|A|/k$ (where we indicate the length of $A$ as $|A|$).
+We take $\ceil{N/B}$ as over bound of the cost of the first iteration.
+Knowing that the length of $A$ at the beginning of the second iteration is less or equal than $N$, and that we stop the algorithm when $|A| \leq B$ the total I/O cost is less or equal than
+\begin{align*}
+\ceil{N/B} + 2 \times \sum_{i = 0}^{\infty} \frac{N}{Bk^i} = \ceil{N/B} + 2N/B \times \sum_{i = 0}^{\infty} \frac{1}{k^i} = \ceil{N/B} + 2N/B \times \frac{k}{k - 1}
+\end{align*}
+The last step is given by the rules of geometric series, if $x$ is between $0$ and $1$ then $\sum_{t = 0}^{\infty} x^t = \frac{1}{1 - x}$.
+For concluding, if $k \geq 2$ then the I/O complexity is less or equal than $5N/B$.
 \end{document}
 
 
