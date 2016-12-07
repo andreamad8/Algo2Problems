@@ -54,10 +54,10 @@ Now let's input to the algorithm an element $y\neq x$ for $(i+1)$-times, startin
 \begin{itemize}
 \item[Case 1:] when we start from $A_i$, we will end up in this situation:\\ 
 \textit{(for simplicity, we'll use a JSON-like syntax for representing the counters)}\\ Counters: \{$ x : i$,  $ y: i+1$\}$ \implies $ the algorithm outputs $y$ as the most frequent element.
-\item[Case 2:] when we start from $A_i$, we will end up in this situation:\\
+\item[Case 2:] when we start from $A_j$, we will end up in this situation:\\
  Counters: \{$ x : j$,  $ y: i+1$\}$ \implies$ since $j>i+1$, the algorithm outputs $x$.
 \end{itemize}
-We've seen how, starting from the same state $A$ and with the same input, the algorithm produces different outputs; therefore it cannot be deterministic.
+We've seen how, starting from the same state $A$ and with the same input, the algorithm produces different outputs; therefore it cannot be deterministic (remeber that the states $A_i$ and $A_j$ indicates the two different moments in which the algorithm is in the same state $A$).
 
 \section*{case $i=j-1$}
 If i=j-1, then the algorithm contains the transition $(A_i, x) \rightarrow A_j = A_{i+1}$. This means that the algorithms remains in state $A$ after receving $x$. In particular, $A_{i+2} = \delta (\delta(A_i,x), x) = \delta(A_i, x) = A_i$, and thus we can just take $j=i+2$ and we fall in the previous case $i<j+1$.
