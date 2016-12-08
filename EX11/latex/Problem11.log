@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.27)  20 NOV 2016 14:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.27)  8 DEC 2016 10:02
 entering extended mode
 **./Problem11.tex
 (Problem11.tex
@@ -1290,42 +1290,42 @@ File: uni-34.def 2013/05/13 UCS: Unicode data U+2200..U+22FF
 LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
 (Font)              Font shape `T1/ptm/b/n' tried instead on input line 37.
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--47
+Underfull \hbox (badness 10000) in paragraph at lines 33--48
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--47
+Underfull \hbox (badness 10000) in paragraph at lines 33--48
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--47
+Underfull \hbox (badness 10000) in paragraph at lines 33--48
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--47
+Underfull \hbox (badness 10000) in paragraph at lines 33--48
 
  []
 
 [1
 
 {C:/Users/Andrea/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 56.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 56.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 57.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 57.
 
 (Problem11.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 56.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 56.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 57.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 57.
 Package rerunfilecheck Info: File `Problem11.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 56.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 57.
  ) 
 Here is how much of TeX's memory you used:
  34399 strings out of 493634
  742524 string characters out of 3134831
- 810912 words of memory out of 3000000
+ 811912 words of memory out of 3000000
  37333 multiletter control sequences out of 15000+200000
  32854 words of font info for 36 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
@@ -1340,12 +1340,13 @@ Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr5.pfb><C:/User
 s/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.
 pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
 nts/cm/cmsy10.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type
-1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2
-.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Andrea/AppData/Local/Programs/MiK
-TeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
-Output written on Problem11.pdf (1 page, 105744 bytes).
+1/public/amsfonts/cm/cmsy5.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Users/Andrea/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/Andrea/AppData/Local
+/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb>
+Output written on Problem11.pdf (1 page, 114286 bytes).
 PDF statistics:
- 56 PDF objects out of 1000 (max. 8388607)
+ 60 PDF objects out of 1000 (max. 8388607)
  3 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

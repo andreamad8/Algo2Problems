@@ -11,14 +11,15 @@ This repo is used to collect different exercize solution of the Algorithm course
 * EX8: Count-min sketch: extension to negative counters. **SOLVED**
 * EX9: Count-min sketch: range queries. **SOLVED**
 * EX10: Space-efficient perfect hash **SOLVED**
-* EX11: Bloom filters vs. space-efficient perfect hash **THERE IS A MISTAKE, PLEASE DOUBLE CHECK IT**
+* EX11: Bloom filters vs. space-efficient perfect hash **SOLVED**
 * EX12: MinHash sketches **SOLVED**
 * EX13: Randomized min-cut algorithm **SOLVED**
-* EX14: External memory implicit hashing **TO DO**
+* EX14: External memory implicit hashing **SOLVED**
 * EX15: Implicit navigation in vEB layour **SOLVED**
 * EX16: 1-D range query **BRUTALLY SOLVED, JUST A DRAFT, PLEASE DOUBLE CHECK IT**
 * EX17: External memory mergesort **SOLVED, PLEASE DOUBLE CHECK IT**
-
+* EX18: External memory (EM) permuting **SOLVED, MUST BE UPDATED WITH THE NEW TEXT**
+* EX19: Suffix sorting in EM **VERY HARD WHOEVER FIND A SOLUTION IS VERY WELCOME**
 ## POLICY
 If you believe that the proposed solutions are wrong, or there are mistakes, or you have a better solution, please do not esitate to review the already existing file, or upload your solution. Actually, if you want to upload your solution, you are very welcome.
 Last but not least, if you modify or find any mistake, please create and issue, in order to let everyone know about that.
