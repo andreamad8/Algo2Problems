@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.27)  5 DEC 2016 19:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.2.27)  8 DEC 2016 11:17
 entering extended mode
 **./Problem17.tex
 (Problem17.tex
@@ -676,50 +676,55 @@ Underfull \hbox (badness 10000) in paragraph at lines 23--34
 
  []
 
-("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ucs\uni-34.def"
-File: uni-34.def 2013/05/13 UCS: Unicode data U+2200..U+22FF
-)
 <kway.png, id=4, 444.15938pt x 345.54094pt>
 File: kway.png Graphic file (type png)
  <use kway.png>
-Package pdftex.def Info: kway.png used on input line 47.
+Package pdftex.def Info: kway.png used on input line 44.
 (pdftex.def)             Requested size: 177.6606pt x 138.21391pt.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 52.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 49.
 
 ("C:\Users\Andrea\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 52.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 49.
 
-Underfull \hbox (badness 10000) in paragraph at lines 56--60
+Underfull \hbox (badness 10000) in paragraph at lines 53--60
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 53--60
 
  []
 
 [1
 
 {C:/Users/Andrea/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <./kway.png
->] (Problem17.aux) ) 
+>] [2] (Problem17.aux) ) 
 Here is how much of TeX's memory you used:
- 14473 strings out of 493634
- 275782 string characters out of 3134831
- 321675 words of memory out of 3000000
- 17585 multiletter control sequences out of 15000+200000
+ 13913 strings out of 493634
+ 269479 string characters out of 3134831
+ 323675 words of memory out of 3000000
+ 17028 multiletter control sequences out of 15000+200000
  8421 words of font info for 26 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 55i,8n,54p,416b,551s stack positions out of 5000i,500n,10000p,200000b,50000s
- <C:\Users\Andrea\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\
-jknappen\ec\dpi600\ecbx1000.pk> <C:\Users\Andrea\AppData\Local\MiKTeX\2.9\fonts
-\pk\ljfour\jknappen\ec\dpi600\ecrm1000.pk> <C:\Users\Andrea\AppData\Local\MiKTe
-X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk><C:/Users/Andrea/AppData/L
-ocal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/An
-drea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb
-><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmr7.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmsy10.pfb>
-Output written on Problem17.pdf (1 page, 108987 bytes).
+ 55i,7n,54p,870b,237s stack positions out of 5000i,500n,10000p,200000b,50000s
+ <C:\Users\Andrea\AppData\Local\MiKTeX\2.9\fonts\pk\ljf
+our\jknappen\ec\dpi600\ecbx1000.pk> <C:\Users\Andrea\AppData\Local\MiKTeX\2.9\f
+onts\pk\ljfour\jknappen\ec\dpi600\ecrm1000.pk> <C:\Users\Andrea\AppData\Local\M
+iKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk><C:/Users/Andrea/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/User
+s/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5
+.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmmi7.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2.9/fonts/type
+1/public/amsfonts/cm/cmr10.pfb><C:/Users/Andrea/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Users/Andrea/AppData/Local/Progr
+ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/Andrea/AppDa
+ta/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb>
+Output written on Problem17.pdf (2 pages, 138690 bytes).
 PDF statistics:
- 133 PDF objects out of 1000 (max. 8388607)
+ 149 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
