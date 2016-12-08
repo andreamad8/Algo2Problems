@@ -20,6 +20,7 @@ This repo is used to collect different exercize solution of the Algorithm course
 * EX17: External memory mergesort **SOLVED, PLEASE DOUBLE CHECK IT**
 * EX18: External memory (EM) permuting **SOLVED, MUST BE UPDATED WITH THE NEW TEXT**
 * EX19: Suffix sorting in EM **VERY HARD WHOEVER FIND A SOLUTION IS VERY WELCOME**
+
 ## POLICY
 If you believe that the proposed solutions are wrong, or there are mistakes, or you have a better solution, please do not esitate to review the already existing file, or upload your solution. Actually, if you want to upload your solution, you are very welcome.
 Last but not least, if you modify or find any mistake, please create and issue, in order to let everyone know about that.
