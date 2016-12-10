@@ -17,7 +17,7 @@ This repo is used to collect different exercize solution of the Algorithm course
 * EX14: External memory implicit hashing **SOLVED**
 * EX15: Implicit navigation in vEB layour **SOLVED**
 * EX16: 1-D range query **BRUTALLY SOLVED, JUST A DRAFT, PLEASE DOUBLE CHECK IT**
-* EX17: External memory mergesort **SOLVED, PLEASE DOUBLE CHECK IT**
+* EX17: External memory mergesort **SOLVED**
 * EX18: External memory (EM) permuting **SOLVED**
 * EX19: Suffix sorting in EM **VERY HARD WHOEVER FIND A SOLUTION IS VERY WELCOME**
 
