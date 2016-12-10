@@ -38,24 +38,25 @@ Let $C = B_1 \cup B_2$ be the sample set.
 This can be made with linear number of block transfers by scanning the input string $S$.
 
 \item \textbf{Sort sample suffixes: } First sort the suffixes using a mixture of radix and merge sort. That operation takes $O(\frac{N}{B} log_{\frac{M}{B}} \frac{N}{B})$.
-Now let generate the ids for the renaming steps by scanning the sorted suffixes (Note that in general $rank(i) \neq id(i)$ with $(s, i) \in C$ since there can be duplicates). 
+Now let generate the ids for the renaming steps, in sequel denoted by $id(i)$, by scanning the sorted suffixes (Note that in general $rank(i) \neq id(i)$ with $(s, i) \in C$ since there can be duplicates). 
 Then permute the pairs $(id(i), s)$ by the congruence class of $i$ and if equals by $i$, where $(i, s) \in C$.
 If there is no duplicates we have a total order for them, otherwise the recursion starts, constructing the input string simply concatenating the just permuted ids.
-In both cases at the end of this step we have the correct ranks of suffixes in $C$.
+In both cases at the end of this step we have the array $S_{12}$, which contains the correct ranks of suffixes in $C$.
 
 \item \textbf{Sort nonsample suffixes: } 
-First permute the ranks obtained in the previous step by thier index $i$.
+First generate $S_{12}^{-1}$ permuting $S_{12}$ by thier index, i.e. generate the inverse.
 Then scan the input string character by character and construct the following $3$ sets:
 \begin{itemize}
-\item $S_{01} = \{(s[i], rank(i+1), i) \bigm| i \; mod \; 3 = 0\}$
-\item $S_{02} = \{(s[i], s[i+1], rank(i+2), i) \bigm| i \; mod \; 3 = 0\}$
-\item $S_{12} = \{(s[i], rank(i+1), i) \bigm| i \; mod \; 3 = 1\}$ $\cup$ $\{(s[i], s[i+1], rank(i+2), i) \bigm| i \; mod \; 3 = 2\}$
+\item $S_{01} = \{(s[i], S_{12}^{-1}[i+1], i) \bigm| i \; mod \; 3 = 0\}$, this set is used for comparing elements in $B_0$ with elements in $B_1$ 
+\item $S_{02} = \{(s[i], S_{12}^{-1}[i+1], S_{12}^{-1}[i+2], i) \bigm| i \; mod \; 3 = 0\}$, this set is used for comparing elements in $B_0$ with elements in $B_2$
+\item $S_{12} = \{(s[i], S_{12}^{-1}[i+1], i) \bigm| i \; mod \; 3 = 1\}$ $\cup$ $\{(s[i], s[i+1], S_{12}^{-1}[i+2], i) \bigm| i \; mod \; 3 = 2\}$, this is the set of elements in $C$ already prepared for merge comparison.
 \end{itemize}
-All these sets can be constructed in linear time. Let sort thef first two sets in lexicographically order (taking the well-known time of $O(\frac{N}{B} log_{\frac{M}{B}} \frac{N}{B})$), and permute the last one by $rank(i)$. Note that the the first two sets are sorted in the same way but stored different information, both useful for the follwing merge step. The last two was already sorted by their position in step 2.
+All these sets can be constructed in linear time. Let sort thef first two sets in lexicographically order (taking the well-known time of $O(\frac{N}{B} log_{\frac{M}{B}} \frac{N}{B})$), and permute the last one by $S_{12}^{-1}[i]$. Note that the the first two sets are sorted in the same way but stored different information, both useful for the follwing merge step. The last two was already sorted by their position in step 2.
 
 \item \textbf{Merge:}
 This step can be made easily using the following comparison function:
 \begin{verbatim}
+/* input elements are taken resp. by S_12, S_01, S_02 */
 compare(e12, e01, e02) 
   if ( e12.i mod 3 = 1 )  
     return lex-less(e12, e01); /* return true if e1 < e2 in lexicographical order 

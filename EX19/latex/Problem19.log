@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.9.5)  10 DEC 2016 15:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.9.5)  10 DEC 2016 16:01
 entering extended mode
 **./Problem19.tex
 (Problem19.tex
@@ -668,7 +668,7 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 58.
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-Overfull \hbox (23.35486pt too wide) in paragraph at lines 64--64
+Overfull \hbox (23.35486pt too wide) in paragraph at lines 65--65
  []    \T1/cmtt/m/n/10 return lex-less(e12, e01); /* return true if e1 < e2 in 
 lexicographical order[] 
  []
@@ -683,7 +683,7 @@ Here is how much of TeX's memory you used:
  17522 multiletter control sequences out of 15000+200000
  14132 words of font info for 42 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 55i,8n,54p,439b,232s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 55i,8n,54p,446b,232s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Prog
 ram Files (x86)/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t1.enc}<C:/Program
  Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program F
@@ -693,16 +693,17 @@ es (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi5.pfb><C:/Program Files
 6)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files (x86)/
 MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)/MiKT
 eX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
- 2.9/fonts/type1/public/cm-super/sfbx1000.pfb><C:/Program Files (x86)/MiKTeX 2.
-9/fonts/type1/public/cm-super/sfbx1440.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
-onts/type1/public/cm-super/sfrm0600.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
-s/type1/public/cm-super/sfrm0700.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
-ype1/public/cm-super/sfrm0800.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
-1/public/cm-super/sfrm1000.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
-ublic/cm-super/sftt1000.pfb>
-Output written on Problem19.pdf (1 page, 191261 bytes).
+ 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2.
+9/fonts/type1/public/cm-super/sfbx1000.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
+onts/type1/public/cm-super/sfbx1440.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
+s/type1/public/cm-super/sfrm0600.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/t
+ype1/public/cm-super/sfrm0700.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type
+1/public/cm-super/sfrm0800.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/p
+ublic/cm-super/sfrm1000.pfb><C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/publ
+ic/cm-super/sftt1000.pfb>
+Output written on Problem19.pdf (1 page, 200476 bytes).
 PDF statistics:
- 66 PDF objects out of 1000 (max. 8388607)
+ 70 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 
