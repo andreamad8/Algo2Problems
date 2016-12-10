@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+  <title>LCE</title>
+  <script>
+    var r;
+    var s;
+
+    function equal(i, j, l) {
+        return r[i + l - 1].slice(i, i + l) === r[j + l - 1].slice(j, j + l);
+    }
+
+    function init() {
+        s = document.getElementById("s").value;
+        make_r(s);
+    }
+
+    function make_r(s) {
+        r = [];
+        for (var i = 0; i < s.length; i++) {
+            r[i] = s.slice(0, i+1);
+        }
+    }
+
+    function lce_calc() {
+        var i = 0 + eval(document.getElementById("i").value);
+        var j = 0 + eval(document.getElementById("j").value);
+        var l = lce(i,j);
+        document.getElementById("out").innerHTML = l;
+    }
+
+    function lce_rec(x, y, l) {
+        if (l == 1) return equal(x, y, l) ? 1 : 0;
+        l1 = Math.floor(l/2);
+        if (equal(x, y, l1)) return l1 + lce_rec(x + l1, y + l1, l - l1);
+        else return lce_rec(x, y, l1);
+    }
+
+    function lce(i, j) {
+        return lce_rec(i, j, s.length - j);
+    }
+  </script>
+</head>
+<body>
+
+  <div>
+    <fieldset>
+      <legend></legend>
+      string: <input id="s"/><br>
+      i: <input id="i"/><br>
+      j: <input id="j"/><br>
+      <p>lce: </p><p id="out"><p>
+      <input type="button" id="init" value="init"/>
+      <input type="button" id="lce" value="lce"/>
+    </fieldset>
+  </div>
+  <script>
+    document.getElementById("init").addEventListener("click", init);
+    document.getElementById("lce").addEventListener("click", lce_calc);
+  </script>
+
+</body>

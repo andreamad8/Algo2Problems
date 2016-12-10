@@ -1,0 +1,80 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{algpseudocode} 
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\newtheorem{theorem}{Theorem}
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+%% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{qtree}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{tikz}
+\usetikzlibrary{automata,positioning}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage{forest}
+\renewcommand{\rmdefault}{ptm}
+
+\begin{document}
+\section*{Family of uniform hash functions}
+The notion of pairwise independence says that, for any $x1 \neq x2$ and $c1, c2 \in Z_p$, we have that
+\[
+\underset{h \in \mathcal{H}}{Pr}[h(x_1) = c_1 \wedge h(x_2) = c_2] = \underset{h \in \mathcal{H}}{Pr}[h(x_1) = c_1] \times \underset{h \in \mathcal{H}}{Pr}[h(x_2) = c_2] 
+\]\qquad \\
+In other words, the joint probability is the product of the two individual probabilities. Show that the family of hash functions $H = \{ h_{ab}(x) = ((ax + b) \ mod \ p)\ mod \ m \ : a \in Z^*_p, b \in Z_p\}$ (seen in class) is "pairwise independent", where $p$ is a sufficiently large prime number $(m + 1 \leq p \leq 2m)$.
+\\
+\\
+\textbf{SOLUTION}
+\\
+Each probability from the right hand side of the equation are equal to
+\(\frac{1}{m}\), simply because there are \(m\) buckets chosen uniformly (Universal hash function).
+Therefore, in the right hand side
+we have a probability equal to \(\frac{1}{m^2}\). \\ On the left side of the equation, we will first count all the possible solutions $(x_1, x_2)$, and then we will count only the good solutions (that is, the solutions $x_1$ and $x_2$ that match, respectively,  \(c_1\) and \(c_2\) ).\\  \(h(x_1)\) 
+and \(h(x_2)\) can be rewrite with their expression, such as:
+\[
+\left.
+\begin{array}{l}
+\text{$h(x_1)$ = ($a \cdot x_1 + b$ mod $p$) mod $m$}\\
+\text{$h(x_2)$ = ($a \cdot x_2 + b$ mod $p$) mod $m$}
+\end{array}
+\right. \Bigl\}
+x_1 \ne x_2
+\]
+\qquad \\
+Now, let's consider the inner modulo \(p\) expressions as \(r = a\cdot x_1 + b\) mod
+\(p\) and \(s = a \cdot x_2 + b\) mod \(p\), since $p$ is prime and there is a linear transformation). 
+Thus we can rewrite the original expression as: \({Pr}[r \text{ mod } m = c_1 \wedge s \text{ mod } m = c_2]\). Since
+$a \in [1 \dots p-1]=\mathbb{Z}_p^*$ and $b \in [0 \dots p-1]=\mathbb{Z}_p$, and both \(a\) and \(b\) are fixed for \(r\) and \(s\), then there are \(p\cdot(p-1)\) possible different combination for $x_1$ and $x_2$ ($x_1 \neq x_2$). \\
+\qquad \\
+Now, we focus on the "good" solutions. When \(p\) is sufficiently
+larger than \(m\), the number of $x_i$ that will match a given
+value \(c_i\) are \(\frac{p}{m}\), as we have seen in class. 
+However, we need to take in account modular arithmetic: not every values of \(m\)
+is going to be a multiple of \(p\). Adding this to the
+analysis, the number of matches are bound by considering the
+round-to-floor and round-to-ceil limits:
+
+\[
+\Bigl \lfloor \frac{p}{m} \Bigr \rfloor \le \textsc{\# of $x_i$ matching } c_i \le \Bigl \lceil \frac{p}{m} \Bigr\rceil
+\]
+\qquad \\
+Since we have both $c_1$ and $c_2$, we need to consider their joint probability (i.g. multiplication), and then we can be bound it by combining both pieces of the analysis (dividing "good" solutions by all possible combination), giving us an approximation to the expected $\frac{1}{m^2}$:
+
+$$
+\frac{1}{p\cdot(p-1)}\Bigl(\Bigl\lfloor\frac{p}{m}\Bigr\rfloor\Bigr)^2  \le {Pr}[r \text{ mod } m = c_1 \wedge s \text{ mod } m  = c_2] \le \frac{1}{p\cdot(p-1)}\Bigl(\Bigl\lceil\frac{p}{m}\Bigr\rceil\Bigr)^2 
+$$
+\qquad \\
+It must be noted that the $\frac{1}{m^2}$ result may not be fully reached since that all the possible values $a$ are $p-1$, which make it impossible to remove the $\frac{p}{p-1}$ term. The only possibility is when $a = 0$ that would not make any sense algorithmically speaking. Therefore the result can only be approximated.
+
+\end{document}
