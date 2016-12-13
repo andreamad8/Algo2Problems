@@ -562,8 +562,8 @@ The I/O cost of the construction phase is then the cost of the creation of the k
 For each level we read from memory what remain of the array $A$ and write the exact same number of block in external memory in the form of nodes of the tree or in the form of the new remaining array $A$.
 
 So the total cost is two times the sum of the length of $A$ divided by the size of the block, for each level.
-The first iteration is somehow nonstandard, but for all the others we have that the dimension of $A$ decrease and become exactly $|A|/k$ (where we indicate the length of $A$ as $|A|$).
-We take $\ceil{N/B}$ as over bound of the cost of the first iteration.
+The first iteration is somehow nonstandard, but for all the others we have that the dimension of $A$ decrease and become exactly $|A|/k^i$ (where we indicate the length of $A$ as $|A| = \ceil{N/B} $ and $i$ is the depth of a generic level in the tree).
+We take $\ceil{N/B}$ as an upper bound of the cost of the first iteration.
 Knowing that the length of $A$ at the beginning of the second iteration is less or equal than $N$, and that we stop the algorithm when $|A| \leq B$ the total I/O cost is less or equal than
 \begin{align*}
 \ceil{N/B} + 2 \times \sum_{i = 0}^{\infty} \frac{N}{Bk^i} = \ceil{N/B} + 2N/B \times \sum_{i = 0}^{\infty} \frac{1}{k^i} = \ceil{N/B} + 2N/B \times \frac{k}{k - 1}
