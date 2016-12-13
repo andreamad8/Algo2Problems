@@ -19,7 +19,7 @@ This repo is used to collect different exercize solution of the Algorithm course
 * EX16: 1-D range query **BRUTALLY SOLVED, JUST A DRAFT, PLEASE DOUBLE CHECK IT**
 * EX17: External memory mergesort **SOLVED**
 * EX18: External memory (EM) permuting **SOLVED**
-* EX19: Suffix sorting in EM **VERY HARD WHOEVER FIND A SOLUTION IS VERY WELCOME**
+* EX19: Suffix sorting in EM **SOLVED**
 
 ## POLICY
 If you believe that the proposed solutions are wrong, or there are mistakes, or you have a better solution, please do not esitate to review the already existing file, or upload your solution. Actually, if you want to upload your solution, you are very welcome.
