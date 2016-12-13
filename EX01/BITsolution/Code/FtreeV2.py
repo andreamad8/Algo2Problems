@@ -35,6 +35,10 @@ for i in range(N):
 
 
 updater(1,1,5)
+updater(1,2,2)
+updater(2,5,2)
+
+
 print B1
 print B2
 print querys(1)
