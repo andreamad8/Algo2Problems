@@ -1,0 +1,94 @@
+\documentclass[a4paper]{article}
+
+%% Language and font encodings
+\usepackage[english]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+%% Sets page size and margins
+\usepackage[a4paper,top=3cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage{amsmath}
+\usepackage{amsthm}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+
+\usepackage{graphicx}
+\usepackage{qtree}
+\usepackage{mathtools}
+
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\begin{document}
+\section*{Implicit navigation in vEB layout}
+Consider $N = 2h − 1$ keys where $h$ is a power of 2,
+and the implicit cache-oblivious vEB layout of their corresponding complete binary
+tree, where the keys are suitably permuted and stored in an array of length N without
+using pointers (as it happens in the classical implicit binary heap but the rule here
+is different). The root is in the first position of the array. Find a rule that, given the
+position of the current node, it is possible to locate in the array the positions of its
+left and right children. Discuss how to apply this layout to obtain (a) a static binary
+search tree and (b) a heap data structure, discussing the cache complexity
+\\
+\\
+\subsection*{Assumptions}
+Suppose you have a binary vEB tree $T$ stored in an array \texttt{T[]} in external memory, as seen in class, ordered as in the tree's induced "fractal" numbering, starting from 0:
+
+\Tree
+[.0 
+	[.1
+		[.3 4 5 ]
+		[.6 7 8 ]
+	]
+	[.2
+		[.9 10 11 ]
+		[.12 13 14 ]
+	]
+]
+\\
+This is the same order in which elements are stored in \texttt{T[]}
+Let $n$ be the element whose children needs to be calculated.
+\\
+
+\subsection*{Solution}
+First of all, we can check whether $n\%3 = 0$ in order to know whether $n$ is the root of a minimal sub-tree (ie. a sub-tree with 3 nodes). If that's the case, then the left and right children of $n$ are respectively $n+1$ and $n+2$, and we can return. Otherwise, we go on with the search:\\
+\begin{enumerate}
+ \item Since $h$ is a power of two, we can split T into subtrees of height $h/2$, in particular we obtain one top-tree and $2^{h/2}$ bottom-trees. Each of them contains $size = 2^{h/2}-1$ elements. In order to know which sub-tree our element is part of, we calculate $tree\_id = \floor{\frac{n}{size}}$. if $tree\_id = 0$ then the element is contained in the top tree, otherwise if $tree\_id > 0$ the element is contained in one of the bottom trees.
+\item Once we identified the sub-tree, we have two possibilities:
+	\begin{itemize}
+	\item \emph{The element is in the top-tree}, then we do the following:\\
+		\begin{verbatim}
+			offset_sx = 0, jump = size, current_root = T.root
+		\end{verbatim}
+		($current\_root$ shall identify the root of the currently selected sub-tree, $offset\_sx$ shall count the number of "uncles and cousins"  of $n$ at the left of $n$)
+	\item \emph{The element is in one of the bottom-trees}, then we have to transpose the root with 
+	\begin{verbatim}
+		current_root += tree_id * size
+	\end{verbatim}
+	and then adjust $n$ with respect to the new root 
+\begin{verbatim}
+		n = n % size
+	\end{verbatim}
+ Finally, we increment  
+\begin{verbatim}
+		offset_sx += (tree_id - 1) * size.
+\end{verbatim}
+	\end{itemize}
+\item We recursively repeat step 1 and 2, until we reach a minimal sub-tree (ie. $h=2$), which is our base case. If the node ends up being the right child of the minimal subtree we need to further increment $offset\_sx += 1$, otherwise we are ready.
+
+\item Finally, we can find the children of $n$ with the following:\\
+	\begin{verbatim}
+		left_child   = current_root + jump + 2 * offset_sx * jump
+		right_child = current_root + jump + 2 * offset_sx * jump + jump
+	\end{verbatim}
+
+
+\subsection*{Discussion}
+It is possible to use a vEB tree as a binary search tree. In the worst case, during search $h/k$ blocks are traversed in order to reach a leaf starting from the root (worst case, $k = log B$)\\
+The cost is then $O(log N / log B) = O(log_B N)$\\
+
+If we instead use the vEB tree as a heap, during each deletion we have to replace the root with the right-most leaf. Then, we need to rebalance the new tree until the heap-ordering is re-established. This operation is done only on one path root-leaf, therefore the complexity stays the same, $O(log_B N)$.
+
+\end{enumerate}
+\end{document}
