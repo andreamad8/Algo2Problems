@@ -108,7 +108,7 @@ so we want to show that
 We can observe that 
 
 \[
-\sum_{i=1}^n \lfloor \frac{n}{i} \rfloor > \sum_{i=1}^n (\frac{n}{i} - 1) = n \sum_{i=1}^n \frac{1}{i} - n = n(-1 + \sum{i=1}^n \frac{1}{n}) \approx n \log{n} 
+\sum_{i=1}^n \lfloor \frac{n}{i} \rfloor > \sum_{i=1}^n (\frac{n}{i} - 1) = n \sum_{i=1}^n \frac{1}{i} - n = n(-1 + \sum_{i=1}^n \frac{1}{n}) \approx n \log{n} 
 \]
 
 Since $nlogn$ grows faster than $rn$, given $r>1$ there will always be a value of $n$ that will cause the greedy algorithm to provide a value $m = \sum_{i=1}^n \lfloor n/i \rfloor > rn$ that is not an $r$-approximation.
