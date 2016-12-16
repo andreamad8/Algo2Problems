@@ -116,7 +116,7 @@ We can observe that\footnote{remember that $\sum_{i=1}^n \frac{1}{n}$ is the nth
 .}	
 
 \[
-\sum_{i=1}^n \lfloor \frac{n}{i} \rfloor > \sum_{i=1}^n (\frac{n}{i} - 1) = n \sum_{i=1}^n \frac{1}{i} - n = n(-1 + \sum_{i=1}^n \frac{1}{n}) > n(\ln{(n + 1)} - 1) \approx n(\ln{(n)})
+\sum_{i=1}^n \lfloor \frac{n}{i} \rfloor > \sum_{i=1}^n (\frac{n}{i} - 1) = n \sum_{i=1}^n \frac{1}{i} - n = n(-1 + \sum_{i=1}^n \frac{1}{i}) > n(\ln{(n + 1)} - 1) \approx n(\ln{(n)})
 \]
 
 Since $nlogn$ grows faster than $rn$, for any given $r>1$, there will always be a value of $n$ that cause the greedy algorithm to provide a value $m = \sum_{i=1}^n \lfloor n/i \rfloor > rn$ that is not an $r$-approximation.
