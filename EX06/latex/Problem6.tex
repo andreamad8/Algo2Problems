@@ -61,4 +61,55 @@ We've seen how, starting from the same state $A$ and with the same input, the al
 
 \section*{case $i=j-1$}
 If i=j-1, then the algorithm contains the transition $(A_i, x) \rightarrow A_j = A_{i+1}$. This means that the algorithms remains in state $A$ after receving $x$. In particular, $A_{i+2} = \delta (\delta(A_i,x), x) = \delta(A_i, x) = A_i$, and thus we can just take $j=i+2$ and we fall in the previous case $i<j+1$.
+\\
+\\
+\textbf{ALTERNATIVE SOLUTION (well, same solution with different proof)}
+\\
+\\
+Let $\Lambda$ be the alphabet of the stream, we consider the set of streams $S$ to be the set of all possible concatenations of arbitrary length of word on the alphabet (i.e. $S = \Lambda^*$).
+
+Any deterministic algorithm can be described by a deterministic finite state machine, in which every state $\sigma \in \Sigma$ given an input move deterministically to another state.
+The machine is deterministic, hence the relation between the pairs of possible states and streams with the states the machine will transit starting from that given state and seeing that particular stream is a function.
+Also the relation between the pair of state and streams with the output is a function.
+\begin{align*}
+&update\_state : \Sigma \times S \longrightarrow S & \\
+&update\_state(\sigma, s) = \sigma'  &\mbox{if when the machine is in state $\sigma$ and sees the stream $s$ go to state $\sigma'$} \\
+&output : \Sigma \times S \longrightarrow \Lambda & \\
+&output(\sigma, s) = a  &\mbox{if when the machine is in state $\sigma$ and sees the stream $s$ resturn in output $a$} \\
+\end{align*}
+Given that the number of bits for representing the state of the machine is finite (say $k$), the possible different states cannot be more than $2^k$ (i.e. $\vert \Sigma \vert \leq 2^k$).
+
+Take one element $a$ from the alphabet of the stream and consider the set of streams $\{a\}^*$\footnote{This is the set $\{ a^i \vert i \in \mathbb{N} \}$ where we mean $a^i$ to be the concatenation of $i$ times the word $a$, you can see it like the language indicated by the regular expression $a^*$.}.
+Let $\sigma_0$ be the initial state of the machine (the state of the machine before it sees any character).
+The set of states in which the machine can be after seeing one element from $\{a\}^*$, starting from $\sigma_0$ will be $update\_state(\sigma_0, \{a\}^*)$ defined in the usual way.
+\begin{align*}
+update\_state(\sigma_0, \{a\}^*) = \{ \sigma \vert \exists s \in \{a\}^* update\_state(\sigma_0, s) = \sigma \}
+\end{align*}
+
+Since the streams in the set $\{a\}^*$ are infinite, and $update\_state(\sigma_0, \{a\}^*)$ is a subset of $\Sigma$ and hence a finite set, the function cannot be injective.
+There will be infinite different stream such that they lead to the same state of the machine.
+Let $a^i$ and $a^j$ be two different streams such that they lead to the same state $\bar{\sigma}$ of the machine and without lost of generality assume that $i > j + 1$.
+\begin{align*}
+&update\_state(\sigma_0, a^i) = update\_state(\sigma_0, a^j) = \bar{\sigma} &\mbox{with $i > j + 1$}
+\end{align*}
+
+Now take a new stream composed by $j + 1$ word $b \in \Lambda$ different from $a$.
+The machine in state $\bar{\sigma}$, when sees the stream $b^{j + 1}$ will gives as output $output(\bar{\sigma}, b^{j + 1})$.
+
+Let's assume that the machine gives always the correct answer, we will prove it must be not deterministic.
+First case, the machine is in state $\bar{\sigma}$ because of the stream $a^j$, then to give the correct answer the algorithm must return $b$ because in the stream $a^jb^{j+ 1}$ the most frequent item is $b$.
+Second case, the machine is in state $\bar{\sigma}$ because of the stream $a^i$, then to give the correct answer the algorithm must return $a$ because in the stream $a^ib^{j+ 1}$ the most frequent item is $a$ (since $i > j + 1$).
+
+Hence if the algorithm must be correct the relation between the pair of state and stream with the output cannot be a function and the algorithm cannot be deterministic.
+
+\begin{align*}
+&output(\bar{\sigma}, b^{i+1}) = b &\mbox{sometimes}\\
+&output(\bar{\sigma}, b^{i+1}) = a &\mbox{some other times}
+\end{align*}
+And by composition of state and output functions
+\begin{align*}
+&output(\sigma_0, a^ib^{i+1}) = b &\mbox{sometimes}\\
+&output(\sigma_0, a^ib^{i+1}) = a &\mbox{some other times}
+\end{align*}
+
 \end{document}
