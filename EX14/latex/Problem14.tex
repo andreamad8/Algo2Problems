@@ -92,7 +92,7 @@ L\ [\textit{last\_level\_elements(N, h)}] &= N - elements(h-1)\\
 \end{align*}
 
 Now we build the tree, selecting the elements to insert in each node of the tree ($B$ elements for node since every node must be contained in a memory block).
-We will proceed level by level, from the last to the root (see \ref{constr}).
+We will proceed level by level, from the last to the root (see figure \ref{constr}).
 
 For the last level we need exactly $L$ elements, we traverse the sorted array $A$ from left to right selecting $B$ elements and then skipping the next, then taking the $B$ following, then skipping the next and so on, until we select $L$ elements.
 This way we build the $L/B$ blocks (i.e. nodes) for the last level.
@@ -543,7 +543,7 @@ The way we traverse the tree for finding an element $e$ is the usual one.
 \
 
 
-The cost of searching is of course $O(\log_{B} N)$ because at each iteration we divide the tree in which we search by $B$.
+The cost of searching is of course $O(\log_{k} N)$ because at each iteration we divide the tree in which we search by $k$ (the exercise ask for $O(\log_{B} N)$, but since $B = k -1$ we have $O(\log_{B} N) = O(\log_{k} N)$).
 The data structure we build occupy exactly the same number of block occupied by $A$ the original array, i.e. $\ceil{(N/B)}$ since we store each value only once and all block but one are completely full.
 
 What remain is to discuss the I/O complexity of the construction phase and to show that it doesn't need more than $O(N/B)$ auxiliary storage.
@@ -562,13 +562,13 @@ The I/O cost of the construction phase is then the cost of the creation of the k
 For each level we read from memory what remain of the array $A$ and write the exact same number of block in external memory in the form of nodes of the tree or in the form of the new remaining array $A$.
 
 So the total cost is two times the sum of the length of $A$ divided by the size of the block, for each level.
-The first iteration is somehow nonstandard, but for all the others we have that the dimension of $A$ decrease and become exactly $|A|/k^i$ (where we indicate the length of $A$ as $|A| = \ceil{N/B} $ and $i$ is the depth of a generic level in the tree).
+The first iteration is somehow nonstandard (since $A$ decrease in a different way with respect to other iterations, we have $|A|$ minus the size of the last level of the tree), but for all the others we have that the dimension of $A$ decrease and become exactly $|A|/k^i$ (where we indicate the length of $A$ as $|A| = \ceil{N/B} $ and $i$ is the depth of a generic level in the tree).
 We take $\ceil{N/B}$ as an upper bound of the cost of the first iteration.
 Knowing that the length of $A$ at the beginning of the second iteration is less or equal than $N$, and that we stop the algorithm when $|A| \leq B$ the total I/O cost is less or equal than
 \begin{align*}
 \ceil{N/B} + 2 \times \sum_{i = 0}^{\infty} \frac{N}{Bk^i} = \ceil{N/B} + 2N/B \times \sum_{i = 0}^{\infty} \frac{1}{k^i} = \ceil{N/B} + 2N/B \times \frac{k}{k - 1}
 \end{align*}
-The last step is given by the rules of geometric series, if $x$ is between $0$ and $1$ then $\sum_{t = 0}^{\infty} x^t = \frac{1}{1 - x}$.
+The last step is given by the rules of geometric series (if $x$ is between $0$ and $1$ then $\sum_{t = 0}^{\infty} x^t = \frac{1}{1 - x}$).
 For concluding, if $k \geq 2$ then the I/O complexity is less or equal than $5N/B$.
 \end{document}
 
