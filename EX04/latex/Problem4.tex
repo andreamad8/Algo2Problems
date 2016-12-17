@@ -34,7 +34,18 @@ both given... randomization here is in the choice of $h \in H$ performed when bu
 \\
 
 \begin{itemize}
-\item[\textbf{a)}] To check whether $k\in U$ belong to $S$, we simply check $B_S[h(k)]=1$. The probability of error is equal to $P(error)=1-(1 - \frac{1}{m})^{|S|}$. This problem is similar to the "Birthday paradox" (i.e. fixed a day how many people are born on the same day). In word: the probability of a collision is $\frac{1}{m}$, thus the probability to do not have a collision is $(1-\frac{1}{m})$. If we have $|S|$ key the probability do not have any collision is $(1 - \frac{1}{m})^{|S|}$. Therefore the probability to have a collision is: $1-(1 - \frac{1}{m})^{|S|}$. That is, the probability that there is at least one collision within the key of S, that is the probability that $\exists j\in S : h(k)=h(j)$ but $j\neq k$ with $k \in U$.
+
+\item[\textbf{a)}] To check whether $k\in U$ belong to $S$ we simply check $B_S[h(k)]=1$, we return true if $B_S[h(k)]=1$ false otherwise.
+For any given $k\in U$, if $k\in S$ the answer we give is correct for sure (for any possible choice of $h$), since $B_S[h(k)]$ has been set to one by hypothesis.
+If $k\in U$ is not in $S$, then the probability of error is the probability that the randomly cosed hash function $h$ is such that some $j \in S$ causes $B_S[h(k)]$ to be set at $1$.
+In other words it is the probability that $h$ is such that $\exists j\in S : h(k)=h(j)$ or equivalently it is the probability that the given index $h(k)$ in $B_S$ is at $1$.
+We see that the probability of error is equal to $P(error)=1-(1 - \frac{1}{m})^{|S|}$. 
+This problem is similar to the "Birthday paradox" (i.e. fixed a day how many people are born on the same day).
+In word: 
+given an arbitrary index $i$ of $B_S$ the probability that one specific element of $S$ set the $B_S[i]$ at $1$ is $\frac{1}{m}$, thus the probability that it does not is $(1-\frac{1}{m})$.
+If we have $|S|$ key the probability that none of them sets $B_S[i]$ to $1$ is $(1 - \frac{1}{m})^{|S|}$ (since we can assume they are independent events).
+Therefore the probability that at least one element in $S$ sets $B_S[i]$ to $1$ (i.e. the probability that $B_S[i] = 1$) is: $1-(1 - \frac{1}{m})^{|S|}$.
+%\item[\textbf{a)}] To check whether $k\in U$ belong to $S$, we simply check $B_S[h(k)]=1$. The probability of error is equal to $P(error)=1-(1 - \frac{1}{m})^{|S|}$. This problem is similar to the "Birthday paradox" (i.e. fixed a day how many people are born on the same day). In word: the probability of a collision is $\frac{1}{m}$, thus the probability to do not have a collision is $(1-\frac{1}{m})$. If we have $|S|$ key the probability do not have any collision is $(1 - \frac{1}{m})^{|S|}$. Therefore the probability to have a collision is: $1-(1 - \frac{1}{m})^{|S|}$. That is, the probability that there is at least one collision within the key of S, that is the probability that $\exists j\in S : h(k)=h(j)$ but $j\neq k$ with $k \in U$.
 \item[\textbf{b)}] To estimate the size of $S$, we first create an indicator variable $X=\sum_{i=0}^{m-1}X_i$ where
 \begin{equation}
 X_{i} =  
