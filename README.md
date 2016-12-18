@@ -21,6 +21,7 @@ This repo is used to collect different exercize solution of the Algorithm course
 * EX18: External memory (EM) permuting **SOLVED**
 * EX19: Suffix sorting in EM **SOLVED**
 * EX20: Wrong greedy for minimum vertex cover **SOLVED**
+* EX21: Greedy 2-approximation for MAX-CUT on weighted graphs **SOLVED**
 
 ## POLICY
 If you believe that the proposed solutions are wrong, or there are mistakes, or you have a better solution, please do not esitate to review the already existing file, or upload your solution. Actually, if you want to upload your solution, you are very welcome.
